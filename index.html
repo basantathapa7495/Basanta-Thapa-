@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="google-site-verification" content="Y16OYNJ2r3Q9dePCcdUM09vCGQrGSexuFNQMPSCDqmQ" />
+  <meta name="description" content="Official website of Basanta Saru. Entrepreneur, creator, learner, and developer from Nepal.">
+  <title>Basanta Saru | Entrepreneur, Creator & Developer</title>
+  <link rel="stylesheet" href="style.css">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,500&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Background blobs -->
+  <div class="blob-bg">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+  </div>
+
+  <!-- 🌐 SHARED NAVBAR injected by components.js -->
+  <div id="navbar-container"></div>
+
+  <main>
+    <!-- ====== HERO ====== -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <span class="handwritten">Syangja, Nepal 🇳🇵</span>
+          <h2 class="fade-up" style="animation-delay:0.05s">
+            Writing books and documenting<br>
+            <span style="color: #7dd3fc;">the journey of becoming.</span>
+          </h2>
+          <div class="typing-wrapper fade-up" id="typingLine" style="animation-delay:0.1s"></div>
+          <p class="fade-up" style="animation-delay:0.15s; color: var(--text-muted); max-width: 580px; font-size: 1.05rem;">
+            Basanta — thinker, creator, seeker.
+            Documenting thoughts on spirituality, philosophy, technology, and becoming.
+          </p>
+          <div class="btn-group fade-up" style="animation-delay:0.2s">
+            <a href="books.html" class="btn btn-primary">📚 Explore my books</a>
+            <a href="goals.html" class="btn btn-outline">📊 View My Progress</a>
+            <a href="about.html" class="btn btn-outline">🌿 Discover my journey</a>
+            
+          </div>
+
+          <!-- Stats Row -->
+          <div class="stats-row fade-up" style="animation-delay:0.25s">
+            <div class="stat-item">
+              <div class="stat-number" id="statBooksWritten">1</div>
+              <div class="mono">📚 Books</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number" id="statProjects">1</div>
+              <div class="mono">💻 Projects</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number" id="statBooksRead">0</div>
+              <div class="mono">📖 Books read</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number" id="statJournals">6</div>
+              <div class="mono">📓 Journal</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <div class="container"></div>
+  </main>
+  <!-- 🌐 SHARED FOOTER injected by components.js -->
+  <div id="footer-container"></div>
+
+  <!-- SCRIPTS (order matters) -->
+  <script src="script.js"></script>
+  <script src="components.js"></script>  <!-- loads nav & footer -->
+</body>
+</html>
