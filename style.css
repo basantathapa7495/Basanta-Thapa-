@@ -775,13 +775,15 @@ footer {
 }
 
 
-/* Hero section structural improvement */
+/* Hero section structural improvement (desktop/tablet only) */
 @media (min-width: 781px) {
   .hero .container {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 3rem;
-    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  .hero-content {
+    width: 100%;
+    max-width: 760px;
   }
 }
 
@@ -1011,6 +1013,67 @@ footer {
     font-size: 0.75rem;
   }
 }
+/* ====== PROJECT ROWS: DESKTOP/TABLET LAYOUT (901px and up) ======
+   These elements had NO layout rules outside the mobile media queries,
+   so on desktop they were falling back to plain stacked block boxes.
+   This adds a proper side-by-side layout without touching anything
+   inside the existing @media (max-width: 900px) / (max-width: 480px) blocks. */
+@media (min-width: 901px) {
+  .project-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 28px;
+    padding: 3.5rem;
+    box-shadow: 0 20px 50px rgba(44, 40, 34, 0.06);
+  }
+
+  .project-horizontal {
+    padding: 1rem 0;
+  }
+
+  /* alternate direction on every other project for visual rhythm */
+  .project-horizontal:nth-of-type(even) .project-row {
+    flex-direction: row-reverse;
+  }
+
+  .project-text {
+    flex: 1 1 50%;
+    max-width: 480px;
+  }
+
+  .project-text h2 {
+    margin-bottom: 0.8rem;
+  }
+
+  .project-text p {
+    margin-bottom: 1.6rem;
+  }
+
+  .project-visual {
+    flex: 1 1 42%;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .project-visual img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    transition: transform 0.4s ease;
+  }
+
+  .project-visual:hover img {
+    transform: scale(1.03);
+  }
+}
+
 /* ====== BLOG LIST (HR STYLE) ====== */
 .blog-list {
   margin-top: 1rem;
