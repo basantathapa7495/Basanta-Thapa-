@@ -777,11 +777,10 @@ footer {
 
 /* ====== DESKTOP REDESIGN (901px and up only — mobile/tablet untouched) ====== */
 @media (min-width: 901px) {
-
-  /* ---- Hero: real two-column layout, left = title/typing, right = photo + About ---- */
+  /* ---- Hero: real two-column layout ---- */
   .hero {
     min-height: auto;
-    padding: 3.5rem 0 2.5rem;
+    padding: 4rem 0 3rem;
   }
 
   .hero .container {
@@ -790,33 +789,36 @@ footer {
 
   .hero-content {
     display: flex;
-    align-items: flex-start;
+    align-items: center; /* Vertically centers the left text with the right card */
     justify-content: space-between;
-    gap: 4.5rem;
+    gap: 4rem;
     max-width: 1140px;
     margin: 0 auto;
   }
 
   .hero-left {
-    flex: 1 1 56%;
-    max-width: 600px;
+    flex: 1 1 55%;
+    max-width: 620px;
     min-width: 0;
   }
 
   .hero-right {
-    flex: 1 1 36%;
-    max-width: 340px;
+    flex: 1 1 40%; /* Expanded from 36% to give the text breathing room */
+    max-width: 400px; /* Expanded from 340px to stop the vertical text squeezing */
     min-width: 0;
     display: flex;
     flex-direction: column;
+    align-items: flex-start; /* Ensures everything on the right aligns to the same left baseline */
   }
 
+  /* Clear out the bottom centering overrides specifically for desktop view */
   .hero-right .hero-image-wrapper {
-    margin: 0 0 1.4rem;
+    margin: 0 0 1.6rem 0 !important; 
+    justify-content: flex-start !important;
   }
 
   .hero-right .hero-image-wrapper img {
-    max-width: 100%;
+    max-width: 100% !important;
   }
 
   .hero-right h3 {
@@ -828,7 +830,8 @@ footer {
   }
 
   .hero-right p {
-    font-size: 0.98rem;
+    font-size: 1.02rem;
+    line-height: 1.6;
   }
 
   .hero-left h2 {
@@ -836,19 +839,11 @@ footer {
     overflow-wrap: break-word;
   }
 
-  /* ---- Trim excess white space between sections ---- */
   .section {
     padding: 2.2rem 0 1.5rem;
   }
-
-  .project-horizontal {
-    padding: 0.5rem 0;
-  }
-
-  .contact-form-card {
-    padding: 2.6rem 2.5rem;
-  }
 }
+
 
 .hero-image-wrapper img {
   width: 100%;
@@ -1001,14 +996,14 @@ footer {
 
 .hero-image-wrapper img {
   width: 100%;
-  /* Scaled down to a balanced medium width */
-  max-width: 290px; 
-  /* Forces the wide/landscape look seen in your reference picture */
-  aspect-ratio: 1.3 / 1; 
+  max-width: 340px; 
+  /* 
+    Changed aspect-ratio to 1/1 (Square) or 3/4 (Portrait). 
+    Your previous 1.3/1 landscape ratio aggressively crops portrait headshots!
+  */
+  aspect-ratio: 1 / 1; 
   object-fit: cover;
-  /* Premium curved corners matching the screenshot profile card */
   border-radius: 22px; 
-  /* Deep, elegant card shadow */
   box-shadow: 0 15px 35px rgba(44, 40, 34, 0.12); 
   border: 1px solid var(--border-light);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -1018,16 +1013,6 @@ footer {
 .hero-image-wrapper img:hover {
   transform: translateY(-4px) scale(1.01);
   box-shadow: 0 20px 40px rgba(44, 40, 34, 0.18);
-}
-
-/* Mobile responsive scaling */
-@media (max-width: 780px) {
-  .hero-image-wrapper {
-    margin-top: 2.5rem;
-  }
-  .hero-image-wrapper img {
-    max-width: 360px; /* Keeps it medium-sized and proportional on mobile phones */
-  }
 }
 
 /* ====== MOBILE FIX: TIGHT & CONTAINED ====== */
