@@ -46,10 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
               <img src="assets/img/youtube.jpg" alt="YouTube">
             </a>
             <a href="https://www.instagram.com/ba.santa_saru" target="_blank" class="social-icon">
-              <img src="assets/img/instagram.jpg" alt="Instagram">
+              <img src="assets/img/insta.jpg" alt="Instagram">
             </a>
             <a href="https://wa.me/9779806532910" target="_blank" class="social-icon">
-              <img src="assets/img/whatsapp.jpg" alt="WhatsApp">
+              <img src="assets/img/wp.jpg" alt="WhatsApp">
             </a>
             <a href="mailto:basantathapa2898@gmail.com" class="social-icon">
               <img src="assets/img/email.jpg" alt="Email">
