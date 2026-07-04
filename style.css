@@ -775,15 +775,71 @@ footer {
 }
 
 
-/* Hero section structural improvement (desktop/tablet only) */
-@media (min-width: 781px) {
-  .hero .container {
-    display: flex;
-    justify-content: center;
+/* ====== DESKTOP REDESIGN (901px and up only — mobile/tablet untouched) ====== */
+@media (min-width: 901px) {
+
+  /* ---- Hero: real two-column layout, left = title/typing, right = photo + About ---- */
+  .hero {
+    min-height: auto;
+    padding: 3.5rem 0 2.5rem;
   }
+
+  .hero .container {
+    display: block;
+  }
+
   .hero-content {
-    width: 100%;
-    max-width: 760px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 4.5rem;
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  .hero-left {
+    flex: 1 1 56%;
+    max-width: 600px;
+  }
+
+  .hero-right {
+    flex: 1 1 36%;
+    max-width: 340px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-right .hero-image-wrapper {
+    margin: 0 0 1.4rem;
+  }
+
+  .hero-right .hero-image-wrapper img {
+    max-width: 100%;
+  }
+
+  .hero-right h3 {
+    font-family: var(--ff-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.6rem;
+  }
+
+  .hero-right p {
+    font-size: 0.98rem;
+  }
+
+  /* ---- Trim excess white space between sections ---- */
+  .section {
+    padding: 2.2rem 0 1.5rem;
+  }
+
+  .project-horizontal {
+    padding: 0.5rem 0;
+  }
+
+  .contact-form-card {
+    padding: 2.6rem 2.5rem;
   }
 }
 
@@ -839,6 +895,43 @@ footer {
   letter-spacing: 0.03em;
   width: 100%;
   justify-content: center;
+}
+
+/* ---------- Books grid: 4 columns on desktop (901px+) ----------
+   Tablet keeps the existing default .grid-2 behavior (2 columns).
+   Mobile (<=780px) is untouched — .grid-2-keep already forces 2 columns there. */
+@media (min-width: 901px) {
+  .grid-2.grid-2-keep {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.4rem;
+  }
+
+  .card-compact {
+    display: flex;
+    flex-direction: column;
+    padding: 0.9rem;
+  }
+
+  .card-compact .card-image {
+    aspect-ratio: 3 / 4;
+    transition: transform 0.35s ease;
+  }
+
+  .card-compact h3 {
+    font-size: 1.02rem;
+  }
+
+  .card-compact p {
+    -webkit-line-clamp: 2;
+  }
+
+  .card-compact .btn-sm {
+    margin-top: auto;
+  }
+
+  .card-compact:hover .card-image {
+    transform: scale(1.04);
+  }
 }
 
 /* mobile fine-tune for 2 columns */
