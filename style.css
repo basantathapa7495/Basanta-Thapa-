@@ -948,7 +948,7 @@ footer {
 }
 
 .hero-image-wrapper img {
-  width: 50%;
+  width: 100%;
   /* Scaled down to a balanced medium width */
   max-width: 290px; 
   /* Forces the wide/landscape look seen in your reference picture */
