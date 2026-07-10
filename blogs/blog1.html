@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How I Built This Website | Basanta Saru</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Blog specific overrides for readability */
+        .article-body p {
+            margin-bottom: 1.5rem;
+        }
+        .article-body h2 {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        .article-body ul {
+            margin-bottom: 1.5rem;
+        }
+        .article-body code {
+            font-family: var(--ff-mono);
+            background: rgba(0,0,0,0.05);
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+            font-size: 0.9em;
+            color: var(--terracotta);
+        }
+        .article-body blockquote {
+            border-left: 4px solid var(--deep-teal);
+            margin: 2rem 0;
+            padding: 1rem 1.5rem;
+            background: var(--card-bg);
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Blobs -->
+    <div class="blob-bg">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
+    </div>
+
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- Main Content -->
+    <main class="container section" style="max-width: 800px; margin: 0 auto; padding-top: 4rem; padding-bottom: 4rem;">
+        <article class="blog-article">
+            <header class="article-header fade-up">
+                <span class="section-label">Blog · Web Development</span>
+                <h1 style="font-size: clamp(2.2rem, 5vw, 3.5rem); margin: 1rem 0; line-height: 1.15;">How I Built This Website</h1>
+                <p class="handwritten" style="font-size: 1.25rem; margin-bottom: 1.5rem; line-height: 1.5;">The story behind this site — the design choices, the tech stack, and why I decided to build it myself instead of using a template.</p>
+                <div class="article-meta" style="font-family: var(--ff-mono); font-size: 0.8rem; color: var(--text-muted); margin-bottom: 2.5rem; border-bottom: 1px solid var(--border-light); padding-bottom: 1.5rem;">
+                    <span>Basanta Thapa</span> &nbsp;·&nbsp; <span>July 2026</span> &nbsp;·&nbsp; <span>6 min read</span>
+                </div>
+            </header>
+
+            <div class="article-body" style="font-size: 1.1rem; line-height: 1.85; color: var(--text-primary);">
+                <p>
+                    If you are reading this, you are looking at a space I built from scratch. No WordPress theme, no Wix drag-and-drop builder, no React framework with a dozen dependencies. Just HTML, CSS, and a little bit of JavaScript.
+                </p>
+                <p>
+                    When I decided to create my personal corner of the internet, I had a choice: take the easy route and use a template, or build it myself and learn exactly how the gears turn. I chose the latter. Here is the story behind <code>basantasaru.com</code>, the design philosophy that shaped it, and the tech stack that powers it.
+                </p>
+
+                <h2>Why Not Use a Template?</h2>
+                <p>
+                    Templates are tempting. They are fast, they look professional out of the box, and they save you hours of debugging CSS. But they also come with a hidden cost: <strong>they make everyone look the same</strong>. 
+                </p>
+                <p>
+                    I am writing books, documenting my journey, and exploring the intersection of wonder and logic. My digital home needed to reflect that specific frequency. A pre-made template would have forced my thoughts into someone else's layout. 
+                </p>
+                <p>
+                    More importantly, I am a builder. The process of figuring out why a flexbox wasn't aligning, or how to make a typography scale feel "right" on mobile, is where the actual learning happens. I wanted this website to be a mirror of my current skills—imperfect, evolving, but entirely mine.
+                </p>
+
+                <h2>The Design Choices</h2>
+                <p>
+                    I wanted a design that felt like a quiet room with good lighting. A place where you can read a long-form essay about consciousness, philosophy, or freelancing without your eyes getting tired. 
+                </p>
+                <ul style="margin: 1.5rem 0; padding-left: 1.5rem; line-height: 2.2;">
+                    <li><strong>Typography:</strong> I paired <em>Playfair Display</em> (a classic serif) for headings with <em>DM Sans</em> for body text. The contrast between the elegant serif and the clean, modern sans-serif creates a balance between timeless wisdom and modern execution.</li>
+                    <li><strong>Color Palette:</strong> Instead of harsh pure whites or deep blacks, I opted for a warm, neutral base with terracotta and deep teal accents. It feels organic, like paper and ink, reducing eye strain during long reading sessions.</li>
+                    <li><strong>Whitespace:</strong> I gave the content room to breathe. The margins and line-heights are intentionally generous. Clutter is the enemy of deep thought.</li>
+                </ul>
+
+                <h2>The Tech Stack</h2>
+                <p>
+                    The stack is deliberately simple. In an era where building a basic blog requires a Node.js server, a build step, and three different JavaScript frameworks, I went back to the fundamentals.
+                </p>
+                <div class="card" style="margin: 2rem 0; background: var(--card-bg); border: 1px solid var(--border-light); padding: 1.5rem; border-radius: 16px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: var(--deep-teal); font-family: var(--ff-serif);">🛠️ The Core</h3>
+                    <ul style="list-style: none; padding: 0; line-height: 2.2;">
+                        <li><strong>HTML5:</strong> For semantic structure.</li>
+                        <li><strong>CSS3 (Custom Properties):</strong> For theming and layout. No Tailwind, no Bootstrap. Just raw CSS variables and Flexbox/Grid.</li>
+                        <li><strong>Vanilla JavaScript:</strong> For interactivity (like the typing animation, reading tracker, and music toggle). No jQuery, no React.</li>
+                    </ul>
+                </div>
+                <p>
+                    I also wrote a small <code>components.js</code> file. Instead of copying and pasting the navbar and footer into every single HTML file, JavaScript injects them dynamically. It’s a tiny workaround that keeps the codebase clean and makes updating the navigation menu a one-line change.
+                </p>
+
+                <h2>The Philosophy of "Building in Public"</h2>
+                <p>
+                    This website is not a finished product; it is a living document. As I learn more about web performance, accessibility, and design systems, this site will evolve. You might notice changes in the layout or new features appearing over time. 
+                </p>
+                <p>
+                    That is the point. I am documenting the journey of becoming—both in my books like <em>Earn Before You Graduate</em> and in my digital life. Building this site myself was a reminder that you don't need permission or expensive tools to create something meaningful. You just need curiosity, a text editor, and the patience to figure things out.
+                </p>
+                
+                <blockquote>
+                    If you are thinking about starting your own blog or portfolio, my advice is simple: <strong>build it yourself first</strong>. Even if it breaks. Even if it looks ugly at first. The muscle memory you gain is worth more than any template could ever give you.
+                </blockquote>
+
+                <hr style="margin: 3rem 0;">
+                
+                <p class="handwritten" style="font-size: 1.4rem; text-align: center; margin-top: 2rem;">
+                    Thanks for reading. Let's keep building. ✦
+                </p>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="../components.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html>
