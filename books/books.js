@@ -1,28 +1,101 @@
 /* ========================================================
-   BOOKS PAGE — interactions
+   BOOKS PAGE — Personal Bookstore (clean version)
    ======================================================== */
-
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ---------- Mobile Nav Toggle ---------- */
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
-  if (hamburger && navLinks) {
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
-    });
-    // Close menu when a link is clicked
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => navLinks.classList.remove('show'));
-    });
+  /* ---------- BOOK DATA ---------- */
+  const books = [
+    {
+      title: 'Earn Before You Graduate',
+      price: 'NPR 499',
+      cover: '../assets/img/book1.jpg',
+      link: 'earn-before-graduate.html',   // ← clicking cover goes here
+      format: 'PDF',
+    },
+    {
+      title: 'Eat Healthy, Live Better',
+      price: 'NPR 399',
+      cover: '../assets/img/book2.jpg',
+      link: 'eat-healthy-live-better.html',
+    },
+    {
+      title: 'The Hindu Wisdom',
+      price: 'NPR 449',
+      cover: '../assets/img/book3.jpg',
+      link: 'hindu-wisdom.html',
+    },
+    {
+      title: 'The Lie of Modern Life',
+      price: 'NPR 349',
+      cover: '../assets/img/book4.jpg',
+      link: 'lie-of-modern-life.html',
+    }
+  ];
+
+  const comingSoon = [
+    {
+      title: 'The Seven Deadly Sins',
+      date: 'October 2026',
+      cover: '../assets/img/book5.jpg'
+    },
+    {
+      title: 'One Source',
+      date: 'Early 2027',
+      cover: '../assets/img/book6.jpg'
+    }
+  ];
+
+  /* ---------- RENDER BOOK GRID (no stars, clickable cover) ---------- */
+  const grid = document.getElementById('bookGrid');
+  function renderBooks() {
+    if (!grid) return;
+
+    grid.innerHTML = books.map(book => `
+      <article class="book-card fade-up">
+        <a href="${book.link}" class="book-cover-link" aria-label="View ${book.title}">
+          <img src="${book.cover}" alt="${book.title} cover" loading="lazy" />
+        </a>
+        <h3 class="book-title">${book.title}</h3>
+        <div class="book-footer">
+          <span class="book-price">${book.price}</span>
+          <a href="${book.link}" class="btn-buy">Buy Now →</a>
+        </div>
+      </article>
+    `).join('');
+
+    observeFadeUps();
+  }
+  renderBooks();
+
+  /* ---------- RENDER COMING SOON ---------- */
+  const csGrid = document.getElementById('comingSoonGrid');
+  if (csGrid) {
+    csGrid.innerHTML = comingSoon.map(book => `
+      <article class="coming-soon-card fade-up">
+        <img src="${book.cover}" alt="${book.title} cover" class="cs-cover" loading="lazy" />
+        <span class="cs-badge">Coming Soon</span>
+        <h3 class="cs-title">${book.title}</h3>
+        <p class="cs-date">Expected: ${book.date}</p>
+        <button class="btn-notify" onclick="notifyMe('${book.title}')">🔔 Notify Me →</button>
+      </article>
+    `).join('');
   }
 
-  /* ---------- Scroll Fade-in Animation ---------- */
-  const fadeEls = document.querySelectorAll('.fade-up');
-  if ('IntersectionObserver' in window) {
-    // Start hidden
-    fadeEls.forEach(el => el.classList.add('fade-up-initial'));
+  /* ---------- FAQ ACCORDION ---------- */
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
 
+  /* ---------- SCROLL FADE-IN ---------- */
+  function observeFadeUps() {
+    if (!('IntersectionObserver' in window)) return;
+    const fadeEls = document.querySelectorAll('.fade-up:not(.fade-up-visible)');
+    fadeEls.forEach(el => el.classList.add('fade-up-initial'));
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -31,49 +104,13 @@ document.addEventListener('DOMContentLoaded', () => {
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
-
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     fadeEls.forEach(el => observer.observe(el));
   }
-
-  /* ---------- Waitlist Form ---------- */
-  const form = document.getElementById('waitlistForm');
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const emailInput = document.getElementById('waitlistEmail');
-      const email = emailInput.value.trim();
-
-      // Basic email validation
-      const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-      if (!isValid) {
-        emailInput.style.borderColor = '#b45f3a';
-        emailInput.focus();
-        return;
-      }
-
-      // TODO: Replace with real backend / Formspree / Mailchimp endpoint
-      console.log('Waitlist signup:', email);
-
-      // Show success message
-      form.innerHTML = `
-        <div class="waitlist-success show">
-          ✨ You're on the list! I'll email you the moment <em>The Lie of Modern Life</em> launches.
-        </div>
-      `;
-    });
-  }
-
-  /* ---------- Mood Toggle (placeholder) ---------- */
-  const musicToggle = document.getElementById('musicToggle');
-  if (musicToggle) {
-    let moodOn = false;
-    musicToggle.addEventListener('click', () => {
-      moodOn = !moodOn;
-      musicToggle.textContent = moodOn ? '🎵 Mood On' : '🎵 Mood';
-      musicToggle.style.borderColor = moodOn ? 'var(--soft-amber)' : '';
-      musicToggle.style.color = moodOn ? 'var(--soft-amber)' : '';
-    });
-  }
-
+  observeFadeUps();
 });
+
+/* ---------- NOTIFY ME (global) ---------- */
+function notifyMe(title) {
+  alert(`✨ You'll be notified when "${title}" launches!`);
+}
