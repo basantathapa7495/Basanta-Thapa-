@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Birthday Surprise Generator — Turn an ordinary birthday into a memorable celebration with personalized surprise ideas, themes, and checklists." />
+  <title>Birthday Surprise Generator | Basanta Saru</title>
+
+  <!-- Shared site styles & components -->
+  <link rel="stylesheet" href="../style.css" />
+  <script defer src="../components.js"></script>
+  <script defer src="../script.js"></script>
+
+  <!-- Project-specific styles -->
+  <style>
+    :root {
+      --bs-primary: #ff4d8f;
+      --bs-secondary: #ffb347;
+      --bs-accent: #7b5cff;
+      --bs-dark: #1a1033;
+      --bs-light: #fff6fb;
+      --bs-gradient: linear-gradient(135deg, #ff4d8f 0%, #ffb347 50%, #7b5cff 100%);
+    }
+
+    .bs-page {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--bs-dark);
+      background: var(--bs-light);
+      overflow-x: hidden;
+    }
+
+    /* Floating confetti background */
+    .bs-confetti {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .bs-confetti span {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: var(--bs-primary);
+      opacity: 0.4;
+      animation: bs-fall linear infinite;
+    }
+    @keyframes bs-fall {
+      0%   { transform: translateY(-10vh) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(720deg); }
+    }
+
+    /* Hero */
+    .bs-hero {
+      position: relative;
+      padding: 6rem 1.5rem 4rem;
+      text-align: center;
+      background: var(--bs-gradient);
+      color: white;
+      border-radius: 0 0 40px 40px;
+      overflow: hidden;
+    }
+    .bs-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.15);
+    }
+    .bs-hero p {
+      font-size: 1.15rem;
+      max-width: 640px;
+      margin: 0 auto;
+      opacity: 0.95;
+    }
+    .bs-emoji-float {
+      font-size: 3rem;
+      display: inline-block;
+      animation: bs-bounce 2s ease-in-out infinite;
+    }
+    @keyframes bs-bounce {
+      0%, 100% { transform: translateY(0) rotate(-5deg); }
+      50%      { transform: translateY(-15px) rotate(5deg); }
+    }
+
+    /* Main container */
+    .bs-container {
+      max-width: 1100px;
+      margin: -3rem auto 4rem;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Generator card */
+    .bs-card {
+      background: white;
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 60px rgba(123, 92, 255, 0.15);
+      margin-bottom: 2rem;
+    }
+    .bs-card h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+      color: var(--bs-dark);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Form */
+    .bs-form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+    .bs-field { display: flex; flex-direction: column; }
+    .bs-field.full { grid-column: 1 / -1; }
+    .bs-field label {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+      color: #444;
+    }
+    .bs-field input,
+    .bs-field select {
+      padding: 0.85rem 1rem;
+      border: 2px solid #eee;
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: all 0.2s;
+      background: #fafafa;
+    }
+    .bs-field input:focus,
+    .bs-field select:focus {
+      outline: none;
+      border-color: var(--bs-primary);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(255, 77, 143, 0.1);
+    }
+
+    /* Interest chips */
+    .bs-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .bs-chip {
+      padding: 0.5rem 1rem;
+      border: 2px solid #eee;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      background: white;
+      user-select: none;
+    }
+    .bs-chip:hover { border-color: var(--bs-primary); }
+    .bs-chip.active {
+      background: var(--bs-gradient);
+      color: white;
+      border-color: transparent;
+    }
+
+    /* Budget slider */
+    .bs-budget {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .bs-budget input[type="range"] {
+      flex: 1;
+      accent-color: var(--bs-primary);
+    }
+    .bs-budget-value {
+      font-weight: 700;
+      color: var(--bs-primary);
+      min-width: 80px;
+      text-align: right;
+    }
+
+    /* Generate button */
+    .bs-generate {
+      grid-column: 1 / -1;
+      margin-top: 1rem;
+      padding: 1.1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: white;
+      background: var(--bs-gradient);
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 10px 30px rgba(255, 77, 143, 0.3);
+    }
+    .bs-generate:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(255, 77, 143, 0.4);
+    }
+    .bs-generate:active { transform: translateY(0); }
+
+    /* Results */
+    .bs-results { display: none; }
+    .bs-results.show { display: block; animation: bs-fadeIn 0.5s ease; }
+    @keyframes bs-fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .bs-result-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .bs-result-item {
+      background: white;
+      border-radius: 18px;
+      padding: 1.5rem;
+      border-left: 4px solid var(--bs-primary);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: transform 0.2s;
+    }
+    .bs-result-item:hover { transform: translateY(-4px); }
+    .bs-result-item h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.1rem;
+      color: var(--bs-dark);
+    }
+    .bs-result-item p {
+      margin: 0;
+      color: #555;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+    .bs-result-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Checklist */
+    .bs-checklist {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+    }
+    .bs-checklist li {
+      padding: 0.75rem 1rem;
+      background: #fafafa;
+      border-radius: 10px;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .bs-checklist li:hover { background: #f0f0f0; }
+    .bs-checklist li.done {
+      text-decoration: line-through;
+      opacity: 0.6;
+    }
+    .bs-check {
+      width: 22px;
+      height: 22px;
+      border: 2px solid var(--bs-primary);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+    .bs-checklist li.done .bs-check {
+      background: var(--bs-primary);
+      color: white;
+    }
+
+    /* Actions */
+    .bs-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .bs-btn {
+      padding: 0.75rem 1.5rem;
+      border: 2px solid var(--bs-primary);
+      background: white;
+      color: var(--bs-primary);
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.95rem;
+    }
+    .bs-btn:hover {
+      background: var(--bs-primary);
+      color: white;
+    }
+
+    /* Tips section */
+    .bs-tips {
+      background: linear-gradient(135deg, #fff 0%, #fff6fb 100%);
+      border-radius: 24px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+    }
+    .bs-tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .bs-tip {
+      text-align: center;
+      padding: 1rem;
+    }
+    .bs-tip-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .bs-tip h4 { margin: 0 0 0.5rem; color: var(--bs-dark); }
+    .bs-tip p { margin: 0; color: #666; font-size: 0.9rem; line-height: 1.5; }
+
+    @media (max-width: 600px) {
+      .bs-card { padding: 1.5rem; }
+      .bs-hero { padding: 4rem 1rem 3rem; }
+    }
+  </style>
+</head>
+<body class="bs-page">
+
+  <!-- Floating confetti -->
+  <div class="bs-confetti" id="bsConfetti"></div>
+
+  <!-- Hero -->
+  <header class="bs-hero">
+    <div class="bs-emoji-float">🎂</div>
+    <h1>Birthday Surprise Generator</h1>
+    <p>Turn an ordinary birthday into a memorable celebration. Get personalized surprise ideas, themes, and a ready-to-use checklist — all in seconds.</p>
+  </header>
+
+  <main class="bs-container">
+
+    <!-- Generator Card -->
+    <section class="bs-card" aria-labelledby="generatorTitle">
+      <h2 id="generatorTitle">✨ Plan the Perfect Surprise</h2>
+
+      <form class="bs-form" id="bsForm" onsubmit="return false;">
+        <div class="bs-field">
+          <label for="bsName">Who's the birthday star?</label>
+          <input type="text" id="bsName" placeholder="e.g. Priya" maxlength="30" required />
+        </div>
+
+        <div class="bs-field">
+          <label for="bsAge">Turning how old?</label>
+          <input type="number" id="bsAge" min="1" max="120" placeholder="25" required />
+        </div>
+
+        <div class="bs-field">
+          <label for="bsVibe">What's the vibe?</label>
+          <select id="bsVibe">
+            <option value="cozy">🕯️ Cozy & Intimate</option>
+            <option value="adventure">🏔️ Adventure & Fun</option>
+            <option value="party">🎉 Big Party</option>
+            <option value="romantic">💖 Romantic</option>
+            <option value="nostalgic">📸 Nostalgic & Sentimental</option>
+            <option value="luxury">✨ Luxury & Pampered</option>
+          </select>
+        </div>
+
+        <div class="bs-field">
+          <label for="bsRelation">Your relation</label>
+          <select id="bsRelation">
+            <option value="friend">Friend</option>
+            <option value="partner">Partner</option>
+            <option value="sibling">Sibling</option>
+            <option value="parent">Parent</option>
+            <option value="colleague">Colleague</option>
+          </select>
+        </div>
+
+        <div class="bs-field full">
+          <label>Interests (pick any)</label>
+          <div class="bs-chips" id="bsChips">
+            <span class="bs-chip" data-value="music">🎵 Music</span>
+            <span class="bs-chip" data-value="food">🍕 Foodie</span>
+            <span class="bs-chip" data-value="travel">✈️ Travel</span>
+            <span class="bs-chip" data-value="movies">🎬 Movies</span>
+            <span class="bs-chip" data-value="books">📚 Books</span>
+            <span class="bs-chip" data-value="fitness">💪 Fitness</span>
+            <span class="bs-chip" data-value="art">🎨 Art</span>
+            <span class="bs-chip" data-value="gaming">🎮 Gaming</span>
+            <span class="bs-chip" data-value="nature">🌿 Nature</span>
+            <span class="bs-chip" data-value="fashion">👗 Fashion</span>
+          </div>
+        </div>
+
+        <div class="bs-field full">
+          <label for="bsBudget">Budget</label>
+          <div class="bs-budget">
+            <input type="range" id="bsBudget" min="0" max="500" value="100" step="10" />
+            <span class="bs-budget-value">$<span id="bsBudgetVal">100</span></span>
+          </div>
+        </div>
+
+        <button type="button" class="bs-generate" id="bsGenerate">
+          🎁 Generate Surprise Ideas
+        </button>
+      </form>
+    </section>
+
+    <!-- Results -->
+    <section class="bs-card bs-results" id="bsResults" aria-live="polite">
+      <h2>🎊 Surprise Plan for <span id="bsResultName">—</span></h2>
+      <p style="color:#666;" id="bsResultSubtitle"></p>
+
+      <div class="bs-result-grid" id="bsResultGrid"></div>
+
+      <h3 style="margin-top:2rem;">📝 Your Checklist</h3>
+      <ul class="bs-checklist" id="bsChecklist"></ul>
+
+      <div class="bs-actions">
+        <button class="bs-btn" id="bsRegenerate">🔄 Regenerate Ideas</button>
+        <button class="bs-btn" id="bsPrint">🖨️ Print Plan</button>
+        <button class="bs-btn" id="bsShare">📤 Copy Summary</button>
+      </div>
+    </section>
+
+    <!-- Tips -->
+    <section class="bs-tips">
+      <h2 style="text-align:center;">💡 Pro Tips for an Unforgettable Surprise</h2>
+      <div class="bs-tips-grid">
+        <div class="bs-tip">
+          <div class="bs-tip-icon">🤫</div>
+          <h4>Keep It Secret</h4>
+          <p>Use a code name for the plan in group chats. Avoid suspicious hints days before.</p>
+        </div>
+        <div class="bs-tip">
+          <div class="bs-tip-icon">📸</div>
+          <h4>Capture the Moment</h4>
+          <p>Assign a friend to discreetly record the reaction. You'll treasure it forever.</p>
+        </div>
+        <div class="bs-tip">
+          <div class="bs-tip-icon">⏰</div>
+          <h4>Time It Right</h4>
+          <p>Pick a moment when they're relaxed — not stressed or rushing somewhere.</p>
+        </div>
+        <div class="bs-tip">
+          <div class="bs-tip-icon">💌</div>
+          <h4>Add a Personal Touch</h4>
+          <p>A handwritten note or inside joke makes any gift 10x more meaningful.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Project-specific logic -->
+  <script>
+    /* ---------- Confetti background ---------- */
+    (function initConfetti() {
+      const container = document.getElementById('bsConfetti');
+      const colors = ['#ff4d8f', '#ffb347', '#7b5cff', '#4dd0e1', '#ffd54f'];
+      for (let i = 0; i < 30; i++) {
+        const c = document.createElement('span');
+        c.style.left = Math.random() * 100 + '%';
+        c.style.background = colors[Math.floor(Math.random() * colors.length)];
+        c.style.animationDuration = (5 + Math.random() * 10) + 's';
+        c.style.animationDelay = (Math.random() * 10) + 's';
+        c.style.width = c.style.height = (6 + Math.random() * 8) + 'px';
+        c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+        container.appendChild(c);
+      }
+    })();
+
+    /* ---------- Interest chips ---------- */
+    document.querySelectorAll('.bs-chip').forEach(chip => {
+      chip.addEventListener('click', () => chip.classList.toggle('active'));
+    });
+
+    /* ---------- Budget slider ---------- */
+    const budget = document.getElementById('bsBudget');
+    const budgetVal = document.getElementById('bsBudgetVal');
+    budget.addEventListener('input', () => budgetVal.textContent = budget.value);
+
+    /* ---------- Surprise idea database ---------- */
+    const IDEAS = {
+      theme: {
+        cozy:       ['Candlelit Movie Marathon', 'Pajama Party with Hot Cocoa', 'Indoor Picnic with Fairy Lights'],
+        adventure:  ['Sunrise Hike Surprise', 'Mystery Road Trip', 'Outdoor Adventure Day'],
+        party:      ['Themed Costume Bash', 'Rooftop Celebration', 'Decade-themed Party'],
+        romantic:   ['Private Dinner Under Stars', 'Memory Lane Walk', 'Couples Spa Evening'],
+        nostalgic:  ['Childhood Throwback Party', 'Photo Timeline Display', 'Recreate First Date'],
+        luxury:     ['5-Star Spa Day', 'Private Chef Dinner', 'Weekend Getaway']
+      },
+      gift: {
+        music:    ['Concert Tickets', 'Vinyl Record of Favorite Album', 'Custom Playlist + Speaker'],
+        food:     ['Gourmet Tasting Box', 'Cooking Class Voucher', 'Personalized Recipe Book'],
+        travel:   ['Scratch-off World Map', 'Weekend Trip Booking', 'Travel Journal Kit'],
+        movies:   ['Home Projector Setup', 'Streaming Gift Card', 'Movie Poster Collection'],
+        books:    ['First Edition Favorite', 'E-reader with Loaded Titles', 'Bookstore Shopping Spree'],
+        fitness:  ['Smart Fitness Tracker', 'Premium Gym Membership', 'Personal Training Session'],
+        art:      ['Custom Portrait Commission', 'Art Supply Kit', 'Museum Membership'],
+        gaming:   ['Latest Game + Accessories', 'Gaming Chair Upgrade', 'Retro Console'],
+        nature:   ['Indoor Plant Collection', 'National Park Pass', 'Stargazing Telescope'],
+        fashion:  ['Designer Accessory', 'Personal Styling Session', 'Custom Jewelry Piece']
+      },
+      activity: {
+        cozy:      ['Bake Their Favorite Cake Together', 'Write Letters for Next Year', 'Build a Blanket Fort'],
+        adventure: ['Try a New Sport Together', 'Escape Room Challenge', 'Zip-lining Experience'],
+        party:     ['Karaoke Night', 'Dance Floor Debut', 'Group Photo Booth'],
+        romantic: ['Sunset Picnic', 'Stargazing with Blankets', 'Couples Dance Lesson'],
+        nostalgic: ['Recreate Childhood Photos', 'Visit Old Hangouts', 'Time Capsule Opening'],
+        luxury:   ['Yacht Sunset Cruise', 'Wine Tasting Tour', 'Private Concert']
+      },
+      food: {
+        default: ['Custom Birthday Cake', 'Their Favorite Cuisine Catered', 'Dessert Table Surprise']
+      },
+      decor: {
+        default: ['Balloon Arch in Favorite Colors', 'Photo Wall of Memories', 'Personalized Banner']
+      }
+    };
+
+    /* ---------- Checklist templates ---------- */
+    const CHECKLIST = [
+      'Confirm guest list (if applicable)',
+      'Book venue / reserve experience',
+      'Order or make the cake',
+      'Buy the main gift',
+      'Arrange decorations',
+      'Plan the reveal moment',
+      'Assign someone to take photos/videos',
+      'Send reminders to helpers 2 days before',
+      'Prepare a heartfelt card or note',
+      'Charge camera / phone'
+    ];
+
+    /* ---------- Generate function ---------- */
+    function generateSurprise() {
+      const name = document.getElementById('bsName').value.trim() || 'your friend';
+      const age  = document.getElementById('bsAge').value || '';
+      const vibe = document.getElementById('bsVibe').value;
+      const relation = document.getElementById('bsRelation').value;
+      const budgetVal = parseInt(budget.value);
+      const interests = [...document.querySelectorAll('.bs-chip.active')].map(c => c.dataset.value);
+
+      // Pick random items
+      const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+      const theme = pick(IDEAS.theme[vibe]);
+      const activity = pick(IDEAS.activity[vibe]);
+      const food = pick(IDEAS.food.default);
+      const decor = pick(IDEAS.decor.default);
+
+      // Gift based on interest or default
+      let gift = 'A Thoughtful Personalized Gift';
+      if (interests.length > 0) {
+        const int = pick(interests);
+        gift = pick(IDEAS.gift[int]);
+      }
+
+      // Budget hint
+      let budgetHint = '';
+      if (budgetVal < 50) budgetHint = '💡 Budget-friendly tip: focus on heartfelt, DIY touches — they mean the most!';
+      else if (budgetVal < 150) budgetHint = '💡 Mid-range budget: perfect for one standout experience + small gifts.';
+      else if (budgetVal < 300) budgetHint = '💡 Comfortable budget: you can combine an experience with a quality gift.';
+      else budgetHint = '💡 Premium budget: go all out with a curated luxury experience!';
+
+      // Render results
+      document.getElementById('bsResultName').textContent = name;
+      document.getElementById('bsResultSubtitle').textContent =
+        `A ${vibe} ${age ? 'age-' + age + ' ' : ''}celebration planned with love as their ${relation}. ${budgetHint}`;
+
+      const grid = document.getElementById('bsResultGrid');
+      grid.innerHTML = '';
+
+      const items = [
+        { icon: '🎨', title: 'Theme', text: theme },
+        { icon: '🎁', title: 'Gift Idea', text: gift },
+        { icon: '🎯', title: 'Main Activity', text: activity },
+        { icon: '🍰', title: 'Food & Treats', text: food },
+        { icon: '🎈', title: 'Decorations', text: decor }
+      ];
+
+      items.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'bs-result-item';
+        div.innerHTML = `
+          <div class="bs-result-icon">${item.icon}</div>
+          <h3>${item.title}</h3>
+          <p>${item.text}</p>
+        `;
+        grid.appendChild(div);
+      });
+
+      // Checklist
+      const list = document.getElementById('bsChecklist');
+      list.innerHTML = '';
+      CHECKLIST.forEach(task => {
+        const li = document.createElement('li');
+        li.innerHTML = `<span class="bs-check">✓</span><span>${task}</span>`;
+        li.addEventListener('click', () => li.classList.toggle('done'));
+        list.appendChild(li);
+      });
+
+      // Show results
+      document.getElementById('bsResults').classList.add('show');
+      document.getElementById('bsResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    /* ---------- Event listeners ---------- */
+    document.getElementById('bsGenerate').addEventListener('click', generateSurprise);
+    document.getElementById('bsRegenerate').addEventListener('click', generateSurprise);
+
+    document.getElementById('bsPrint').addEventListener('click', () => window.print());
+
+    document.getElementById('bsShare').addEventListener('click', () => {
+      const name = document.getElementById('bsName').value.trim() || 'your friend';
+      const items = [...document.querySelectorAll('.bs-result-item')].map(el => {
+        const title = el.querySelector('h3').textContent;
+        const text = el.querySelector('p').textContent;
+        return `• ${title}: ${text}`;
+      }).join('\n');
+      const summary = `🎂 Birthday Surprise Plan for ${name}\n\n${items}\n\nGenerated at basantasaru.com`;
+      navigator.clipboard.writeText(summary).then(() => {
+        const btn = document.getElementById('bsShare');
+        const orig = btn.textContent;
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => btn.textContent = orig, 2000);
+      });
+    });
+  </script>
+</body>
+</html>

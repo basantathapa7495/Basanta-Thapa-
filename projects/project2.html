@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Age Calculator — Discover your exact age, total days lived, next birthday countdown, zodiac sign, and fascinating life statistics." />
+  <title>Age Calculator | Basanta Saru</title>
+
+  <!-- Shared site styles & components -->
+  <link rel="stylesheet" href="../style.css" />
+  <script defer src="../components.js"></script>
+  <script defer src="../script.js"></script>
+
+  <!-- Project-specific styles -->
+  <style>
+    .ac-page {
+      font-family: var(--ff-sans);
+      color: var(--text-primary);
+      background: var(--bg-deep);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Floating ambient orbs */
+    .ac-orbs {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .ac-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      animation: ac-drift 25s infinite alternate ease-in-out;
+    }
+    .ac-orb-1 { width: 400px; height: 400px; background: var(--terracotta); top: -100px; left: -100px; }
+    .ac-orb-2 { width: 350px; height: 350px; background: var(--deep-teal); bottom: -100px; right: -100px; animation-delay: -10s; }
+    .ac-orb-3 { width: 300px; height: 300px; background: var(--soft-amber); top: 50%; left: 60%; animation-delay: -5s; }
+
+    @keyframes ac-drift {
+      0%   { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(60px, -40px) scale(1.1); }
+    }
+
+    /* Hero */
+    .ac-hero {
+      position: relative;
+      padding: 5rem 1.5rem 3rem;
+      text-align: center;
+      z-index: 1;
+    }
+    .ac-hero-eyebrow {
+      font-family: var(--ff-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--deep-teal);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1.2rem;
+    }
+    .ac-hero-eyebrow::before {
+      content: '';
+      width: 42px;
+      height: 2px;
+      background: var(--accent-gradient);
+    }
+    .ac-hero h1 {
+      font-family: var(--ff-serif);
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .ac-hero p {
+      font-size: 1.1rem;
+      max-width: 620px;
+      margin: 0 auto;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Main container */
+    .ac-container {
+      max-width: 1100px;
+      margin: 0 auto 4rem;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Input card */
+    .ac-input-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 28px;
+      padding: 2.5rem;
+      border: 1px solid var(--border-light);
+      box-shadow: 0 20px 50px rgba(44, 40, 34, 0.06);
+      margin-bottom: 2rem;
+    }
+    .ac-input-card h2 {
+      font-family: var(--ff-serif);
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .ac-form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      align-items: end;
+    }
+    .ac-field { display: flex; flex-direction: column; }
+    .ac-field label {
+      font-family: var(--ff-mono);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+    .ac-field input {
+      padding: 0.95rem 1.1rem;
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      font-size: 1rem;
+      font-family: var(--ff-sans);
+      background: rgba(255, 255, 255, 0.7);
+      color: var(--text-primary);
+      transition: all 0.2s;
+    }
+    .ac-field input:focus {
+      outline: none;
+      border-color: var(--deep-teal);
+      box-shadow: 0 0 0 3px rgba(79, 139, 140, 0.15);
+      background: white;
+    }
+
+    .ac-calc-btn {
+      padding: 0.95rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      background: linear-gradient(135deg, #4f8b8c, #2d6b6c);
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 12px 30px rgba(45, 107, 108, 0.3);
+      font-family: var(--ff-sans);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .ac-calc-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(45, 107, 108, 0.45);
+    }
+    .ac-calc-btn:active { transform: translateY(0); }
+
+    /* Results panel */
+    .ac-results {
+      display: none;
+      animation: ac-fadeIn 0.6s ease;
+    }
+    .ac-results.show { display: block; }
+    @keyframes ac-fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Main age display */
+    .ac-age-display {
+      background: linear-gradient(135deg, rgba(79, 139, 140, 0.08), rgba(180, 95, 58, 0.08));
+      border-radius: 28px;
+      padding: 2.5rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border-light);
+      position: relative;
+      overflow: hidden;
+    }
+    .ac-age-display::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(200, 135, 61, 0.1) 0%, transparent 60%);
+      animation: ac-pulse 4s ease-in-out infinite;
+    }
+    @keyframes ac-pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50%      { transform: scale(1.1); opacity: 0.8; }
+    }
+    .ac-age-label {
+      font-family: var(--ff-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+      position: relative;
+    }
+    .ac-age-main {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .ac-age-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 100px;
+    }
+    .ac-age-number {
+      font-family: var(--ff-serif);
+      font-size: clamp(2.5rem, 7vw, 4rem);
+      font-weight: 700;
+      line-height: 1;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+    }
+    .ac-age-word {
+      font-family: var(--ff-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    /* Stats grid */
+    .ac-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .ac-stat {
+      background: var(--card-bg);
+      backdrop-filter: blur(8px);
+      border-radius: 20px;
+      padding: 1.5rem;
+      border: 1px solid var(--border-light);
+      transition: all 0.25s;
+    }
+    .ac-stat:hover {
+      transform: translateY(-4px);
+      border-color: rgba(45, 107, 108, 0.4);
+      box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.1);
+    }
+    .ac-stat-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+    .ac-stat-label {
+      font-family: var(--ff-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+    .ac-stat-value {
+      font-family: var(--ff-serif);
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.2;
+      word-break: break-word;
+    }
+    .ac-stat.live .ac-stat-value {
+      color: var(--terracotta);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Special cards row */
+    .ac-special-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .ac-special-card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 1.8rem;
+      border: 1px solid var(--border-light);
+      position: relative;
+      overflow: hidden;
+    }
+    .ac-special-card.birthday {
+      background: linear-gradient(135deg, rgba(180, 95, 58, 0.08), rgba(200, 135, 61, 0.05));
+    }
+    .ac-special-card.zodiac {
+      background: linear-gradient(135deg, rgba(79, 139, 140, 0.08), rgba(45, 107, 108, 0.05));
+    }
+    .ac-special-card h3 {
+      font-family: var(--ff-serif);
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .ac-countdown {
+      display: flex;
+      gap: 0.8rem;
+      justify-content: space-around;
+      margin: 1rem 0;
+    }
+    .ac-countdown-item {
+      text-align: center;
+      flex: 1;
+    }
+    .ac-countdown-num {
+      font-family: var(--ff-serif);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--terracotta);
+      line-height: 1;
+    }
+    .ac-countdown-lbl {
+      font-family: var(--ff-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+    .ac-birthday-date {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    .ac-zodiac-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .ac-zodiac-item {
+      text-align: center;
+      padding: 0.8rem;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 14px;
+    }
+    .ac-zodiac-symbol {
+      font-size: 2rem;
+      margin-bottom: 0.3rem;
+    }
+    .ac-zodiac-name {
+      font-family: var(--ff-serif);
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text-primary);
+    }
+    .ac-zodiac-type {
+      font-family: var(--ff-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    /* Milestones */
+    .ac-milestones {
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 2rem;
+      border: 1px solid var(--border-light);
+      margin-bottom: 1.5rem;
+    }
+    .ac-milestones h3 {
+      font-family: var(--ff-serif);
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .ac-milestone-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 0.8rem;
+    }
+    .ac-milestone {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.9rem 1rem;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 12px;
+      border-left: 3px solid var(--deep-teal);
+      font-size: 0.9rem;
+    }
+    .ac-milestone.achieved {
+      border-left-color: var(--terracotta);
+      background: rgba(180, 95, 58, 0.08);
+    }
+    .ac-milestone-icon { font-size: 1.3rem; }
+    .ac-milestone-text { flex: 1; }
+    .ac-milestone-text strong {
+      display: block;
+      font-family: var(--ff-serif);
+      font-size: 0.95rem;
+      margin-bottom: 0.1rem;
+    }
+    .ac-milestone-text span {
+      font-family: var(--ff-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    /* Fun facts */
+    .ac-fun-facts {
+      background: linear-gradient(135deg, rgba(200, 135, 61, 0.05), rgba(79, 139, 140, 0.05));
+      border-radius: 24px;
+      padding: 2rem;
+      border: 1px solid var(--border-light);
+      margin-bottom: 1.5rem;
+    }
+    .ac-fun-facts h3 {
+      font-family: var(--ff-serif);
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .ac-fact-list {
+      list-style: none;
+      display: grid;
+      gap: 0.7rem;
+    }
+    .ac-fact-list li {
+      padding: 0.8rem 1rem;
+      background: var(--card-bg);
+      border-radius: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    .ac-fact-list li::before {
+      content: '✦';
+      color: var(--terracotta);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    /* Actions */
+    .ac-actions {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+      justify-content: center;
+    }
+    .ac-btn {
+      padding: 0.75rem 1.5rem;
+      border: 1px solid var(--border-light);
+      background: var(--card-bg);
+      color: var(--text-primary);
+      border-radius: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+      font-family: var(--ff-sans);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .ac-btn:hover {
+      border-color: var(--soft-amber);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Info section */
+    .ac-info {
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 2.5rem;
+      border: 1px solid var(--border-light);
+      margin-top: 2rem;
+    }
+    .ac-info h2 {
+      font-family: var(--ff-serif);
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .ac-info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .ac-info-item {
+      text-align: center;
+      padding: 1rem;
+    }
+    .ac-info-icon {
+      font-size: 2.2rem;
+      margin-bottom: 0.6rem;
+    }
+    .ac-info-item h4 {
+      font-family: var(--ff-serif);
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+    }
+    .ac-info-item p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Error */
+    .ac-error {
+      color: var(--terracotta);
+      font-size: 0.88rem;
+      margin-top: 0.5rem;
+      display: none;
+    }
+    .ac-error.show { display: block; }
+
+    @media (max-width: 600px) {
+      .ac-input-card, .ac-age-display, .ac-milestones, .ac-fun-facts, .ac-info { padding: 1.5rem; }
+      .ac-age-main { gap: 1rem; }
+      .ac-zodiac-grid { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      nav, footer, .ac-orbs, .ac-actions, .ac-input-card { display: none !important; }
+      .ac-page { background: white; }
+    }
+  </style>
+</head>
+<body class="ac-page">
+
+  <!-- Navbar container (filled by components.js) -->
+  <div id="navbar-container"></div>
+
+  <!-- Ambient orbs -->
+  <div class="ac-orbs">
+    <div class="ac-orb ac-orb-1"></div>
+    <div class="ac-orb ac-orb-2"></div>
+    <div class="ac-orb ac-orb-3"></div>
+  </div>
+
+  <!-- Hero -->
+  <header class="ac-hero">
+    <div class="ac-hero-eyebrow">Project · Time & Life Stats</div>
+    <h1>Age Calculator</h1>
+    <p>More than just years. Discover your exact age down to the second, your next birthday countdown, zodiac signs, and the fascinating numbers that make up your life.</p>
+  </header>
+
+  <main class="ac-container">
+
+    <!-- Input Card -->
+    <section class="ac-input-card" aria-labelledby="acInputTitle">
+      <h2 id="acInputTitle">📅 Enter Your Birth Details</h2>
+      <form class="ac-form" id="acForm" onsubmit="return false;">
+        <div class="ac-field">
+          <label for="acDob">Date of Birth</label>
+          <input type="date" id="acDob" required />
+        </div>
+        <div class="ac-field">
+          <label for="acTob">Time of Birth (optional)</label>
+          <input type="time" id="acTob" />
+        </div>
+        <div class="ac-field">
+          <label for="acRef">Calculate age as of</label>
+          <input type="date" id="acRef" />
+        </div>
+        <button type="button" class="ac-calc-btn" id="acCalcBtn">
+          ⏳ Calculate My Age
+        </button>
+      </form>
+      <div class="ac-error" id="acError"></div>
+    </section>
+
+    <!-- Results -->
+    <section class="ac-results" id="acResults" aria-live="polite">
+
+      <!-- Main Age Display -->
+      <div class="ac-age-display">
+        <div class="ac-age-label">You are exactly</div>
+        <div class="ac-age-main">
+          <div class="ac-age-unit">
+            <div class="ac-age-number" id="acYears">0</div>
+            <div class="ac-age-word">Years</div>
+          </div>
+          <div class="ac-age-unit">
+            <div class="ac-age-number" id="acMonths">0</div>
+            <div class="ac-age-word">Months</div>
+          </div>
+          <div class="ac-age-unit">
+            <div class="ac-age-number" id="acDays">0</div>
+            <div class="ac-age-word">Days</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="ac-stats-grid">
+        <div class="ac-stat">
+          <div class="ac-stat-icon">📆</div>
+          <div class="ac-stat-label">Total Months</div>
+          <div class="ac-stat-value" id="acTotalMonths">0</div>
+        </div>
+        <div class="ac-stat">
+          <div class="ac-stat-icon">📅</div>
+          <div class="ac-stat-label">Total Weeks</div>
+          <div class="ac-stat-value" id="acTotalWeeks">0</div>
+        </div>
+        <div class="ac-stat">
+          <div class="ac-stat-icon">🌅</div>
+          <div class="ac-stat-label">Total Days</div>
+          <div class="ac-stat-value" id="acTotalDays">0</div>
+        </div>
+        <div class="ac-stat">
+          <div class="ac-stat-icon">⏰</div>
+          <div class="ac-stat-label">Total Hours</div>
+          <div class="ac-stat-value" id="acTotalHours">0</div>
+        </div>
+        <div class="ac-stat">
+          <div class="ac-stat-icon">⏱️</div>
+          <div class="ac-stat-label">Total Minutes</div>
+          <div class="ac-stat-value" id="acTotalMinutes">0</div>
+        </div>
+        <div class="ac-stat live">
+          <div class="ac-stat-icon">⚡</div>
+          <div class="ac-stat-label">Seconds (live)</div>
+          <div class="ac-stat-value" id="acTotalSeconds">0</div>
+        </div>
+      </div>
+
+      <!-- Special Cards: Birthday + Zodiac -->
+      <div class="ac-special-row">
+        <div class="ac-special-card birthday">
+          <h3>🎂 Next Birthday</h3>
+          <div class="ac-countdown">
+            <div class="ac-countdown-item">
+              <div class="ac-countdown-num" id="acBdMonths">0</div>
+              <div class="ac-countdown-lbl">Months</div>
+            </div>
+            <div class="ac-countdown-item">
+              <div class="ac-countdown-num" id="acBdDays">0</div>
+              <div class="ac-countdown-lbl">Days</div>
+            </div>
+            <div class="ac-countdown-item">
+              <div class="ac-countdown-num" id="acBdHours">0</div>
+              <div class="ac-countdown-lbl">Hours</div>
+            </div>
+          </div>
+          <div class="ac-birthday-date" id="acBdDate">—</div>
+          <div class="ac-birthday-date" id="acBdAge" style="margin-top:0.4rem; color: var(--terracotta); font-weight:600;"></div>
+        </div>
+
+        <div class="ac-special-card zodiac">
+          <h3>✨ Your Zodiac Signs</h3>
+          <div class="ac-zodiac-grid">
+            <div class="ac-zodiac-item">
+              <div class="ac-zodiac-symbol" id="acWestSymbol">♈</div>
+              <div class="ac-zodiac-name" id="acWestName">Aries</div>
+              <div class="ac-zodiac-type">Western</div>
+            </div>
+            <div class="ac-zodiac-item">
+              <div class="ac-zodiac-symbol" id="acChiSymbol">🐉</div>
+              <div class="ac-zodiac-name" id="acChiName">Dragon</div>
+              <div class="ac-zodiac-type">Chinese</div>
+            </div>
+          </div>
+          <div class="ac-birthday-date" style="margin-top:1rem;" id="acBornDay">—</div>
+        </div>
+      </div>
+
+      <!-- Milestones -->
+      <div class="ac-milestones">
+        <h3>🏆 Life Milestones</h3>
+        <div class="ac-milestone-list" id="acMilestones"></div>
+      </div>
+
+      <!-- Fun Facts -->
+      <div class="ac-fun-facts">
+        <h3>🌟 Fun Facts About Your Life</h3>
+        <ul class="ac-fact-list" id="acFunFacts"></ul>
+      </div>
+
+      <!-- Actions -->
+      <div class="ac-actions">
+        <button class="ac-btn" id="acShare">📤 Share Results</button>
+        <button class="ac-btn" id="acPrint">🖨️ Print</button>
+        <button class="ac-btn" id="acReset">🔄 Calculate Again</button>
+      </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="ac-info">
+      <h2>Why This Calculator Is Different</h2>
+      <div class="ac-info-grid">
+        <div class="ac-info-item">
+          <div class="ac-info-icon">⚡</div>
+          <h4>Live Ticking</h4>
+          <p>Watch your life in seconds update in real-time — a gentle reminder of how precious each moment is.</p>
+        </div>
+        <div class="ac-info-item">
+          <div class="ac-info-icon">🎯</div>
+          <h4>Precise Breakdown</h4>
+          <p>Years, months, days — calculated accurately accounting for leap years and varying month lengths.</p>
+        </div>
+        <div class="ac-info-item">
+          <div class="ac-info-icon">🔮</div>
+          <h4>Zodiac Insights</h4>
+          <p>Both Western and Chinese zodiac signs, with the day of the week you were born on.</p>
+        </div>
+        <div class="ac-info-item">
+          <div class="ac-info-icon">🏆</div>
+          <h4>Milestone Tracking</h4>
+          <p>See which life milestones you've achieved and which are still ahead — like your 1 billionth second.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer container (filled by components.js) -->
+  <div id="footer-container"></div>
+
+  <!-- Project-specific logic -->
+  <script>
+    /* ===========================
+       AGE CALCULATOR LOGIC
+       =========================== */
+
+    // Set default date (today) and max for DOB
+    const today = new Date();
+    const todayStr = today.toISOString().split('T')[0];
+    document.getElementById('acRef').value = todayStr;
+    document.getElementById('acRef').max = todayStr;
+    document.getElementById('acDob').max = todayStr;
+
+    let liveInterval = null;
+    let birthDateTime = null;
+    let referenceDate = null;
+
+    /* ---------- Zodiac Data ---------- */
+    const WESTERN_ZODIAC = [
+      { name: 'Capricorn', symbol: '♑', start: [1, 1],  end: [1, 19] },
+      { name: 'Aquarius',  symbol: '♒', start: [1, 20], end: [2, 18] },
+      { name: 'Pisces',    symbol: '♓', start: [2, 19], end: [3, 20] },
+      { name: 'Aries',     symbol: '♈', start: [3, 21], end: [4, 19] },
+      { name: 'Taurus',    symbol: '♉', start: [4, 20], end: [5, 20] },
+      { name: 'Gemini',    symbol: '♊', start: [5, 21], end: [6, 20] },
+      { name: 'Cancer',    symbol: '♋', start: [6, 21], end: [7, 22] },
+      { name: 'Leo',       symbol: '♌', start: [7, 23], end: [8, 22] },
+      { name: 'Virgo',     symbol: '♍', start: [8, 23], end: [9, 22] },
+      { name: 'Libra',     symbol: '♎', start: [9, 23], end: [10, 22] },
+      { name: 'Scorpio',   symbol: '♏', start: [10, 23], end: [11, 21] },
+      { name: 'Sagittarius', symbol: '♐', start: [11, 22], end: [12, 21] },
+      { name: 'Capricorn', symbol: '♑', start: [12, 22], end: [12, 31] }
+    ];
+
+    const CHINESE_ZODIAC = [
+      { name: 'Rat',     symbol: '🐀' },
+      { name: 'Ox',      symbol: '🐂' },
+      { name: 'Tiger',   symbol: '🐅' },
+      { name: 'Rabbit',  symbol: '🐇' },
+      { name: 'Dragon',  symbol: '🐉' },
+      { name: 'Snake',   symbol: '🐍' },
+      { name: 'Horse',   symbol: '🐎' },
+      { name: 'Goat',    symbol: '🐐' },
+      { name: 'Monkey',  symbol: '🐒' },
+      { name: 'Rooster', symbol: '🐓' },
+      { name: 'Dog',     symbol: '🐕' },
+      { name: 'Pig',     symbol: '🐖' }
+    ];
+
+    const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+    /* ---------- Helpers ---------- */
+    function getWesternZodiac(date) {
+      const m = date.getMonth() + 1;
+      const d = date.getDate();
+      for (const z of WESTERN_ZODIAC) {
+        const afterStart = (m > z.start[0]) || (m === z.start[0] && d >= z.start[1]);
+        const beforeEnd  = (m < z.end[0])   || (m === z.end[0]   && d <= z.end[1]);
+        if (afterStart && beforeEnd) return z;
+      }
+      return WESTERN_ZODIAC[0];
+    }
+
+    function getChineseZodiac(year) {
+      // Chinese zodiac year starts ~late Jan; simplified to calendar year
+      return CHINESE_ZODIAC[(year - 4) % 12];
+    }
+
+    function formatNumber(n) {
+      return n.toLocaleString('en-US');
+    }
+
+    function calcExactAge(birth, ref) {
+      let years = ref.getFullYear() - birth.getFullYear();
+      let months = ref.getMonth() - birth.getMonth();
+      let days = ref.getDate() - birth.getDate();
+
+      if (days < 0) {
+        months--;
+        const prevMonth = new Date(ref.getFullYear(), ref.getMonth(), 0);
+        days += prevMonth.getDate();
+      }
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+      return { years, months, days };
+    }
+
+    function calcNextBirthday(birth, ref) {
+      let nextBd = new Date(ref.getFullYear(), birth.getMonth(), birth.getDate());
+      if (nextBd <= ref) {
+        nextBd = new Date(ref.getFullYear() + 1, birth.getMonth(), birth.getDate());
+      }
+      // Handle Feb 29 born in non-leap year
+      if (birth.getMonth() === 1 && birth.getDate() === 29) {
+        while (nextBd.getMonth() !== 1 || nextBd.getDate() !== 29) {
+          nextBd.setFullYear(nextBd.getFullYear() + 1);
+          nextBd = new Date(nextBd.getFullYear(), 1, 29);
+        }
+      }
+      const diff = nextBd - ref;
+      const totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const months = Math.floor(totalDays / 30.44);
+      const days = totalDays - Math.floor(months * 30.44);
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const turningAge = nextBd.getFullYear() - birth.getFullYear();
+      return { nextBd, months, days, hours, turningAge };
+    }
+
+    /* ---------- Main Calculate ---------- */
+    function calculate() {
+      const dobVal = document.getElementById('acDob').value;
+      const tobVal = document.getElementById('acTob').value;
+      const refVal = document.getElementById('acRef').value || todayStr;
+      const errorEl = document.getElementById('acError');
+
+      if (!dobVal) {
+        errorEl.textContent = '⚠️ Please enter your date of birth.';
+        errorEl.classList.add('show');
+        return;
+      }
+
+      const dob = new Date(dobVal + (tobVal ? 'T' + tobVal : 'T00:00'));
+      const ref = new Date(refVal + 'T' + (new Date().toTimeString().slice(0,5) || '00:00'));
+
+      if (dob > ref) {
+        errorEl.textContent = '⚠️ Date of birth cannot be in the future.';
+        errorEl.classList.add('show');
+        return;
+      }
+      if (dob < new Date('1900-01-01')) {
+        errorEl.textContent = '⚠️ Please enter a date after 1900.';
+        errorEl.classList.add('show');
+        return;
+      }
+
+      errorEl.classList.remove('show');
+      birthDateTime = dob;
+      referenceDate = ref;
+
+      // Exact age
+      const age = calcExactAge(dob, ref);
+      document.getElementById('acYears').textContent = age.years;
+      document.getElementById('acMonths').textContent = age.months;
+      document.getElementById('acDays').textContent = age.days;
+
+      // Totals
+      const diffMs = ref - dob;
+      const totalDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+      const totalHours = Math.floor(diffMs / (1000 * 60 * 60));
+      const totalMinutes = Math.floor(diffMs / (1000 * 60));
+      const totalWeeks = Math.floor(totalDays / 7);
+      const totalMonths = age.years * 12 + age.months;
+
+      document.getElementById('acTotalMonths').textContent = formatNumber(totalMonths);
+      document.getElementById('acTotalWeeks').textContent = formatNumber(totalWeeks);
+      document.getElementById('acTotalDays').textContent = formatNumber(totalDays);
+      document.getElementById('acTotalHours').textContent = formatNumber(totalHours);
+      document.getElementById('acTotalMinutes').textContent = formatNumber(totalMinutes);
+
+      // Live seconds
+      updateLiveSeconds();
+      if (liveInterval) clearInterval(liveInterval);
+      liveInterval = setInterval(updateLiveSeconds, 1000);
+
+      // Next birthday
+      const bd = calcNextBirthday(dob, ref);
+      document.getElementById('acBdMonths').textContent = bd.months;
+      document.getElementById('acBdDays').textContent = bd.days;
+      document.getElementById('acBdHours').textContent = bd.hours;
+      document.getElementById('acBdDate').textContent =
+        bd.nextBd.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      document.getElementById('acBdAge').textContent = `You'll turn ${bd.turningAge} 🎉`;
+
+      // Zodiac
+      const westZ = getWesternZodiac(dob);
+      document.getElementById('acWestSymbol').textContent = westZ.symbol;
+      document.getElementById('acWestName').textContent = westZ.name;
+
+      const chiZ = getChineseZodiac(dob.getFullYear());
+      document.getElementById('acChiSymbol').textContent = chiZ.symbol;
+      document.getElementById('acChiName').textContent = chiZ.name;
+
+      // Born day
+      document.getElementById('acBornDay').innerHTML =
+        `Born on a <strong style="color:var(--deep-teal);">${DAYS[dob.getDay()]}</strong>`;
+
+      // Milestones
+      renderMilestones(dob, ref);
+
+      // Fun facts
+      renderFunFacts(dob, totalDays, totalHours);
+
+      // Show results
+      document.getElementById('acResults').classList.add('show');
+      setTimeout(() => {
+        document.getElementById('acResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+
+    function updateLiveSeconds() {
+      if (!birthDateTime) return;
+      const now = new Date();
+      const secs = Math.floor((now - birthDateTime) / 1000);
+      document.getElementById('acTotalSeconds').textContent = formatNumber(secs);
+    }
+
+    /* ---------- Milestones ---------- */
+    function renderMilestones(birth, ref) {
+      const diffMs = ref - birth;
+      const milestones = [
+        { label: '1,000 days',      target: 1000 * 24 * 60 * 60 * 1000,   icon: '🌱' },
+        { label: '5,000 days',      target: 5000 * 24 * 60 * 60 * 1000,   icon: '🌿' },
+        { label: '10,000 days',     target: 10000 * 24 * 60 * 60 * 1000,  icon: '🌳' },
+        { label: '20,000 days',     target: 20000 * 24 * 60 * 60 * 1000,  icon: '🏔️' },
+        { label: '1 billion seconds', target: 1e9 * 1000,                 icon: '⚡' },
+        { label: '2 billion seconds', target: 2e9 * 1000,                 icon: '🚀' },
+        { label: '1 million hours',  target: 1e6 * 60 * 60 * 1000,        icon: '⏳' },
+        { label: '100th birthday',   target: null, special: '100years',    icon: '🎂' }
+      ];
+
+      const container = document.getElementById('acMilestones');
+      container.innerHTML = '';
+
+      milestones.forEach(m => {
+        let targetMs;
+        if (m.special === '100years') {
+          const d100 = new Date(birth);
+          d100.setFullYear(d100.getFullYear() + 100);
+          targetMs = d100 - birth;
+        } else {
+          targetMs = m.target;
+        }
+
+        const achieved = diffMs >= targetMs;
+        const targetDate = new Date(birth.getTime() + targetMs);
+
+        const div = document.createElement('div');
+        div.className = 'ac-milestone' + (achieved ? ' achieved' : '');
+        div.innerHTML = `
+          <div class="ac-milestone-icon">${m.icon}</div>
+          <div class="ac-milestone-text">
+            <strong>${m.label}</strong>
+            <span>${achieved ? '✓ Achieved on ' + targetDate.toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' })
+                             : '🔜 ' + targetDate.toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' })}</span>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    /* ---------- Fun Facts ---------- */
+    function renderFunFacts(birth, totalDays, totalHours) {
+      const facts = [];
+
+      // Heartbeats (~72 bpm average)
+      const heartbeats = totalDays * 24 * 60 * 72;
+      facts.push(`Your heart has beaten approximately <strong>${formatNumber(heartbeats)}</strong> times since you were born.`);
+
+      // Breaths (~16 per minute)
+      const breaths = totalDays * 24 * 60 * 16;
+      facts.push(`You've taken about <strong>${formatNumber(breaths)}</strong> breaths so far.`);
+
+      // Sleep (~8 hours/day)
+      const sleepYears = (totalDays * 8 / 24 / 365).toFixed(1);
+      facts.push(`You've spent roughly <strong>${sleepYears} years</strong> sleeping — about a third of your life.`);
+
+      // Full moons (~29.5 days cycle)
+      const fullMoons = Math.floor(totalDays / 29.53);
+      facts.push(`You've witnessed <strong>${formatNumber(fullMoons)}</strong> full moons.`);
+
+      // Earth orbits
+      const orbits = (totalDays / 365.25).toFixed(2);
+      facts.push(`Earth has carried you <strong>${orbits}</strong> times around the Sun.`);
+
+      // Laughs (~15/day)
+      const laughs = totalDays * 15;
+      facts.push(`You've probably laughed around <strong>${formatNumber(laughs)}</strong> times (if you average 15 laughs a day).`);
+
+      // Days to hours
+      facts.push(`You've lived through <strong>${formatNumber(totalHours)}</strong> unique hours — each one unrepeatable.`);
+
+      // Born-day fact
+      const dayName = DAYS[birth.getDay()];
+      facts.push(`You entered the world on a <strong>${dayName}</strong> — ${
+        dayName === 'Monday' ? 'the day of the Moon, symbolizing new beginnings.' :
+        dayName === 'Tuesday' ? 'named after Tiw, the Norse god of single combat and victory.' :
+        dayName === 'Wednesday' ? 'Odin\'s day — associated with wisdom and poetry.' :
+        dayName === 'Thursday' ? 'Thor\'s day — the day of thunder and strength.' :
+        dayName === 'Friday' ? 'Frigg\'s day — associated with love and beauty.' :
+        dayName === 'Saturday' ? 'Saturn\'s day — a day of discipline and reflection.' :
+        'the Sun\'s day — a day of light, vitality, and joy.'
+      }`);
+
+      const container = document.getElementById('acFunFacts');
+      container.innerHTML = '';
+      facts.forEach(f => {
+        const li = document.createElement('li');
+        li.innerHTML = f;
+        container.appendChild(li);
+      });
+    }
+
+    /* ---------- Event Listeners ---------- */
+    document.getElementById('acCalcBtn').addEventListener('click', calculate);
+    document.getElementById('acDob').addEventListener('change', () => {
+      document.getElementById('acError').classList.remove('show');
+    });
+
+    document.getElementById('acReset').addEventListener('click', () => {
+      if (liveInterval) clearInterval(liveInterval);
+      document.getElementById('acResults').classList.remove('show');
+      document.getElementById('acDob').value = '';
+      document.getElementById('acTob').value = '';
+      document.getElementById('acRef').value = todayStr;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    document.getElementById('acPrint').addEventListener('click', () => window.print());
+
+    document.getElementById('acShare').addEventListener('click', () => {
+      const years = document.getElementById('acYears').textContent;
+      const months = document.getElementById('acMonths').textContent;
+      const days = document.getElementById('acDays').textContent;
+      const totalDays = document.getElementById('acTotalDays').textContent;
+      const west = document.getElementById('acWestName').textContent;
+      const chi = document.getElementById('acChiName').textContent;
+
+      const text = `🎂 My Age Stats\n\n` +
+        `I am ${years} years, ${months} months, and ${days} days old.\n` +
+        `That's ${totalDays} days of life lived!\n\n` +
+        `✨ Western Zodiac: ${west}\n` +
+        `🐉 Chinese Zodiac: ${chi}\n\n` +
+        `Calculated at basantasaru.com/age-calculator.html`;
+
+      if (navigator.share) {
+        navigator.share({ title: 'My Age Stats', text }).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(text).then(() => {
+          const btn = document.getElementById('acShare');
+          const orig = btn.innerHTML;
+          btn.innerHTML = '✅ Copied!';
+          setTimeout(() => btn.innerHTML = orig, 2000);
+        });
+      }
+    });
+
+    // Auto-calculate if DOB is pre-filled (e.g. back button)
+    window.addEventListener('load', () => {
+      if (document.getElementById('acDob').value) calculate();
+    });
+  </script>
+</body>
+</html>
