@@ -11,8 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // If the URL contains any of our folder names, we need to go up one level
     if (path.includes('/blogs/') || 
         path.includes('/projects/') || 
-        path.includes('/books/') || 
-        path.includes('/goals/')) {
+        path.includes('/books/')) {
       return '../';
     }
     return '';  // We're in the root folder
@@ -33,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
         <li><a href="${prefix}index.html" class="nav-home">Home</a></li>
         <li><a href="${prefix}blogs/blog.html" class="nav-blog">Blog</a></li>
         <li><a href="${prefix}projects/project.html" class="nav-projects">Project</a></li>
-        <li><a href="${prefix}goals/goals.html" class="nav-goals">Goals</a></li>
         <li><a href="${prefix}books/books.html" class="nav-books">Books</a></li>
       </ul>
       <div class="nav-actions">
@@ -55,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
         <li><a href="${prefix}index.html">Home</a></li>
         <li><a href="${prefix}blogs/blog.html">Blog</a></li>
         <li><a href="${prefix}projects/project.html">Project</a></li>
-        <li><a href="${prefix}goals/goals.html">Goals</a></li>
         <li><a href="${prefix}books/books.html">Books</a></li>
       </ul>
     </footer>
