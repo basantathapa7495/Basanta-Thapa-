@@ -3,199 +3,398 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Goals & Vision | Basanta Saru</title>
+    <title>Goal Dashboard | Basanta Saru</title>
+    
+    <!-- Global Styles & Fonts -->
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="goals.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Background Blobs -->
-    <div class="blob-bg">
-        <div class="blob blob1"></div>
-        <div class="blob blob2"></div>
-        <div class="blob blob3"></div>
-    </div>
 
-    <!-- Navbar -->
+    <!-- Navbar Container (Injected by components.js) -->
     <div id="navbar-container"></div>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="container">
+    <main class="goal-dashboard">
+        
+        <!-- ================= HERO SECTION ================= -->
+        <section class="hero-section fade-up">
             <div class="hero-content">
-                <div class="hero-eyebrow">goals & vision</div>
-                <h2>Building at the intersection of <br><span class="handwritten">wonder and logic.</span></h2>
-                <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 640px; margin-top: 1.2rem; line-height: 1.7;">
-                    This is where I document my targets, the milestones I'm chasing, and the North Star that guides the messy, beautiful art of becoming. Not as a finished product, but as a work in progress.
-                </p>
+                <span class="hero-eyebrow">Mission Control</span>
+                <h1 class="hero-title">MY LIFE GOALS</h1>
+                <p class="hero-subtitle">Building a better future, one milestone at a time.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- 2026 FOCUS AREAS -->
-    <section class="section">
-        <div class="container">
-            <div class="section-label">2026 focus areas</div>
-            <h2>What I'm building this year.</h2>
-            <div class="grid-3" style="margin-top: 2rem;">
-                <div class="card">
-                    <div class="card-icon">📚</div>
-                    <h3>Publish 3 Books</h3>
-                    <p>Taking manuscripts from messy drafts to published realities. Earning, teaching, and sharing wisdom through the written word before I graduate.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">💻</div>
-                    <h3>Ship 2 Core Projects</h3>
-                    <p>Moving ideas from the notebook to the browser. Building digital tools that solve real problems and bring a little joy to the internet.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🧠</div>
-                    <h3>Read 50 Books</h3>
-                    <p>Feeding the mind. Diving deep into philosophy, psychology, and business to fuel my own writing, thinking, and perspective.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <hr>
-
-    <!-- BOOK ROADMAP -->
-    <section class="section">
-        <div class="container">
-            <div class="section-label">the book roadmap</div>
-            <h2>Words into the world.</h2>
-            <p style="color: var(--text-muted); margin-bottom: 2rem; max-width: 640px; line-height: 1.7;">Writing is my primary medium. These are the manuscripts currently living on my desk, moving from thought to page to published book.</p>
             
-            <div class="tracker-panel">
-                <div class="progress-item">
-                    <div class="progress-label">Earn Before You Graduate</div>
-                    <div class="progress-bar-bg"><div class="progress-fill fill-green" style="width: 100%;"></div></div>
-                    <span class="mono" style="font-size:0.75rem; font-weight:500;">100% · Published</span>
+            <div class="featured-card glass-card">
+                <div class="featured-header">
+                    <span class="badge badge-primary">Current Mission</span>
                 </div>
-                <div class="progress-item">
-                    <div class="progress-label">Eat Healthy, Live Better</div>
-                    <div class="progress-bar-bg"><div class="progress-fill fill-orange" style="width: 90%;"></div></div>
-                    <span class="mono" style="font-size:0.75rem; font-weight:500;">90% · Final Edits</span>
-                </div>
-                <div class="progress-item">
-                    <div class="progress-label">The Hindu Wisdom</div>
-                    <div class="progress-bar-bg"><div class="progress-fill fill-blue" style="width: 75%;"></div></div>
-                    <span class="mono" style="font-size:0.75rem; font-weight:500;">75% · Drafting</span>
-                </div>
-                <div class="progress-item">
-                    <div class="progress-label">The Lie of Modern Life</div>
-                    <div class="progress-bar-bg"><div class="progress-fill fill-pink" style="width: 40%;"></div></div>
-                    <span class="mono" style="font-size:0.75rem; font-weight:500;">40% · Outlining</span>
-                </div>
-                <div class="progress-item">
-                    <div class="progress-label">One Source</div>
-                    <div class="progress-bar-bg"><div class="progress-fill fill-green" style="width: 20%;"></div></div>
-                    <span class="mono" style="font-size:0.75rem; font-weight:500;">20% · Research</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <hr>
-
-    <!-- PROJECTS PIPELINE -->
-    <section class="section">
-        <div class="container">
-            <div class="section-label">projects pipeline</div>
-            <h2>Code & creativity.</h2>
-            <p style="color: var(--text-muted); margin-bottom: 2rem; max-width: 640px; line-height: 1.7;">Building digital tools and experiments that scratch my own itches and hopefully help others along the way.</p>
-            
-            <div class="grid-2">
-                <div class="card">
-                    <h3>MindStack 🧠</h3>
-                    <p>A second brain for readers and thinkers. A place to capture quotes, map ideas, and connect the dots between books. Currently in active development.</p>
-                    <span class="mono" style="color: var(--deep-teal); font-size: 0.8rem; margin-top: 0.5rem; display: inline-block;">status: building · react & firebase</span>
-                </div>
-                <div class="card">
-                    <h3>PageTurn 📖</h3>
-                    <p>A minimalist ebook reader and highlight tracker. Designed to help readers build streaks and retain what they read. Beta testing soon.</p>
-                    <span class="mono" style="color: var(--deep-teal); font-size: 0.8rem; margin-top: 0.5rem; display: inline-block;">status: beta · testing phase</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <hr>
-
-    <!-- LIFE & PERSONAL GOALS -->
-    <section class="section">
-        <div class="container">
-            <div class="section-label">personal milestones</div>
-            <h2>The life behind the work.</h2>
-            <p style="color: var(--text-muted); margin-bottom: 2rem; max-width: 640px; line-height: 1.7;">Goals aren't just about output. They're about the habits, health, and experiences that make the output meaningful.</p>
-            
-            <div class="grid-2">
-                <div class="sketch-list">
-                    <h3 style="font-family: var(--ff-serif); margin-bottom: 1rem; font-size: 1.3rem;">Habits & Health</h3>
-                    <div class="reading-list">
-                        <div class="reading-item">
-                            <span class="book-title">Daily Meditation (20 mins)</span>
-                            <span class="percentage">streak: 42</span>
-                        </div>
-                        <div class="reading-item">
-                            <span class="book-title">Deep Work Blocks (4 hrs)</span>
-                            <span class="percentage">daily</span>
-                        </div>
-                        <div class="reading-item">
-                            <span class="book-title">No Phone First Hour</span>
-                            <span class="percentage">90%</span>
-                        </div>
-                        <div class="reading-item">
-                            <span class="book-title">Gym / Movement</span>
-                            <span class="percentage">4x / week</span>
-                        </div>
+                <h2 class="mission-title">Earn NPR 1 Crore</h2>
+                
+                <div class="progress-ring-container">
+                    <svg class="progress-ring" width="200" height="200">
+                        <circle class="progress-ring__bg" cx="100" cy="100" r="85" />
+                        <circle class="progress-ring__circle" cx="100" cy="100" r="85" />
+                    </svg>
+                    <div class="progress-ring-text">
+                        <span class="progress-value">0.01%</span>
+                        <span class="progress-label">Progress</span>
                     </div>
                 </div>
-                <div class="sketch-list">
-                    <h3 style="font-family: var(--ff-serif); margin-bottom: 1rem; font-size: 1.3rem;">Experiences</h3>
-                    <div class="reading-list">
-                        <div class="reading-item">
-                            <span class="book-title">Visit 5 New Cities in Nepal</span>
-                            <span class="percentage">2 / 5</span>
-                        </div>
-                        <div class="reading-item">
-                            <span class="book-title">Host a Local Creator Meetup</span>
-                            <span class="percentage">planned</span>
-                        </div>
-                        <div class="reading-item">
-                            <span class="book-title">Digital Detox Weekend</span>
-                            <span class="percentage">1 / 4</span>
-                        </div>
-                        <div class="reading-item">
-                            <span class="book-title">Learn Basic Nepali Folk Guitar</span>
-                            <span class="percentage">practicing</span>
-                        </div>
+                
+                <div class="featured-stats">
+                    <div class="featured-stat">
+                        <span class="stat-label">Target Date</span>
+                        <span class="stat-value">Sept 11, 2027</span>
+                    </div>
+                    <div class="featured-stat">
+                        <span class="stat-label">Days Remaining</span>
+                        <span class="stat-value" id="heroDaysRemaining">---</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <hr>
-
-    <!-- NORTH STAR -->
-    <section class="section" style="padding-bottom: 4rem;">
-        <div class="container">
-            <div class="tracker-panel" style="text-align: center; padding: 3rem 2rem;">
-                <div class="section-label">the north star</div>
-                <h2 style="font-size: clamp(1.8rem, 4vw, 2.5rem); margin: 1rem auto; max-width: 750px; line-height: 1.3;">
-                    To leave a trail of thoughts, tools, and books that help someone else feel a little less alone in their own becoming.
-                </h2>
-                <p class="handwritten" style="font-size: 1.2rem; margin-top: 1.5rem;">— Basanta</p>
+        <!-- ================= STATISTICS CARDS ================= -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card glass-card fade-up" data-target="42">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Goals</div>
+                </div>
+                <div class="stat-card glass-card fade-up" data-target="8">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+                <div class="stat-card glass-card fade-up" data-target="127">
+                    <div class="stat-icon">🔥</div>
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Current Streak</div>
+                </div>
+                <div class="stat-card glass-card fade-up" data-target="19">
+                    <div class="stat-icon">📈</div>
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Overall Progress</div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
+        <!-- ================= LIFE AREAS ================= -->
+        <section class="life-areas-section">
+            <h2 class="section-title">Life Areas</h2>
+            <div class="life-areas-grid">
+                <div class="life-tile glass-card fade-up" data-area="wealth">
+                    <div class="tile-emoji">💰</div>
+                    <h3 class="tile-title">Wealth</h3>
+                    <div class="tile-progress">
+                        <div class="tile-progress-bar"><div class="tile-progress-fill" data-width="45%"></div></div>
+                        <span class="tile-percentage">45%</span>
+                    </div>
+                    <p class="tile-desc">Building financial freedom and investments.</p>
+                </div>
+                <div class="life-tile glass-card fade-up" data-area="learning">
+                    <div class="tile-emoji">📚</div>
+                    <h3 class="tile-title">Learning</h3>
+                    <div class="tile-progress">
+                        <div class="tile-progress-bar"><div class="tile-progress-fill" data-width="70%"></div></div>
+                        <span class="tile-percentage">70%</span>
+                    </div>
+                    <p class="tile-desc">Reading, upskilling, and expanding knowledge.</p>
+                </div>
+                <div class="life-tile glass-card fade-up" data-area="health">
+                    <div class="tile-emoji">💪</div>
+                    <h3 class="tile-title">Health</h3>
+                    <div class="tile-progress">
+                        <div class="tile-progress-bar"><div class="tile-progress-fill" data-width="60%"></div></div>
+                        <span class="tile-percentage">60%</span>
+                    </div>
+                    <p class="tile-desc">Physical fitness, mental clarity, and nutrition.</p>
+                </div>
+                <div class="life-tile glass-card fade-up" data-area="business">
+                    <div class="tile-emoji">💻</div>
+                    <h3 class="tile-title">Business</h3>
+                    <div class="tile-progress">
+                        <div class="tile-progress-bar"><div class="tile-progress-fill" data-width="25%"></div></div>
+                        <span class="tile-percentage">25%</span>
+                    </div>
+                    <p class="tile-desc">Scaling projects and launching digital products.</p>
+                </div>
+                <div class="life-tile glass-card fade-up" data-area="travel">
+                    <div class="tile-emoji">✈️</div>
+                    <h3 class="tile-title">Travel</h3>
+                    <div class="tile-progress">
+                        <div class="tile-progress-bar"><div class="tile-progress-fill" data-width="30%"></div></div>
+                        <span class="tile-percentage">30%</span>
+                    </div>
+                    <p class="tile-desc">Exploring new cultures and working remotely.</p>
+                </div>
+                <div class="life-tile glass-card fade-up" data-area="lifestyle">
+                    <div class="tile-emoji">🏡</div>
+                    <h3 class="tile-title">Lifestyle</h3>
+                    <div class="tile-progress">
+                        <div class="tile-progress-bar"><div class="tile-progress-fill" data-width="50%"></div></div>
+                        <span class="tile-percentage">50%</span>
+                    </div>
+                    <p class="tile-desc">Designing a balanced and inspiring daily routine.</p>
+                </div>
+                <div class="life-tile glass-card fade-up" data-area="relationships">
+                    <div class="tile-emoji">❤️</div>
+                    <h3 class="tile-title">Relationships</h3>
+                    <div class="tile-progress">
+                        <div class="tile-progress-bar"><div class="tile-progress-fill" data-width="80%"></div></div>
+                        <span class="tile-percentage">80%</span>
+                    </div>
+                    <p class="tile-desc">Nurturing family, friends, and community.</p>
+                </div>
+                <div class="life-tile glass-card fade-up" data-area="creativity">
+                    <div class="tile-emoji">🎨</div>
+                    <h3 class="tile-title">Creativity</h3>
+                    <div class="tile-progress">
+                        <div class="tile-progress-bar"><div class="tile-progress-fill" data-width="40%"></div></div>
+                        <span class="tile-percentage">40%</span>
+                    </div>
+                    <p class="tile-desc">Writing, designing, and building new things.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TIMELINE ================= -->
+        <section class="timeline-section">
+            <h2 class="section-title">The Roadmap</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-left">
+                    <div class="timeline-marker completed"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-year">2026</span>
+                        <h3>Website Launched</h3>
+                        <p>Successfully deployed basantasaru.com to the world.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-left">
+                    <div class="timeline-marker completed"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-year">2026</span>
+                        <h3>First Ebook</h3>
+                        <p>Published and released my first digital book to the public.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-left">
+                    <div class="timeline-marker upcoming"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-year">2026</span>
+                        <h3>First 100 Sales</h3>
+                        <p>Reach the milestone of 100 paying customers for digital products.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-left">
+                    <div class="timeline-marker upcoming"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-year">2026</span>
+                        <h3>Register Business</h3>
+                        <p>Officially register and structure the business entity.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-left">
+                    <div class="timeline-marker upcoming"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-year">2027</span>
+                        <h3>Earn NPR 10 Lakh</h3>
+                        <p>Hit the first major revenue milestone through online ventures.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-left">
+                    <div class="timeline-marker upcoming"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-year">2027</span>
+                        <h3>Launch Mobile App</h3>
+                        <p>Release a utility mobile application to the app stores.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-left">
+                    <div class="timeline-marker upcoming"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-year">2027</span>
+                        <h3>Hire First Employee</h3>
+                        <p>Bring on the first team member to help scale operations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PROGRESS SECTION ================= -->
+        <section class="progress-section">
+            <h2 class="section-title">Skill & Project Progress</h2>
+            <div class="progress-bars glass-card">
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span>Website Development</span>
+                        <span class="progress-percent">80%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" data-width="80%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span>Book Writing</span>
+                        <span class="progress-percent">20%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" data-width="20%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span>Business Scaling</span>
+                        <span class="progress-percent">10%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" data-width="10%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span>Fitness & Health</span>
+                        <span class="progress-percent">60%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" data-width="60%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= ACHIEVEMENT WALL ================= -->
+        <section class="achievements-section">
+            <h2 class="section-title">Achievement Wall</h2>
+            <div class="achievements-grid">
+                <div class="achievement-badge unlocked fade-in">
+                    <div class="badge-icon">🏆</div>
+                    <span class="badge-title">First Website</span>
+                </div>
+                <div class="achievement-badge unlocked fade-in">
+                    <div class="badge-icon">🏆</div>
+                    <span class="badge-title">First Book</span>
+                </div>
+                <div class="achievement-badge locked fade-in">
+                    <div class="badge-icon">🔒</div>
+                    <span class="badge-title">First Customer</span>
+                    <span class="badge-tooltip">Locked</span>
+                </div>
+                <div class="achievement-badge locked fade-in">
+                    <div class="badge-icon">🔒</div>
+                    <span class="badge-title">First $100</span>
+                    <span class="badge-tooltip">Locked</span>
+                </div>
+                <div class="achievement-badge locked fade-in">
+                    <div class="badge-icon">🔒</div>
+                    <span class="badge-title">1000 Visitors</span>
+                    <span class="badge-tooltip">Locked</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= VISION BOARD ================= -->
+        <section class="vision-section">
+            <h2 class="section-title">Vision Board</h2>
+            <div class="vision-grid">
+                <div class="vision-item fade-scale"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80" alt="Dream House" loading="lazy"></div>
+                <div class="vision-item fade-scale"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Modern Office" loading="lazy"></div>
+                <div class="vision-item fade-scale"><img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80" alt="Laptop" loading="lazy"></div>
+                <div class="vision-item fade-scale"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80" alt="Passport" loading="lazy"></div>
+                <div class="vision-item fade-scale"><img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800&q=80" alt="Books" loading="lazy"></div>
+                <div class="vision-item fade-scale"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Luxury Car" loading="lazy"></div>
+                <div class="vision-item fade-scale"><img src="https://images.unsplash.com/photo-1579621970588-a35d7e71297c?auto=format&fit=crop&w=800&q=80" alt="Money" loading="lazy"></div>
+                <div class="vision-item fade-scale"><img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=800&q=80" alt="Happy Family" loading="lazy"></div>
+            </div>
+        </section>
+
+        <!-- ================= DAILY TRACKER ================= -->
+        <section class="tracker-section">
+            <h2 class="section-title">Today's Progress</h2>
+            <div class="tracker-card glass-card">
+                <div class="tracker-list" id="trackerList">
+                    <!-- JS will populate checkboxes -->
+                </div>
+                <div class="tracker-status" id="trackerStatus">0/5 Complete</div>
+            </div>
+        </section>
+
+        <!-- ================= QUOTE SECTION ================= -->
+        <section class="quote-section fade-up">
+            <div class="quote-card glass-card">
+                <div class="quote-mark">"</div>
+                <p class="quote-text" id="quoteText">Loading...</p>
+                <span class="quote-author" id="quoteAuthor"></span>
+            </div>
+        </section>
+
+        <!-- ================= COUNTDOWN ================= -->
+        <section class="countdown-section">
+            <div class="countdown-card glass-card fade-up">
+                <h2 class="countdown-title">Countdown to NPR 1 Crore</h2>
+                <div class="countdown-grid" id="countdownGrid">
+                    <div class="countdown-item"><span class="count-number" id="cdDays">0</span><span class="count-label">Days</span></div>
+                    <div class="countdown-item"><span class="count-number" id="cdHours">0</span><span class="count-label">Hours</span></div>
+                    <div class="countdown-item"><span class="count-number" id="cdMins">0</span><span class="count-label">Minutes</span></div>
+                    <div class="countdown-item"><span class="count-number" id="cdSecs">0</span><span class="count-label">Seconds</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= CURRENT FOCUS ================= -->
+        <section class="focus-section">
+            <h2 class="section-title">Current Focus</h2>
+            <div class="focus-list glass-card">
+                <div class="focus-item">
+                    <div class="focus-info">
+                        <span class="focus-title">Website Version 1.5</span>
+                        <span class="focus-status in-progress">In Progress</span>
+                    </div>
+                </div>
+                <div class="focus-item">
+                    <div class="focus-info">
+                        <span class="focus-title">Writing Book</span>
+                        <span class="focus-status planning">Planning</span>
+                    </div>
+                </div>
+                <div class="focus-item">
+                    <div class="focus-info">
+                        <span class="focus-title">Launching Digital Products</span>
+                        <span class="focus-status planning">Planning</span>
+                    </div>
+                </div>
+                <div class="focus-item">
+                    <div class="focus-info">
+                        <span class="focus-title">Learning Python</span>
+                        <span class="focus-status completed">Completed</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Container (Injected by components.js) -->
     <div id="footer-container"></div>
+    
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" aria-label="Scroll to top">↑</button>
 
+    <!-- Modal Overlay for Life Areas -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal-content" id="modalContent">
+            <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="../components.js"></script>
-    <script src="../script.js"></script>
+    <script src="goal.js"></script>
 </body>
 </html>
