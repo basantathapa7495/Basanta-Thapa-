@@ -142,4 +142,32 @@ document.addEventListener('DOMContentLoaded', function () {
       }, 3500);
     });
   }
+
+  var guestbookKey = 'basanta-local-guestbook-v1';
+  var guestbookForm = document.getElementById('localGuestbook');
+  var guestName = document.getElementById('guestName');
+  var guestMessage = document.getElementById('guestMessage');
+  var guestbookStatus = document.getElementById('guestbookStatus');
+
+  try {
+    var savedGuestbook = JSON.parse(localStorage.getItem(guestbookKey)) || {};
+    if (guestName) guestName.value = savedGuestbook.name || '';
+    if (guestMessage) guestMessage.value = savedGuestbook.message || '';
+  } catch (error) {}
+
+  if (guestbookForm) {
+    guestbookForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      localStorage.setItem(guestbookKey, JSON.stringify({
+        name: guestName.value.trim(),
+        message: guestMessage.value.trim(),
+        savedAt: new Date().toISOString()
+      }));
+      guestbookStatus.textContent = 'Saved only on this device.';
+      window.setTimeout(function () {
+        guestbookStatus.textContent = '';
+      }, 3500);
+    });
+  }
+
 });
