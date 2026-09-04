@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Next Version — Basanta Saru's daily self-improvement dashboard.">
+  <title>Next Version | Basanta Saru</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    .nv-page { padding: 7rem 0 5rem; }
+    .nv-hero { max-width: 760px; margin: 0 auto 2.5rem; text-align: center; }
+    .nv-kicker { color: var(--deep-teal); font: 500 .78rem/1 "DM Mono", monospace; letter-spacing: .1em; text-transform: uppercase; }
+    .nv-hero h1 { margin: .7rem 0; font-size: clamp(2.5rem, 7vw, 4.8rem); line-height: 1.04; }
+    .nv-hero p { color: var(--text-muted); font-size: 1.08rem; line-height: 1.7; }
+    .nv-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 1.25rem; align-items: start; }
+    .nv-card { background: rgba(255,255,255,.78); border: 1px solid rgba(79,139,140,.16); box-shadow: 0 15px 45px rgba(33,73,70,.08); border-radius: 20px; padding: 1.5rem; }
+    .nv-card h2 { font-size: 1.3rem; margin: 0 0 .35rem; }
+    .nv-card p { color: var(--text-muted); margin-top: 0; }
+    .score-card { background: linear-gradient(135deg, #174f50, #4f8b8c); color: white; text-align: center; }
+    .score-card h2, .score-card p { color: white; }
+    .score { font: 700 clamp(4.2rem, 12vw, 6.5rem)/.95 "DM Sans", sans-serif; margin: 1rem 0 .3rem; }
+    .score small { font-size: 1.1rem; opacity: .8; }
+    .progress-track { height: 10px; border-radius: 999px; background: rgba(255,255,255,.25); overflow: hidden; margin-top: 1.15rem; }
+    .progress-fill { height: 100%; width: 0; border-radius: inherit; background: #f5c371; transition: width .3s ease; }
+    .habit-list { display: grid; gap: .7rem; margin-top: 1.15rem; }
+    .habit { display: flex; gap: .75rem; align-items: center; padding: .9rem 1rem; border: 1px solid #e4ecea; border-radius: 12px; cursor: pointer; transition: .2s ease; }
+    .habit:hover { border-color: #8eb7b5; transform: translateY(-1px); }
+    .habit input { width: 1.1rem; height: 1.1rem; accent-color: var(--deep-teal); }
+    .habit strong { display: block; font-size: .96rem; }
+    .habit span { color: var(--text-muted); font-size: .84rem; }
+    .area-list { display: grid; gap: .8rem; margin-top: 1rem; }
+    .area-row { display: grid; grid-template-columns: 92px 1fr 34px; gap: .65rem; align-items: center; font-size: .9rem; }
+    .area-bar { height: 8px; border-radius: 999px; background: #e8efed; overflow: hidden; }
+    .area-bar i { display: block; height: 100%; width: 0; background: var(--deep-teal); transition: width .3s ease; }
+    .reflection textarea { box-sizing: border-box; width: 100%; min-height: 112px; resize: vertical; padding: .9rem; border: 1px solid #d7e2df; border-radius: 12px; font: inherit; color: var(--text); outline: none; }
+    .reflection textarea:focus { border-color: var(--deep-teal); box-shadow: 0 0 0 3px rgba(79,139,140,.12); }
+    .save-status { min-height: 1.3rem; margin: .75rem 0 0; color: var(--deep-teal) !important; font-size: .85rem; }
+    .today { margin: .4rem 0 0; color: #dff1ee !important; font: 500 .8rem "DM Mono", monospace; }
+    .nv-note { margin-top: 1.25rem; text-align: center; color: var(--text-muted); font-size: .88rem; }
+    @media (max-width: 760px) { .nv-page { padding-top: 6rem; } .nv-grid { grid-template-columns: 1fr; } .nv-card { padding: 1.2rem; } }
+  </style>
+</head>
+<body>
+  <div class="blob-bg"><div class="blob blob1"></div><div class="blob blob2"></div><div class="blob blob3"></div></div>
+  <div id="navbar-container"></div>
+
+  <main class="nv-page">
+    <div class="container">
+      <section class="nv-hero">
+        <span class="nv-kicker">Daily self-improvement system</span>
+        <h1>Build your <span style="color:var(--deep-teal)">next version.</span></h1>
+        <p>Small promises, kept every day. This is your private dashboard for becoming healthier, sharper, and more disciplined.</p>
+      </section>
+
+      <section class="nv-grid">
+        <div class="nv-card">
+          <h2>Today’s promises</h2>
+          <p>Check only what you truly complete. Consistency matters more than perfection.</p>
+          <div class="habit-list">
+            <label class="habit"><input data-habit="sleep" type="checkbox"><div><strong>Sleep on time</strong><span>Protect tomorrow’s energy.</span></div></label>
+            <label class="habit"><input data-habit="move" type="checkbox"><div><strong>Move your body</strong><span>Exercise, walk, or stretch for 20 minutes.</span></div></label>
+            <label class="habit"><input data-habit="learn" type="checkbox"><div><strong>Learn deeply</strong><span>Read, study, or practice a useful skill.</span></div></label>
+            <label class="habit"><input data-habit="build" type="checkbox"><div><strong>Build your future</strong><span>Do focused work on SNAP or another important project.</span></div></label>
+            <label class="habit"><input data-habit="money" type="checkbox"><div><strong>Respect money</strong><span>Track spending, save, or learn an income skill.</span></div></label>
+            <label class="habit"><input data-habit="mind" type="checkbox"><div><strong>Protect your mind</strong><span>Journal, meditate, or avoid useless scrolling.</span></div></label>
+          </div>
+        </div>
+
+        <aside>
+          <div class="nv-card score-card">
+            <h2>Today’s score</h2>
+            <div class="score"><span id="score">0</span><small>/100</small></div>
+            <p id="scoreMessage">Your next version begins with one action.</p>
+            <p class="today" id="todayDate"></p>
+            <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+          </div>
+
+          <div class="nv-card" style="margin-top:1.25rem">
+            <h2>Life areas</h2>
+            <p>Your score is a reflection, not a judgment.</p>
+            <div class="area-list">
+              <div class="area-row"><span>Body</span><div class="area-bar"><i id="bar-body"></i></div><b id="value-body">0</b></div>
+              <div class="area-row"><span>Mind</span><div class="area-bar"><i id="bar-mind"></i></div><b id="value-mind">0</b></div>
+              <div class="area-row"><span>Learning</span><div class="area-bar"><i id="bar-learning"></i></div><b id="value-learning">0</b></div>
+              <div class="area-row"><span>Work</span><div class="area-bar"><i id="bar-work"></i></div><b id="value-work">0</b></div>
+              <div class="area-row"><span>Money</span><div class="area-bar"><i id="bar-money"></i></div><b id="value-money">0</b></div>
+            </div>
+          </div>
+        </aside>
+
+        <div class="nv-card reflection">
+          <h2>Evening reflection</h2>
+          <p>What did you do well today? What will you improve tomorrow?</p>
+          <textarea id="reflection" placeholder="Today I am proud that...&#10;&#10;Tomorrow I will..."></textarea>
+          <p class="save-status" id="saveStatus"></p>
+        </div>
+
+        <div class="nv-card">
+          <h2>Rule for this year</h2>
+          <p style="font-family:'Playfair Display',serif;font-size:1.35rem;line-height:1.45;color:var(--deep-teal);margin:1rem 0">“Do not wait to feel motivated. Become the person who shows up.”</p>
+          <p>One strong day does not change your life. Repeating strong days does.</p>
+        </div>
+      </section>
+
+      <p class="nv-note">Your checkmarks and reflection are saved only in this browser for today.</p>
+    </div>
+  </main>
+
+  <div id="footer-container"></div>
+  <script src="components.js"></script>
+  <script>
+    const dateKey = new Date().toISOString().slice(0, 10);
+    const storageKey = 'next-version-' + dateKey;
+    const inputs = [...document.querySelectorAll('[data-habit]')];
+    const reflection = document.getElementById('reflection');
+    const scoreEl = document.getElementById('score');
+    const progressFill = document.getElementById('progressFill');
+    const scoreMessage = document.getElementById('scoreMessage');
+    const saveStatus = document.getElementById('saveStatus');
+
+    document.getElementById('todayDate').textContent = new Intl.DateTimeFormat('en-US', {
+      weekday: 'long', month: 'long', day: 'numeric'
+    }).format(new Date());
+
+    function loadData() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(storageKey)) || {};
+        inputs.forEach(input => input.checked = Boolean(saved[input.dataset.habit]));
+        reflection.value = saved.reflection || '';
+      } catch (_) {}
+      updateDashboard();
+    }
+
+    function saveData(message = 'Saved for today.') {
+      const habits = Object.fromEntries(inputs.map(input => [input.dataset.habit, input.checked]));
+      localStorage.setItem(storageKey, JSON.stringify({ ...habits, reflection: reflection.value }));
+      saveStatus.textContent = message;
+    }
+
+    function setArea(name, value) {
+      document.getElementById('bar-' + name).style.width = value + '%';
+      document.getElementById('value-' + name).textContent = value;
+    }
+
+    function updateDashboard() {
+      const done = inputs.filter(input => input.checked).length;
+      const score = Math.round((done / inputs.length) * 100);
+      scoreEl.textContent = score;
+      progressFill.style.width = score + '%';
+
+      const message = score === 0 ? 'Your next version begins with one action.'
+        : score < 50 ? 'Good start. Keep one promise more.'
+        : score < 100 ? 'You are building momentum.'
+        : 'Excellent. You showed up for yourself.';
+      scoreMessage.textContent = message;
+
+      setArea('body', ((+inputs[0].checked + +inputs[1].checked) / 2) * 100);
+      setArea('mind', inputs[5].checked ? 100 : 0);
+      setArea('learning', inputs[2].checked ? 100 : 0);
+      setArea('work', inputs[3].checked ? 100 : 0);
+      setArea('money', inputs[4].checked ? 100 : 0);
+    }
+
+    inputs.forEach(input => input.addEventListener('change', () => {
+      updateDashboard();
+      saveData('Progress saved. Keep going.');
+    }));
+
+    reflection.addEventListener('input', () => saveData('Reflection saved.'));
+    loadData();
+  </script>
+</body>
+</html>
