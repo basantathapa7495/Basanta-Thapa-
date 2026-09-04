@@ -8,16 +8,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // ---- Helper: check if we're inside a subfolder ----
   function getRootPrefix() {
     const path = window.location.pathname;
-    // If the URL contains any of our folder names, we need to go up one level
     if (path.includes('/blogs/') || 
         path.includes('/projects/') || 
         path.includes('/books/')) {
       return '../';
     }
-    return '';  // We're in the root folder
+    return '';
   }
 
-  const prefix = getRootPrefix();  // either "" or "../"
+  const prefix = getRootPrefix();
 
   // ---- NAVBAR (dynamic paths) ----
   const navbarHTML = `
@@ -30,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
       </a>
       <ul class="nav-links" id="navLinksList">
         <li><a href="${prefix}index.html" class="nav-home">Home</a></li>
+        <li><a href="${prefix}next-version.html" class="nav-next-version">Next Version</a></li>
         <li><a href="${prefix}blogs/blog.html" class="nav-blog">Blog</a></li>
         <li><a href="${prefix}projects/project.html" class="nav-projects">Project</a></li>
         <li><a href="${prefix}books/books.html" class="nav-books">Books</a></li>
@@ -47,10 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // ---- FOOTER (dynamic paths) ----
   const footerHTML = `
     <footer>
-      <p class="footer-title">Basanta Thapa — <span class="footer-location">Syangja, Nepal</span></p>
+      <p class="footer-title">Basanta Saru — <span class="footer-location">Syangja, Nepal</span></p>
       <p class="mono footer-tagline">building at the intersection of wonder and logic · 2026</p>
       <ul class="footer-links">
         <li><a href="${prefix}index.html">Home</a></li>
+        <li><a href="${prefix}next-version.html">Next Version</a></li>
         <li><a href="${prefix}blogs/blog.html">Blog</a></li>
         <li><a href="${prefix}projects/project.html">Project</a></li>
         <li><a href="${prefix}books/books.html">Books</a></li>
@@ -58,17 +59,14 @@ document.addEventListener('DOMContentLoaded', () => {
     </footer>
   `;
 
-  // ---- INJECT ----
   const navContainer = document.getElementById('navbar-container');
   if (navContainer) navContainer.innerHTML = navbarHTML;
 
   const footerContainer = document.getElementById('footer-container');
   if (footerContainer) footerContainer.innerHTML = footerHTML;
 
-  // ---- HIGHLIGHT ACTIVE PAGE ----
   highlightActiveLink();
 
-  // ---- HAMBURGER MENU ----
   const hamburgerBtn = document.getElementById('hamburgerBtn');
   const navLinksList = document.getElementById('navLinksList');
   if (hamburgerBtn && navLinksList) {
@@ -77,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ---- MUSIC TOGGLE ----
   const musicBtn = document.getElementById('musicBtn');
   const audio = document.getElementById('bgMusic');
   if (musicBtn && audio) {
@@ -93,14 +90,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Helper: set 'active' class on current page's nav link
 function highlightActiveLink() {
   const path = window.location.pathname.split('/').pop() || 'index.html';
   const map = {
     'index.html': 'nav-home',
+    'next-version.html': 'nav-next-version',
     'blog.html': 'nav-blog',
     'project.html': 'nav-projects',
-    'goals.html': 'nav-goals',
     'books.html': 'nav-books',
   };
   const targetClass = map[path];
