@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // If the URL contains any of our folder names, we need to go up one level
     if (path.includes('/blogs/') || 
         path.includes('/projects/') || 
-        path.includes('/books/')) {
+        path.includes('/books/') ||
+        path.includes('/turning-20/')) {
       return '../';
     }
     return '';  // We're in the root folder
@@ -31,6 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <li><a href="${prefix}blogs/blog.html" class="nav-blog">Blog</a></li>
         <li><a href="${prefix}projects/project.html" class="nav-projects">Project</a></li>
         <li><a href="${prefix}books/books.html" class="nav-books">Books</a></li>
+        <li><a href="${prefix}digital-life.html" class="nav-digital-life">Digital Life</a></li>
+        <li><a href="${prefix}turning-20/index.html" class="nav-daily-journal">Daily Journal</a></li>
+        <li><a href="${prefix}next-version.html" class="nav-next-version">Next Version</a></li>
       </ul>
       <button class="hamburger" id="hamburgerBtn" aria-label="Open navigation menu" aria-controls="navLinksList" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -48,6 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <li><a href="${prefix}blogs/blog.html">Blog</a></li>
         <li><a href="${prefix}projects/project.html">Project</a></li>
         <li><a href="${prefix}books/books.html">Books</a></li>
+        <li><a href="${prefix}digital-life.html">Digital Life</a></li>
+        <li><a href="${prefix}turning-20/index.html">Daily Journal</a></li>
+        <li><a href="${prefix}next-version.html">Next Version</a></li>
       </ul>
     </footer>
   `;
@@ -77,13 +84,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Helper: set 'active' class on current page's nav link
 function highlightActiveLink() {
-  const path = window.location.pathname.split('/').pop() || 'index.html';
+  const fullPath = window.location.pathname;
+  const path = fullPath.split('/').pop() || 'index.html';
+
+  if (fullPath.includes('/turning-20/')) {
+    document.querySelector('.nav-daily-journal')?.classList.add('active');
+    return;
+  }
+
   const map = {
     'index.html': 'nav-home',
     'blog.html': 'nav-blog',
     'project.html': 'nav-projects',
     'goals.html': 'nav-goals',
     'books.html': 'nav-books',
+    'digital-life.html': 'nav-digital-life',
+    'next-version.html': 'nav-next-version',
   };
   const targetClass = map[path];
   if (!targetClass) return;
