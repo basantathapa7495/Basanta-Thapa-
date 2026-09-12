@@ -22,11 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // ---- NAVBAR (dynamic paths) ----
   const navbarHTML = `
     <nav>
-      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-      <a href="${prefix}index.html" class="nav-logo">
-        Basanta <span class="logo-dot">✦</span> Saru
+      <a href="${prefix}index.html" class="nav-logo" aria-label="Basanta Saru home">
+        <span class="brand-mark" aria-hidden="true">B.S</span>
       </a>
       <ul class="nav-links" id="navLinksList">
         <li><a href="${prefix}index.html" class="nav-home">Home</a></li>
@@ -34,13 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <li><a href="${prefix}projects/project.html" class="nav-projects">Project</a></li>
         <li><a href="${prefix}books/books.html" class="nav-books">Books</a></li>
       </ul>
-      <div class="nav-actions">
-        <button class="music-toggle" id="musicBtn">🎧 vibe</button>
-      </div>
-      <audio id="bgMusic" loop>
-        <source src="${prefix}music.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open navigation menu" aria-controls="navLinksList" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
   `;
 
@@ -73,24 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinksList = document.getElementById('navLinksList');
   if (hamburgerBtn && navLinksList) {
     hamburgerBtn.addEventListener('click', () => {
-      navLinksList.classList.toggle('show');
+      const isOpen = navLinksList.classList.toggle('show');
+      hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+      hamburgerBtn.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
     });
   }
 
-  // ---- MUSIC TOGGLE ----
-  const musicBtn = document.getElementById('musicBtn');
-  const audio = document.getElementById('bgMusic');
-  if (musicBtn && audio) {
-    musicBtn.addEventListener('click', () => {
-      if (audio.paused) {
-        audio.play().catch(err => console.warn('Playback error:', err));
-        musicBtn.textContent = '🔊 vibe';
-      } else {
-        audio.pause();
-        musicBtn.textContent = '🎧 vibe';
-      }
-    });
-  }
 });
 
 // Helper: set 'active' class on current page's nav link
