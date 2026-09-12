@@ -2,297 +2,300 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="google-site-verification" content="Y16OYNJ2r3Q9dePCcdUM09vCGQrGSexuFNQMPSCDqmQ">
-  <meta name="description" content="Basanta Saru — creator, builder, writer, and lifelong learner from Nepal.">
-  <meta name="theme-color" content="#0b2425">
-  <title>Basanta Saru | Building, Learning & Becoming</title>
-  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="google-site-verification" content="Y16OYNJ2r3Q9dePCcdUM09vCGQrGSexuFNQMPSCDqmQ" />
+  <meta name="description" content="Official website of Basanta Saru. Entrepreneur, creator, learner, and developer from Nepal.">
+  <title>Basanta Saru | Entrepreneur, Creator & Developer</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Basanta saru" />
+  <link rel="manifest" href="/site.webmanifest" />
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="home.css">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,500&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
-<body class="home-body">
-  <a class="skip-link" href="#main">Skip to content</a>
+
+<body>
+  <!-- Background blobs -->
+  <div class="blob-bg">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+  </div>
+
+  <!-- 🌐 SHARED NAVBAR injected by components.js -->
   <div id="navbar-container"></div>
 
-  <main id="main">
-    <section class="hero-shell">
-      <div class="home-container hero-grid">
-        <div class="hero-copy reveal">
-          <p class="eyebrow"><span></span>Syangja, Nepal · Building in public</p>
-          <h1>Building a life worth <em>documenting.</em></h1>
-          <p class="hero-intro">I’m Basanta Saru — a creator, writer, and builder learning how to turn curiosity into useful work and daily discipline into a meaningful life.</p>
-          <div class="hero-actions">
-            <a class="site-button site-button-primary" href="#start">Start here <span>↘</span></a>
-            <a class="site-button site-button-ghost" href="next-version.html">Explore Next Version <span>→</span></a>
+  <main>
+<!-- ====== HERO ====== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <span class="handwritten">Syangja, Nepal 🇳🇵</span>
+      <h2 class="fade-up" style="animation-delay:0.05s">
+        Writing books and documenting<br>
+        <span style="color: var(--deep-teal);">the journey of becoming.</span>
+      </h2>
+      <div class="typing-wrapper fade-up" id="typingLine" style="animation-delay:0.1s"></div>
+      <!-- Added Image Wrapper to hold your picture -->
+      <div class="hero-image-wrapper fade-up" style="animation-delay:0.2s">
+      <img src="assets/img/Basanta_saru.jpg" alt="Basanta Saru Profile Picture">
+      </div>
+      <h3>About </h3>
+      <p class="fade-up" style="animation-delay:0.15s; color: var(--text-muted); max-width: 580px; font-size: 1.05rem;">
+        Basanta — a thinker, creator, and perpetual seeker. This space is where I document my evolving thoughts on spirituality, 
+        philosophy, technology, and the messy, beautiful art of becoming. Not as an expert, but as someone walking the path and sharing what I find along the way. </p>
+    </div>
+
+
+  </div>
+</section>
+
+
+
+
+    <div class="container"></div>
+    
+<!-- ====== FEATURED PROJECTS ====== -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Published & Active Material</span>
+    <h2 class="text-center"><center>My Books</center></h2>
+
+    <div class="grid-2 grid-2-keep">
+
+      <!-- Book 1 -->
+      <div class="card card-compact">
+        <img src="assets/img/book1.jpg" alt="Earn before you graduate" class="card-image" loading="lazy">
+        <h3>Earn before graduate</h3>
+        <a href="books/ebg.html" class="btn btn-buy-green btn-sm">🛒 Buy</a>
+      </div>
+
+      <!-- Book 2 -->
+      <div class="card card-compact">
+        <img src="assets/img/book2.jpg" alt="Eat healthy live better" class="card-image" loading="lazy">
+        <h3>Eat healthy live better</h3>
+        <a href="books/ehb.html" class="btn btn-buy-green btn-sm">🛒 Buy</a>
+      </div>
+
+      <!-- Book 3 -->
+      <div class="card card-compact">
+        <img src="assets/img/book3.jpg" alt="The Hindu wisdom of 100 years" class="card-image" loading="lazy">
+        <h3>The Hindu wisdom </h3>
+        <a href="books/hw.html" class="btn btn-buy-green btn-sm">🛒 Buy</a>
+      </div>
+
+      <!-- Book 4 -->
+      <div class="card card-compact">
+        <img src="assets/img/book4.jpg" alt="Your fourth book" class="card-image" loading="lazy">
+        <h3>The lie of modern life</h3>
+        <a href="books/lm.html" class="btn btn-buy-green btn-sm">🛒 Buy</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+    
+    
+<!-- ============ PROJECT 1: BIRTHDAY SURPRISE GENERATOR ============ -->
+<!-- ============ PROJECTS HEADING ============ -->
+<section class="section">
+  <div class="container" style="text-align: center;">
+    <span class="section-label">Things I've Built</span>
+    <h2>My Projects</h2>
+  </div>
+</section>
+
+<!-- ============ PROJECT 1: BIRTHDAY SURPRISE GENERATOR ============ -->
+<section class="project-horizontal">
+  <div class="container">
+    <div class="project-row"> 
+      
+      <div class="project-text">
+        <span class="section-label">Project</span>
+        <h2>Birthday Surprise Generator</h2>
+        <p>Turn an ordinary birthday into a memorable celebration. This tool creates a personalized birthday surprise page with photos, videos, music, heartfelt messages, and beautiful animations.</p>
+        <a href="projects/project1.html" class="btn btn-primary">Try It Now →</a>
+      </div>
+      
+      <div class="project-visual">
+        <img src="assets/img/project1.jpg" alt="Birthday Surprise Generator">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECT 2: AGE CALCULATOR ============ -->
+<section class="project-horizontal">
+  <div class="container">
+    <div class="project-row"> 
+      
+      <div class="project-text">
+        <span class="section-label">Project</span>
+        <h2>Age Calculator</h2>
+        <p>A modern age calculator that does more than calculate years. Discover detailed life statistics, including your exact age, total days lived, upcoming birthday countdown, and zodiac sign.</p>
+        <a href="projects/project2.html" class="btn btn-primary">Try It Now →</a>
+      </div>
+      
+      <div class="project-visual">
+        <img src="assets/img/project2.jpg" alt="Age Calculator">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECT 3: LOVE PERCENTAGE CALCULATOR ============ -->
+<section class="project-horizontal">
+  <div class="container">
+  
+    <div class="project-row"> 
+
+      
+      <div class="project-text">
+        <span class="section-label">Project</span>
+        <h2>Love Percentage Calculator</h2>
+        <p>A fun entertainment tool that calculates a playful compatibility score between two names. Generates a love percentage, humorous message, and shareable result.</p>
+        <a href="projects/project3.html" class="btn btn-primary">Try It Now →</a>
+      </div>
+      
+      <div class="project-visual">
+        <img src="assets/img/project3.jpg" alt="Love Percentage Calculator">
+      </div>
+
+    </div>
+  </div>
+</section>
+<div class="container" style="margin-top: 2rem;">
+  <a href="projects/project.html" class="btn btn-explore">Explore More Projects →</a>
+</div>
+
+<!-- ============ BLOGS SECTION ============ -->
+<section class="section" id="blogs">
+  <div class="container">
+    <span class="section-label">Recent Writings</span>
+    <h2>From the Blog</h2>
+
+    <div class="blog-list">
+
+      <article class="blog-item">
+        <div class="blog-content">
+          <h3>How I Built This Website</h3>
+          <p>The story behind this site — the design choices, the tech stack, and why I decided to build it myself instead of using a template.</p>
+          <a href="blogs/blog1.html" class="note-link">Read More →</a>
+        </div>
+        <div class="blog-thumb">
+          <img src="assets/img/blog1.jpg" alt="How I Built This Website">
+        </div>
+      </article>
+
+      <hr>
+
+      <article class="blog-item">
+        <div class="blog-content">
+          <h3>Why I'm Writing Books Instead of Chasing Trends</h3>
+          <p>In a world obsessed with viral content and quick wins, I chose the slow path. Here's why writing books matters more than ever.</p>
+          <a href="blogs/blog2.html" class="note-link">Read More →</a>
+        </div>
+        <div class="blog-thumb">
+          <img src="assets/img/blog2.jpg" alt="Why I'm Writing Books">
+        </div>
+      </article>
+
+      <hr>
+
+      <article class="blog-item">
+        <div class="blog-content">
+          <h3>The 10 Books That Changed My Thinking</h3>
+          <p>A curated list of the books that shaped my perspective on life, business, and creativity — and why you should read them too.</p>
+          <a href="blogs/blog3.html" class="note-link">Read More →</a>
+        </div>
+        <div class="blog-thumb">
+          <img src="assets/img/blog3.jpg" alt="10 Books That Changed My Thinking">
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+<div class="container" style="margin-top: 2rem;">
+  <a href="blogs/blog.html" class="btn btn-explore-blog">Explore More Blogs →</a>
+</div>
+
+<!-- ============ CONTACT SECTION ============ -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="contact-form-card">
+      <span class="section-label">Get in Touch</span>
+      <h2>Let's Connect</h2>
+      <p class="contact-desc">
+        Have a question, idea, or just want to say hello? I'd love to hear from you.
+      </p>
+      
+      <form class="contact-form" action="https://formspree.io/f/xojoynqw" method="POST">
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              placeholder="John Doe" 
+              required
+            >
           </div>
-          <div class="hero-meta">
-            <div><strong>Currently</strong><span>Building SNAP</span></div>
-            <div><strong>Learning</strong><span>Technology & business</span></div>
-            <div><strong>Practising</strong><span>Better health & focus</span></div>
+          
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              placeholder="john@example.com" 
+              required
+            >
           </div>
         </div>
-        <div class="portrait-wrap reveal reveal-delay">
-          <div class="portrait-frame"><img src="assets/img/Basanta_saru.jpg" alt="Portrait of Basanta Saru"></div>
-          <div class="portrait-card portrait-card-top"><span class="status-dot"></span> Creating from Nepal</div>
-          <div class="portrait-card portrait-card-bottom"><strong id="liveDate">Today</strong><span>Keep becoming.</span></div>
+        
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input 
+            type="text" 
+            id="subject" 
+            name="subject" 
+            placeholder="What's this about?" 
+            required
+          >
         </div>
-      </div>
-      <div class="hero-orbit hero-orbit-one" aria-hidden="true"></div>
-      <div class="hero-orbit hero-orbit-two" aria-hidden="true"></div>
-    </section>
+        
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea 
+            id="message" 
+            name="message" 
+            placeholder="Tell me what's on your mind..." 
+            rows="6"
+            required
+          ></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
 
-    <section class="section-block" id="start">
-      <div class="home-container">
-        <div class="section-heading reveal">
-          <div><p class="eyebrow"><span></span>Start here</p><h2>Three doors into my world.</h2></div>
-          <p>Choose what interests you. Each path is part of the same journey: building useful things while becoming a better human.</p>
-        </div>
-        <div class="start-grid">
-          <a class="start-card reveal" href="#now"><span class="card-number">01</span><span class="card-arrow">↗</span><div><h3>What I’m doing now</h3><p>My current priorities, challenges, and learning.</p></div></a>
-          <a class="start-card reveal reveal-delay" href="next-version.html"><span class="card-number">02</span><span class="card-arrow">↗</span><div><h3>Build your next version</h3><p>Practical foundations for health, discipline, and growth.</p></div></a>
-          <a class="start-card reveal reveal-delay-2" href="#work"><span class="card-number">03</span><span class="card-arrow">↗</span><div><h3>See what I’m building</h3><p>Projects, books, experiments, and lessons.</p></div></a>
-        </div>
-      </div>
-    </section>
 
-    <section class="section-block now-section" id="now">
-      <div class="home-container now-grid">
-        <div class="section-heading section-heading-stacked reveal">
-          <p class="eyebrow light"><span></span>Now · September 2026</p>
-          <h2>My attention is here.</h2>
-          <p>A public snapshot of what I’m focused on instead of pretending I can do everything at once.</p>
-          <p class="updated-note">Last updated: September 2026</p>
-        </div>
-        <div class="now-list">
-          <article class="now-item reveal"><span>01</span><div><h3>Launch SNAP carefully</h3><p>Build a school-management product that is genuinely useful for Nepali schools, beginning with real users.</p></div></article>
-          <article class="now-item reveal"><span>02</span><div><h3>Strengthen the foundation</h3><p>Fix sleep first, then gradually improve movement, food, focus, and energy.</p></div></article>
-          <article class="now-item reveal"><span>03</span><div><h3>Learn by shipping</h3><p>Improve at programming, product design, communication, and business through real projects.</p></div></article>
-          <article class="now-item reveal"><span>04</span><div><h3>Document honestly</h3><p>Share useful lessons from the difficult, unfinished middle—not only polished results.</p></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-block" id="challenge">
-      <div class="home-container challenge-layout">
-        <div class="challenge-copy reveal">
-          <p class="eyebrow"><span></span>30-day challenge</p>
-          <h2>One promise.<br>Thirty honest days.</h2>
-          <p>My current promise is simple: protect my sleep schedule. Each completed day is stored privately on this device.</p>
-          <a class="text-link" href="next-version.html">Read my sleep rules →</a>
-        </div>
-        <div class="challenge-card reveal reveal-delay">
-          <div class="challenge-top">
-            <div><span class="mini-label">Current challenge</span><h3>Wake up at the same time</h3></div>
-            <div class="challenge-score"><strong id="challengeCount">0</strong><span>/ 30 days</span></div>
-          </div>
-          <div class="challenge-progress"><i id="challengeProgress"></i></div>
-          <div class="day-grid" id="dayGrid" aria-label="30-day sleep challenge"></div>
-          <div class="challenge-footer"><button class="small-button" id="markToday" type="button">Mark today complete</button><button class="quiet-button" id="resetChallenge" type="button">Reset</button></div>
-          <p class="save-message" id="challengeMessage" aria-live="polite"></p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-block soft-section" id="roadmap">
-      <div class="home-container">
-        <div class="section-heading reveal">
-          <div><p class="eyebrow"><span></span>Next Version roadmap</p><h2>Build the foundation in order.</h2></div>
-          <p>Each new area will be added only after the previous foundation becomes useful and practical.</p>
-        </div>
-        <div class="roadmap">
-          <a class="roadmap-item active reveal" href="next-version.html"><span class="roadmap-state">Active now</span><span class="roadmap-icon">01</span><div><h3>Sleep</h3><p>Wake time, morning light, naps, environment, and evening routine.</p></div><span class="roadmap-arrow">→</span></a>
-          <div class="roadmap-item reveal"><span class="roadmap-state">Coming later</span><span class="roadmap-icon">02</span><div><h3>Movement</h3><p>Walking, strength, mobility, and a realistic beginner routine.</p></div></div>
-          <div class="roadmap-item reveal"><span class="roadmap-state">Coming later</span><span class="roadmap-icon">03</span><div><h3>Nutrition</h3><p>Simple meals, water, energy, and consistency without extremes.</p></div></div>
-          <div class="roadmap-item reveal"><span class="roadmap-state">Coming later</span><span class="roadmap-icon">04</span><div><h3>Mind & focus</h3><p>Attention, digital discipline, reflection, and emotional strength.</p></div></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-block" id="reflection">
-      <div class="home-container reflection-layout">
-        <div class="reflection-copy reveal">
-          <p class="eyebrow"><span></span>Weekly reflection</p>
-          <h2>A week should leave a lesson.</h2>
-          <p>Use these questions every Sunday. Your writing stays only in your browser.</p>
-          <blockquote>“Awareness turns experience into growth.”</blockquote>
-        </div>
-        <form class="reflection-form reveal reveal-delay" id="reflectionForm">
-          <label>What went well this week?<textarea id="weeklyWin" rows="3" placeholder="A win I want to remember..."></textarea></label>
-          <label>What did I learn?<textarea id="weeklyLesson" rows="3" placeholder="A lesson I earned..."></textarea></label>
-          <label>What matters most next week?<textarea id="weeklyFocus" rows="3" placeholder="My single priority..."></textarea></label>
-          <div class="form-actions"><button class="small-button" type="submit">Save reflection</button><span id="reflectionStatus" aria-live="polite"></span></div>
-        </form>
-      </div>
-    </section>
-
-    <section class="section-block timeline-section" id="journey">
-      <div class="home-container">
-        <div class="section-heading reveal">
-          <div><p class="eyebrow light"><span></span>The journey</p><h2>Still early. Already moving.</h2></div>
-          <p>Progress rarely looks dramatic from the inside. These are a few markers on the road.</p>
-        </div>
-        <div class="timeline">
-          <article class="timeline-item reveal"><time>2025</time><div><h3>Started building seriously</h3><p>Moved from consuming ideas to experimenting with websites, tools, and personal projects.</p></div></article>
-          <article class="timeline-item reveal"><time>2026</time><div><h3>Created a public home</h3><p>Built basantasaru.com to collect my work, writing, books, and evolving worldview.</p></div></article>
-          <article class="timeline-item reveal"><time>Now</time><div><h3>Building SNAP</h3><p>Working toward a practical school platform designed around the reality of Nepali schools.</p></div></article>
-          <article class="timeline-item reveal"><time>Next</time><div><h3>Earn trust through useful work</h3><p>Serve real users, improve one system at a time, and document the journey.</p></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-block" id="learning">
-      <div class="home-container">
-        <div class="section-heading reveal">
-          <div><p class="eyebrow"><span></span>Currently learning</p><h2>My education is not finished.</h2></div>
-          <p>I’m building a practical education around the problems I want to solve.</p>
-        </div>
-        <div class="learning-grid">
-          <article class="learning-card reveal"><span>Code</span><h3>Modern web development</h3><p>Next.js, databases, authentication, deployment, and reliable products.</p><div class="learning-meter"><i style="width:72%"></i></div><small>Learning through SNAP</small></article>
-          <article class="learning-card reveal reveal-delay"><span>Business</span><h3>Selling something useful</h3><p>Understanding schools, talking to users, pricing honestly, and earning a first customer.</p><div class="learning-meter"><i style="width:46%"></i></div><small>Learning through conversations</small></article>
-          <article class="learning-card reveal reveal-delay-2"><span>Life</span><h3>Personal discipline</h3><p>Sleep, attention, consistency, clear thinking, and acting without waiting for motivation.</p><div class="learning-meter"><i style="width:38%"></i></div><small>Learning through practice</small></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-block build-log-section" id="build-log">
-      <div class="home-container build-log-layout">
-        <div class="section-heading section-heading-stacked reveal">
-          <p class="eyebrow light"><span></span>Build in public</p>
-          <h2>Notes from building SNAP.</h2>
-          <p>The honest product log: decisions, obstacles, improvements, and lessons from building alone.</p>
-          <a class="site-button site-button-light" href="projects/project.html">Explore projects →</a>
-        </div>
-        <div class="log-list">
-          <article class="log-entry reveal"><time>Sep 2026</time><div><h3>Making the landing page clearer</h3><p>Rewriting the message around real school problems: attendance, fees, notices, results, and paperwork.</p></div></article>
-          <article class="log-entry reveal"><time>Sep 2026</time><div><h3>Preparing for deployment</h3><p>Cleaning the project, fixing build errors, and connecting a temporary domain before real-school demos.</p></div></article>
-          <article class="log-entry reveal"><time>Aug 2026</time><div><h3>Designing for principals and teachers</h3><p>Moving from a list of features toward dashboards that show what needs attention today.</p></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-block" id="goals">
-      <div class="home-container">
-        <div class="section-heading reveal">
-          <div><p class="eyebrow"><span></span>My year 20 roadmap</p><h2>Goals that change who I become.</h2></div>
-          <p>Ambition becomes useful when it turns into direction.</p>
-        </div>
-        <div class="goal-grid">
-          <article class="goal-card reveal"><span>01</span><h3>Health</h3><p>Build reliable sleep, movement, and food habits that support my work.</p></article>
-          <article class="goal-card reveal"><span>02</span><h3>Income</h3><p>Earn independently by solving real problems and creating valuable work.</p></article>
-          <article class="goal-card reveal"><span>03</span><h3>SNAP</h3><p>Move from building alone to helping the first real schools use the product.</p></article>
-          <article class="goal-card reveal"><span>04</span><h3>Skill</h3><p>Become stronger at development, design, business, and communication.</p></article>
-          <article class="goal-card reveal"><span>05</span><h3>Content</h3><p>Publish useful lessons without chasing every trend or platform.</p></article>
-          <article class="goal-card reveal"><span>06</span><h3>Character</h3><p>Become calmer, more disciplined, honest, dependable, and courageous.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-block library-section" id="books">
-      <div class="home-container">
-        <div class="section-heading reveal">
-          <div><p class="eyebrow light"><span></span>Reading shelf</p><h2>Books I’m learning from.</h2></div>
-          <a class="text-link text-link-light" href="books/books.html">See my published books →</a>
-        </div>
-        <div class="shelf-grid">
-          <article class="shelf-card reveal"><div class="shelf-cover shelf-cover-one"><span>READ</span><strong>Atomic<br>Habits</strong></div><div><span class="book-status complete">Finished</span><h3>Atomic Habits</h3><p>Small repeated actions shape identity more powerfully than occasional motivation.</p></div></article>
-          <article class="shelf-card reveal reveal-delay"><div class="shelf-cover shelf-cover-two"><span>READING</span><strong>The Power<br>of Now</strong></div><div><span class="book-status">In progress</span><h3>The Power of Now</h3><p>Most unnecessary suffering grows from living everywhere except the present.</p></div></article>
-          <article class="shelf-card reveal reveal-delay-2"><div class="shelf-cover shelf-cover-three"><span>NEXT</span><strong>Meditations</strong></div><div><span class="book-status">On the list</span><h3>Meditations</h3><p>Control my response, practise virtue, and focus on what is mine to do.</p></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-block" id="ideas">
-      <div class="home-container">
-        <div class="section-heading reveal">
-          <div><p class="eyebrow"><span></span>Idea garden</p><h2>Thoughts worth growing.</h2></div>
-          <a class="text-link" href="blogs/blog.html">Read the blog →</a>
-        </div>
-        <div class="idea-grid">
-          <article class="idea-card idea-card-wide reveal"><span class="idea-tag">Growth</span><p>“Your next version is built by the promises you keep when nobody is watching.”</p><small>Note 001</small></article>
-          <article class="idea-card reveal"><span class="idea-tag">Building</span><p>A slow laptop can slow the machine. It does not have to shrink the ambition.</p><small>Note 002</small></article>
-          <article class="idea-card reveal"><span class="idea-tag">Focus</span><p>You do not need to improve every part of life today. Start with the foundation.</p><small>Note 003</small></article>
-          <article class="idea-card reveal"><span class="idea-tag">Work</span><p>A small useful product for real people is worth more than a giant imaginary company.</p><small>Note 004</small></article>
-          <article class="idea-card idea-card-dark reveal"><span class="idea-tag">Courage</span><p>Build before you feel ready. Readiness often arrives after action.</p><small>Note 005</small></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-block" id="work">
-      <div class="home-container">
-        <div class="section-heading reveal">
-          <div><p class="eyebrow"><span></span>Selected work</p><h2>Small projects, made with care.</h2></div>
-          <a class="text-link" href="projects/project.html">View all projects →</a>
-        </div>
-        <div class="work-grid">
-          <article class="work-card reveal"><a href="projects/project1.html"><img src="assets/img/project1.jpg" alt="Birthday Surprise Generator" loading="lazy"></a><div class="work-body"><span>Web experience</span><h3>Birthday Surprise Generator</h3><p><strong>Problem:</strong> generic birthday messages feel forgettable.<br><strong>Solution:</strong> a personal page with photos, music, video, and heartfelt words.</p><a class="text-link" href="projects/project1.html">Open project →</a></div></article>
-          <article class="work-card reveal reveal-delay"><a href="projects/project2.html"><img src="assets/img/project2.jpg" alt="Age Calculator" loading="lazy"></a><div class="work-body"><span>Useful tool</span><h3>Age Calculator</h3><p><strong>Problem:</strong> age is more interesting than one number.<br><strong>Solution:</strong> exact age, days lived, countdown, and life statistics.</p><a class="text-link" href="projects/project2.html">Open project →</a></div></article>
-          <article class="work-card reveal reveal-delay-2"><a href="projects/project3.html"><img src="assets/img/project3.jpg" alt="Love Percentage Calculator" loading="lazy"></a><div class="work-body"><span>Fun experiment</span><h3>Love Percentage</h3><p><strong>Problem:</strong> friends want something playful to share.<br><strong>Solution:</strong> a light compatibility result with a custom message.</p><a class="text-link" href="projects/project3.html">Open project →</a></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-block tools-section" id="tools">
-      <div class="home-container">
-        <div class="section-heading reveal">
-          <div><p class="eyebrow"><span></span>Free tools</p><h2>Made to be used.</h2></div>
-          <p>Simple experiments that turn an idea into something interactive.</p>
-        </div>
-        <div class="tool-row">
-          <a class="tool-card reveal" href="projects/project1.html"><span class="tool-icon">🎉</span><div><h3>Birthday Surprise</h3><p>Create a memorable celebration page.</p></div><span>↗</span></a>
-          <a class="tool-card reveal" href="projects/project2.html"><span class="tool-icon">⏳</span><div><h3>Age Calculator</h3><p>Explore the numbers behind your age.</p></div><span>↗</span></a>
-          <a class="tool-card reveal" href="projects/project3.html"><span class="tool-icon">♡</span><div><h3>Love Calculator</h3><p>Generate a playful compatibility score.</p></div><span>↗</span></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-block gallery-section" id="gallery">
-      <div class="home-container">
-        <div class="section-heading reveal">
-          <div><p class="eyebrow light"><span></span>Fragments of the journey</p><h2>Work, words, and experiments.</h2></div>
-          <p>Not everything belongs in a résumé. Some things simply show what the journey feels like.</p>
-        </div>
-        <div class="gallery-grid">
-          <figure class="gallery-main reveal"><img src="assets/img/Basanta_saru.jpg" alt="Basanta Saru in Nepal" loading="lazy"><figcaption>Becoming the person behind the work.</figcaption></figure>
-          <figure class="reveal reveal-delay"><img src="assets/img/blog1.jpg" alt="Writing and website-building story" loading="lazy"><figcaption>Documenting how things are built.</figcaption></figure>
-          <figure class="reveal reveal-delay-2"><img src="assets/img/project1.jpg" alt="A digital project by Basanta Saru" loading="lazy"><figcaption>Turning small ideas into real pages.</figcaption></figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-block connect-section" id="connect">
-      <div class="home-container connect-grid">
-        <div class="connect-copy reveal">
-          <p class="eyebrow light"><span></span>Stay connected</p>
-          <h2>Follow the journey while it is still being built.</h2>
-          <p>An occasional newsletter about building, learning, and becoming will launch here later. For now, explore the newest writing.</p>
-          <a class="site-button site-button-light" href="blogs/blog.html">Read the blog →</a>
-        </div>
-        <div class="guestbook-card reveal reveal-delay">
-          <span class="mini-label">Private guestbook</span>
-          <h3>Leave a note for future you.</h3>
-          <p style="color:var(--h-muted);line-height:1.6">This note stays only on this browser and is never sent anywhere.</p>
-          <form id="localGuestbook">
-            <label for="guestName">Your name</label>
-            <input id="guestName" type="text" placeholder="Your name" autocomplete="off">
-            <label for="guestMessage">Your note</label>
-            <textarea id="guestMessage" rows="4" placeholder="A thought, encouragement, or reminder..." required></textarea>
-            <div class="form-actions"><button class="small-button small-button-gold" type="submit">Save note</button><span id="guestbookStatus" aria-live="polite"></span></div>
-          </form>
-        </div>
-      </div>
-    </section>
   </main>
-
+  <!-- 🌐 SHARED FOOTER injected by components.js -->
   <div id="footer-container"></div>
-  <script src="components.js"></script>
-  <script src="home.js"></script>
+
+  <!-- SCRIPTS (order matters) -->
+  <script src="script.js"></script>
+  <script src="components.js"></script>  <!-- loads nav & footer -->
 </body>
 </html>
