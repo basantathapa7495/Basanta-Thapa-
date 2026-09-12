@@ -45,11 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
         rel="noopener noreferrer"
         aria-label="Message Basanta on WhatsApp"
       >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.5L3.5 20.5l1.3-4.2a8.5 8.5 0 1 1 15.7-4.6Z"/>
-          <path d="M8.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.8 1.8c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.3 1.7 2.3 3 3 .2.1.4.1.6-.1l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .3-.2 1.4-.8 1.9-.5.5-1.3.8-2.2.6-1.1-.2-2.6-.8-4.3-2.3-1.4-1.2-2.5-2.8-3-4.1-.5-1.2 0-2.1.4-2.5.2-.2.5-.4.8-.4Z"/>
-        </svg>
-        <span>Message to Basanta</span>
+        <span class="message-label-desktop">Message to Basanta</span>
+        <span class="message-label-mobile">Message</span>
       </a>
     </nav>
   `;
