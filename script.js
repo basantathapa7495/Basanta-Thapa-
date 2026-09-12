@@ -48,34 +48,6 @@ function renderReading() {
 }
 renderReading();
 
-// ---------- MUSIC TOGGLE (keeping external file) ----------
-let audioElement = null;
-let isMusicOn = false;
-const musicBtn = document.getElementById("musicBtn");
-
-function initAudio() {
-  audioElement = new Audio("music.mp3");
-  audioElement.loop = true;
-  audioElement.volume = 0.25;
-}
-
-if(musicBtn) {
-  musicBtn.addEventListener("click", () => {
-    if (!audioElement) initAudio();
-    if (!isMusicOn) {
-      audioElement.play().catch(e => console.log("autoplay blocked"));
-      musicBtn.innerHTML = "🔇 mute";
-      musicBtn.style.borderColor = "#d8a25c";
-      isMusicOn = true;
-    } else {
-      audioElement.pause();
-      musicBtn.innerHTML = "🎧 vibe";
-      musicBtn.style.borderColor = "";
-      isMusicOn = false;
-    }
-  });
-}
-
 
 // ---------- NEWSLETTER ----------
 const subBtn = document.getElementById("subscribeNewsBtn");
