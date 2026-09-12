@@ -9,26 +9,26 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'Earn Before You Graduate',
       price: 'NPR 499',
       cover: '../assets/img/book1.jpg',
-      link: 'earn-before-graduate.html',   // ← clicking cover goes here
+      link: 'ebg.html',   // ← clicking cover goes here
       format: 'PDF',
     },
     {
       title: 'Eat Healthy, Live Better',
       price: 'NPR 399',
       cover: '../assets/img/book2.jpg',
-      link: 'eat-healthy-live-better.html',
+      link: 'ehb.html',
     },
     {
       title: 'The Hindu Wisdom',
       price: 'NPR 449',
       cover: '../assets/img/book3.jpg',
-      link: 'hindu-wisdom.html',
+      link: 'hw.html',
     },
     {
       title: 'The Lie of Modern Life',
       price: 'NPR 349',
       cover: '../assets/img/book4.jpg',
-      link: 'lie-of-modern-life.html',
+      link: 'lm.html',
     }
   ];
 
