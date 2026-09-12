@@ -1,9 +1,9 @@
 // ---------- TYPING ANIMATION (larger, smooth) ----------
 const phrases = [
-  "building the life i’m dreaming about.",
- "Trying to finish my book.",
- "Thinking about consciousness.",
- "Building quietly."
+  "building useful digital projects.",
+  "learning something new every day.",
+  "documenting my progress in public.",
+  "becoming better, one day at a time."
 ];
 let pIdx = 0, cIdx = 0, del = false, currText = "";
 const typingSpan = document.getElementById("typingLine");
