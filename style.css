@@ -143,10 +143,10 @@ nav {
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: #111111;
-  color: #ffffff;
-  border: 2px solid #ffffff;
-  box-shadow: 0 0 0 1px rgba(44, 40, 34, 0.2), 0 6px 18px rgba(44, 40, 34, 0.16);
+  background: #bfdbfe;
+  color: #1e3a8a;
+  border: 2px solid #eff6ff;
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.22), 0 6px 18px rgba(59, 130, 246, 0.2);
   font-family: var(--ff-serif);
   font-size: 1rem;
   font-weight: 700;
@@ -207,7 +207,7 @@ nav {
 .nav-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.4rem;
+  gap: clamp(0.7rem, 1.3vw, 1.4rem);
   list-style: none;
 }
 
