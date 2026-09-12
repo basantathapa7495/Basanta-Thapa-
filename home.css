@@ -67,7 +67,7 @@ html { scroll-behavior: smooth; }
 .text-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 .text-link-light { color: #d5eee9; }
 
-.start-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.start-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
 .start-card { min-height: 230px; display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto 1fr; gap: 1rem; padding: 1.5rem; color: var(--h-ink); border: 1px solid var(--h-line); border-radius: 18px; background: rgba(255,255,255,.72); text-decoration: none; transition: transform .25s ease, box-shadow .25s ease, background .25s ease; }
 .start-card:hover { transform: translateY(-6px); background: white; box-shadow: var(--h-shadow); }
 .card-number { color: var(--h-gold); font: 500 .75rem "DM Mono", monospace; }
@@ -235,7 +235,7 @@ html { scroll-behavior: smooth; }
   .hero-copy h1 { max-width: 800px; }
   .portrait-wrap { width: min(70vw, 390px); margin: 1rem auto 0; }
   .start-grid, .learning-grid, .work-grid, .shelf-grid, .tool-row { grid-template-columns: repeat(2, 1fr); }
-  .start-grid .start-card:last-child, .learning-grid .learning-card:last-child, .work-grid .work-card:last-child, .shelf-grid .shelf-card:last-child, .tool-row .tool-card:last-child { grid-column: 1 / -1; }
+  .learning-grid .learning-card:last-child, .work-grid .work-card:last-child, .shelf-grid .shelf-card:last-child, .tool-row .tool-card:last-child { grid-column: 1 / -1; }
   .goal-grid { grid-template-columns: repeat(2,1fr); }
   .section-heading-stacked { margin-bottom: 2rem; }
 }
