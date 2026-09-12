@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <nav>
       <a href="${prefix}index.html" class="nav-logo" aria-label="Basanta Saru home">
         <span class="brand-mark" aria-hidden="true">B.S</span>
+        <span class="brand-name">Basanta <span class="logo-dot" aria-hidden="true">✦</span> Saru</span>
       </a>
       <ul class="nav-links" id="navLinksList">
         <li><a href="${prefix}index.html" class="nav-home">Home</a></li>
