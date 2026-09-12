@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <span class="brand-name">Basanta <span class="logo-dot" aria-hidden="true">✦</span> Saru</span>
       </a>
       <ul class="nav-links" id="navLinksList">
-        <li><a href="${prefix}index.html" class="nav-home">Home</a></li>
+        <li><a href="${prefix}index.html" class="nav-home"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10M9.5 20v-6h5v6"/></svg><span>Home</span></a></li>
         <li><a href="${prefix}blogs/blog.html" class="nav-blog"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><span>Blog</span></a></li>
         <li><a href="${prefix}projects/project.html" class="nav-projects"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h6v6H4zM14 5h6v6h-6zM4 15h6v5H4zM14 15h6v5h-6z"/></svg><span>Project</span></a></li>
         <li><a href="${prefix}books/books.html" class="nav-books"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5.5A3.5 3.5 0 0 1 7 4h5v16H7a3.5 3.5 0 0 0-3.5 1.5z"/><path d="M20.5 5.5A3.5 3.5 0 0 0 17 4h-5v16h5a3.5 3.5 0 0 1 3.5 1.5z"/></svg><span>Books</span></a></li>
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <p class="footer-title">Basanta Thapa — <span class="footer-location">Syangja, Nepal</span></p>
       <p class="mono footer-tagline">building at the intersection of wonder and logic · 2026</p>
       <ul class="footer-links">
-        <li><a href="${prefix}index.html">Home</a></li>
+        <li><a href="${prefix}index.html"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10M9.5 20v-6h5v6"/></svg><span>Home</span></a></li>
         <li><a href="${prefix}blogs/blog.html"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><span>Blog</span></a></li>
         <li><a href="${prefix}projects/project.html"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h6v6H4zM14 5h6v6h-6zM4 15h6v5H4zM14 15h6v5h-6z"/></svg><span>Project</span></a></li>
         <li><a href="${prefix}books/books.html"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5.5A3.5 3.5 0 0 1 7 4h5v16H7a3.5 3.5 0 0 0-3.5 1.5z"/><path d="M20.5 5.5A3.5 3.5 0 0 0 17 4h-5v16h5a3.5 3.5 0 0 1 3.5 1.5z"/></svg><span>Books</span></a></li>
