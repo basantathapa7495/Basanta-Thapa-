@@ -1677,3 +1677,58 @@ nav::before {
     transition: none;
   }
 }
+
+
+/* ====== SECTION LINK ICONS ====== */
+.nav-icon {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.72;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.nav-links a {
+  gap: 0.42rem;
+}
+
+.nav-links a:hover .nav-icon,
+.nav-links a.active .nav-icon {
+  opacity: 1;
+  transform: translateY(-1px) scale(1.12);
+}
+
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+}
+
+.footer-links .nav-icon {
+  width: 15px;
+  height: 15px;
+  flex-basis: 15px;
+}
+
+.footer-links a:hover .nav-icon {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 1180px) {
+  .hamburger {
+    order: -1;
+    margin-right: auto;
+    margin-left: 0;
+  }
+
+  .nav-links a {
+    justify-content: flex-start;
+    padding-inline: 1.2rem;
+  }
+}
