@@ -1405,6 +1405,8 @@ footer {
   align-items: center;
   justify-content: center;
   padding: 0.48rem 0.68rem;
+  white-space: nowrap;
+  word-break: keep-all;
   border-radius: 999px;
   overflow: hidden;
   transition:
