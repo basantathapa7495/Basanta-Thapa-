@@ -1769,3 +1769,56 @@ nav::before {
     border-color: rgba(96, 165, 250, 0.2);
   }
 }
+
+
+/* ====== HOMEPAGE PROFILE IMAGE & ABOUT ====== */
+.hero-image-wrapper {
+  justify-content: flex-start;
+  margin: 1.75rem 0 1.5rem;
+}
+
+.hero-image-wrapper img {
+  width: 220px;
+  height: 220px;
+  max-width: 220px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 24px;
+}
+
+.hero-about {
+  max-width: 660px;
+}
+
+.hero-about p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.text-center {
+  text-align: center;
+}
+
+@media (max-width: 780px) {
+  .hero-image-wrapper {
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+
+  .hero-image-wrapper img {
+    width: 170px;
+    height: 170px;
+    max-width: 170px;
+    border-radius: 20px;
+  }
+
+  .hero-about {
+    text-align: left;
+  }
+
+  .hero-about p {
+    font-size: 0.98rem;
+  }
+}
