@@ -29,38 +29,97 @@
   <div id="navbar-container"></div>
 
   <main>
-<!-- ====== HERO ====== -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-content">
-      <span class="handwritten">Syangja, Nepal · Age 20 🇳🇵</span>
-      <h2 class="fade-up" style="animation-delay:0.05s">
-        Building digital projects<br>
-        <span style="color: var(--deep-teal);">and learning every day.</span>
-      </h2>
-      <div class="typing-wrapper fade-up" id="typingLine" style="animation-delay:0.1s"></div>
-      <div class="hero-image-wrapper fade-up" style="animation-delay:0.2s">
-        <img src="assets/img/Basanta_saru.jpg" alt="Basanta Saru" width="220" height="220">
-      </div>
-      <div class="hero-about fade-up" style="animation-delay:0.25s">
-        <span class="section-label">About Me</span>
-        <p>
-          I’m Basanta Saru, a 20-year-old digital builder and self-taught learner from Nepal.
-          I create practical projects, explore technology, and document what I learn each day.
-          This website brings together my digital work, experiments, books, and journey toward
-          becoming a better version of myself.
+<!-- ====== LEARNING IN PUBLIC DASHBOARD HERO ====== -->
+<section class="learning-dashboard-hero" aria-labelledby="learningHeroTitle">
+  <div class="container learning-dashboard-container">
+    <div class="learning-hero-grid">
+
+      <aside class="now-rail fade-up" aria-label="Current profile">
+        <div class="now-status"><span class="now-dot"></span> Now</div>
+        <div class="now-line" aria-hidden="true"></div>
+        <dl class="now-details">
+          <div><dt>Age</dt><dd>20</dd></div>
+          <div><dt>From</dt><dd>Syangja, Nepal</dd></div>
+          <div><dt>Year</dt><dd>2026</dd></div>
+        </dl>
+      </aside>
+
+      <div class="learning-hero-copy">
+        <p class="learning-kicker fade-up">Learn · Build · Grow</p>
+        <h1 id="learningHeroTitle" class="fade-up" style="animation-delay:0.06s">
+          Learning, building,
+          <span>and sharing the real journey.</span>
+        </h1>
+        <p class="learning-intro fade-up" style="animation-delay:0.12s">
+          I’m Basanta Saru. I document the projects I build, the skills I learn,
+          and the small improvements shaping my next version—one day at a time.
         </p>
+
+        <div class="learning-actions fade-up" style="animation-delay:0.18s">
+          <a href="projects/project.html" class="learning-btn learning-btn-primary">
+            See my projects
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M14 7l5 5-5 5"/></svg>
+          </a>
+          <a href="turning-20/index.html" class="learning-btn learning-btn-secondary">
+            Read daily journal
+          </a>
+        </div>
+
+        <div class="learning-principles fade-up" style="animation-delay:0.24s" aria-label="My principles">
+          <span>Better, not perfect</span>
+          <span>One small improvement every day</span>
+        </div>
       </div>
+
+      <aside class="currently-panel fade-up" style="animation-delay:0.16s" aria-label="What Basanta is currently doing">
+        <div class="currently-header">
+          <div>
+            <span class="currently-eyebrow">Live dashboard</span>
+            <h2>Currently</h2>
+          </div>
+          <span class="currently-live"><i></i> Active</span>
+        </div>
+
+        <div class="profile-mini">
+          <img src="assets/img/Basanta_saru.jpg" alt="Basanta Saru" width="72" height="72">
+          <div>
+            <strong>Basanta Saru</strong>
+            <span>Self-taught digital builder</span>
+          </div>
+        </div>
+
+        <div class="current-focus-list">
+          <a href="digital-life.html" class="current-focus-item">
+            <span class="focus-icon focus-blue">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 12l3-3 3 2 4-5"/></svg>
+            </span>
+            <span class="focus-copy"><small>Building</small><strong>Digital Life tracker</strong></span>
+            <span class="focus-arrow">→</span>
+          </a>
+
+          <a href="projects/project.html" class="current-focus-item">
+            <span class="focus-icon focus-amber">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 7v5c0 4.7 3.2 7.8 8 9 4.8-1.2 8-4.3 8-9V7z"/><path d="m9 12 2 2 4-4"/></svg>
+            </span>
+            <span class="focus-copy"><small>Learning</small><strong>Digital skills &amp; web development</strong></span>
+            <span class="focus-arrow">→</span>
+          </a>
+
+          <a href="next-version.html" class="current-focus-item">
+            <span class="focus-icon focus-green">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17l5-5 4 3 7-9"/><path d="M15 6h5v5"/></svg>
+            </span>
+            <span class="focus-copy"><small>Improving</small><strong>My Next Version</strong></span>
+            <span class="focus-arrow">→</span>
+          </a>
+        </div>
+
+        <p class="currently-note">Documenting the process in public—wins, mistakes, and lessons.</p>
+      </aside>
+
     </div>
-
-
   </div>
 </section>
-
-
-
-
-    <div class="container"></div>
     
 <!-- ====== FEATURED PROJECTS ====== -->
 <section class="section">
