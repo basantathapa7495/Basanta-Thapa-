@@ -174,6 +174,38 @@
       .attention-head i { animation:none; }
       .panel,.mini-card,.metric,.cal-day,.save-note,.primary { animation:none;transition:none; }
     }
+
+    /* Read-only attention charts */
+    .attention-insights { padding:1.25rem; }
+    .hero-chart-block { padding:1rem 0; border-top:1px solid var(--line); }
+    .attention-head + .hero-chart-block { border-top:0; }
+    .hero-chart-title { display:flex;justify-content:space-between;align-items:end;gap:.75rem;margin-bottom:.8rem; }
+    .hero-chart-title span { display:grid;gap:.1rem; }
+    .hero-chart-title small { color:var(--muted-2);font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase; }
+    .hero-chart-title strong { color:var(--text);font:600 1.3rem "Playfair Display",serif; }
+    .hero-chart-title b { color:var(--muted);font-size:.59rem;font-weight:700;text-align:right; }
+    .last-day-chart { display:grid;gap:.55rem; }
+    .hero-app-row { display:grid;grid-template-columns:minmax(70px,1fr) 1.4fr auto;align-items:center;gap:.55rem; }
+    .hero-app-row span { overflow:hidden;color:var(--text);font-size:.63rem;font-weight:700;text-overflow:ellipsis;white-space:nowrap; }
+    .hero-app-row i { height:5px;overflow:hidden;border-radius:999px;background:rgba(42,119,120,.1); }
+    .hero-app-row i b { display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--blue),#63aaa3);transform-origin:left;animation:chartGrow .7s ease both; }
+    .hero-app-row small { color:var(--muted);font-size:.58rem; }
+    .weekly-mini-block { padding-bottom:.15rem; }
+    .weekly-mini-chart { height:74px;display:flex;align-items:end;justify-content:space-between;gap:.38rem;padding-top:.35rem; }
+    .week-mini-column { min-width:0;height:100%;display:flex;flex:1;flex-direction:column;justify-content:flex-end;align-items:center;gap:.25rem; }
+    .week-mini-column i { width:min(100%,18px);min-height:4px;border-radius:6px 6px 2px 2px;background:linear-gradient(to top,var(--blue),#79b8ae);animation:chartGrowY .65s ease both;transform-origin:bottom; }
+    .week-mini-column span { color:var(--muted-2);font-size:.5rem;text-transform:uppercase; }
+    .empty-mini-chart { padding:.9rem;border:1px dashed var(--line);border-radius:.7rem;color:var(--muted);font-size:.65rem;text-align:center; }
+    .local-input-card,#goalsPanel { display:none !important; }
+    @keyframes chartGrow { from{transform:scaleX(0)} }
+    @keyframes chartGrowY { from{transform:scaleY(0)} }
+    @media(max-width:700px) {
+      .attention-insights { padding:1.15rem; }
+      .weekly-mini-chart { height:88px; }
+    }
+    @media(prefers-reduced-motion:reduce) {
+      .hero-app-row i b,.week-mini-column i { animation:none; }
+    }
   </style>
 </head>
 <body>
@@ -195,16 +227,29 @@
       <div class="hero-principles"><span>Measure honestly</span><span>Improve gradually</span><span>Protect attention</span></div>
     </div>
 
-    <aside class="attention-card">
-      <div class="attention-head"><span>Attention control</span><i aria-hidden="true"></i></div>
-      <p>Private activity stays protected by default. Switch it off only when reviewing your own dashboard.</p>
-      <button class="privacy-btn on" id="privacyBtn" onclick="togglePrivacy()" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg><span>Privacy on</span></button>
-      <div class="attention-meta"><span><small>Journey</small><strong>Sep 2026 → Sep 2027</strong></span><b>Active</b></div>
+    <aside class="attention-card attention-insights" aria-label="Recent mobile usage">
+      <div class="attention-head"><span>Attention overview</span><i aria-hidden="true"></i></div>
+
+      <div class="hero-chart-block">
+        <div class="hero-chart-title">
+          <span><small>Latest recorded day</small><strong id="heroLastDayTotal">—</strong></span>
+          <b id="heroLastDayLabel">—</b>
+        </div>
+        <div class="last-day-chart" id="lastDayChart" aria-label="Top app usage on the latest day"></div>
+      </div>
+
+      <div class="hero-chart-block weekly-mini-block">
+        <div class="hero-chart-title">
+          <span><small>Last seven days</small><strong id="heroWeekAverage">—</strong></span>
+          <b>Daily average</b>
+        </div>
+        <div class="weekly-mini-chart" id="weeklyMiniChart" aria-label="Screen usage during the last seven days"></div>
+      </div>
     </aside>
   </header>
 
   <div class="tabs" role="tablist" aria-label="Dashboard sections">
-    <button class="tab active" data-panel="today">Today</button><button class="tab" data-panel="weekly">Weekly</button><button class="tab" data-panel="monthly">Monthly</button><button class="tab" data-panel="goals">Goals</button>
+    <button class="tab active" data-panel="today">Today</button><button class="tab" data-panel="weekly">Weekly</button><button class="tab" data-panel="monthly">Monthly</button>
   </div>
 
   <section class="panel active" id="todayPanel">
@@ -227,7 +272,7 @@
     <section class="controls"><div class="search-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="searchInput" class="control search" type="search" placeholder="Search apps..." autocomplete="off" /></div><select id="categorySelect" class="control select"><option value="all">All categories</option></select><select id="sortSelect" class="control select"><option value="time-desc">Most time</option><option value="time-asc">Least time</option><option value="opens-desc">Most opened</option><option value="notifications-desc">Most alerts</option><option value="name">App name</option></select></section>
 
     <section class="content-card"><div class="card-head"><h2>App activity</h2><p id="resultCount"></p></div><div class="table-scroll" id="tableContainer"><table><thead><tr><th>App</th><th>Time used</th><th>Usage</th><th>Opened</th><th>Alerts</th><th>Goal</th></tr></thead><tbody id="appTable"></tbody></table></div><div class="empty" id="emptyState">No apps match these filters.</div></section>
-    <section class="content-card"><div class="card-head"><div><h2>Daily context</h2><p>Explain why today looked different.</p></div><span class="saved" id="noteStatus"></span></div><div class="note-area"><textarea class="control" id="dailyNote" placeholder="Example: YouTube was mostly editing tutorials today..."></textarea><button class="save-note" onclick="saveNote()">Save note</button></div></section>
+    <section class="content-card local-input-card"><div class="card-head"><div><h2>Daily context</h2><p>Explain why today looked different.</p></div><span class="saved" id="noteStatus"></span></div><div class="note-area"><textarea class="control" id="dailyNote" placeholder="Example: YouTube was mostly editing tutorials today..."></textarea><button class="save-note" onclick="saveNote()">Save note</button></div></section>
   </section>
 
   <section class="panel" id="weeklyPanel">
@@ -369,7 +414,36 @@ function saveTotalGoal(){const n=Number($("totalGoalInput").value);if(!n||n<15)r
 function saveAppGoal(){const name=$("goalAppSelect").value,n=Number($("goalMinutesInput").value);if(!n||n<1)return notify("Enter a valid limit");goals[name]=n;persistGoals();notify(name+" goal updated")}
 function removeGoal(name){delete goals[name];persistGoals();notify("Goal removed")}
 function persistGoals(){localStorage.setItem("digitalGoals",JSON.stringify(goals));renderGoals();renderTable();renderSummary()}
-function renderAll(){renderDate();renderSummary();renderTable();if($("weeklyPanel").classList.contains("active"))renderWeekly();if($("monthlyPanel").classList.contains("active"))renderMonthly()}
+
+function renderHeroInsights(){
+  const latest=dailyData.at(-1);
+  if(!latest)return;
+  const apps=[...visibleApps(latest)].filter(app=>app.minutes!=null).sort((a,b)=>b.minutes-a.minutes).slice(0,5);
+  const total=sum(visibleApps(latest),"minutes");
+  $("heroLastDayTotal").textContent=minutes(total);
+  $("heroLastDayLabel").textContent=shortDate(latest.date);
+  const maxApp=Math.max(1,...apps.map(app=>app.minutes||0));
+  $("lastDayChart").innerHTML=apps.length?apps.map(app=>`<div class="hero-app-row"><span>${app.name}</span><i><b style="width:${(app.minutes||0)/maxApp*100}%"></b></i><small>${minutes(app.minutes)}</small></div>`).join(""):'<div class="empty-mini-chart">No usage recorded.</div>';
+
+  const end=new Date(latest.date+"T00:00:00");
+  const start=new Date(end);
+  start.setDate(end.getDate()-6);
+  const byDate=new Map(dailyData.filter(day=>{const date=new Date(day.date+"T00:00:00");return date>=start&&date<=end}).map(day=>[day.date,sum(visibleApps(day),"minutes")]));
+  const week=[];
+  for(let i=0;i<7;i++){
+    const date=new Date(start);
+    date.setDate(start.getDate()+i);
+    const key=dateKey(date);
+    week.push({date,value:byDate.get(key)||0});
+  }
+  const recorded=week.filter(day=>day.value>0);
+  const average=recorded.length?Math.round(recorded.reduce((total,day)=>total+day.value,0)/recorded.length):0;
+  const maxDay=Math.max(1,...week.map(day=>day.value));
+  $("heroWeekAverage").textContent=recorded.length?minutes(average):"—";
+  $("weeklyMiniChart").innerHTML=week.map(day=>`<div class="week-mini-column" title="${longDate(day.date)}: ${day.value?minutes(day.value):"Not logged"}"><i style="height:${day.value?Math.max(8,day.value/maxDay*100):4}%"></i><span>${new Date(day.date+"T00:00:00").toLocaleDateString("en-US",{weekday:"narrow"})}</span></div>`).join("");
+}
+
+function renderAll(){renderDate();renderSummary();renderTable();renderHeroInsights();if($("weeklyPanel").classList.contains("active"))renderWeekly();if($("monthlyPanel").classList.contains("active"))renderMonthly()}
 $("searchInput").addEventListener("input",renderTable);$("categorySelect").addEventListener("change",renderTable);$("sortSelect").addEventListener("change",renderTable);$("includeDemo").addEventListener("change",renderWeekly);$("datePicker").addEventListener("change",e=>{const selected=new Date(e.target.value+"T00:00:00"),i=dailyData.findIndex(d=>d.date===e.target.value);calendarCursor=new Date(selected.getFullYear(),selected.getMonth(),1);if(i>=0)openDay(i);else{renderMonthly();notify("No activity has been added for this date yet")}});
 populateFilters();renderAll();
 </script>
