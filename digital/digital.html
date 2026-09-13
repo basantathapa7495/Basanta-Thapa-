@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Basanta Saru's digital attention and screen-habit tracker." />
+  <title>Digital Life Dashboard | Basanta Saru</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/png" href="../favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+  <link rel="stylesheet" href="digital.css">
+</head>
+<body>
+<div class="blob-bg" aria-hidden="true"><div class="blob blob1"></div><div class="blob blob2"></div><div class="blob blob3"></div></div>
+<div id="navbar-container"></div>
+<main class="page">
+  <header class="topbar">
+    <aside class="digital-rail" aria-label="Digital Life snapshot">
+      <span class="rail-title">Live experiment</span>
+      <div><strong>365</strong><small>Day journey</small></div>
+      <div><strong>04</strong><small>Dashboard views</small></div>
+      <div><strong>01</strong><small>Better choice daily</small></div>
+    </aside>
+
+    <div class="digital-hero-copy">
+      <div class="eyebrow"><i></i>Next Version / Digital Life</div>
+      <h1>Use technology with <em>more intention.</em></h1>
+      <p class="subtitle">A public experiment for understanding where my attention goes, building healthier screen habits, and making one better digital choice each day.</p>
+      <div class="hero-principles"><span>Measure honestly</span><span>Improve gradually</span><span>Protect attention</span></div>
+    </div>
+
+    <aside class="attention-card attention-insights" aria-label="Recent mobile usage">
+      <div class="attention-head"><span>Attention overview</span><i aria-hidden="true"></i></div>
+
+      <div class="hero-chart-block">
+        <div class="hero-chart-title">
+          <span><small>Latest recorded day</small><strong id="heroLastDayTotal">—</strong></span>
+          <b id="heroLastDayLabel">—</b>
+        </div>
+        <div class="last-day-chart" id="lastDayChart" aria-label="Top app usage on the latest day"></div>
+      </div>
+
+      <div class="hero-chart-block weekly-mini-block">
+        <div class="hero-chart-title">
+          <span><small>Last seven days</small><strong id="heroWeekAverage">—</strong></span>
+          <b>Daily average</b>
+        </div>
+        <div class="weekly-mini-chart" id="weeklyMiniChart" aria-label="Screen usage during the last seven days"></div>
+      </div>
+    </aside>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="Dashboard sections">
+    <button class="tab active" data-panel="today">Today</button><button class="tab" data-panel="weekly">Weekly</button><button class="tab" data-panel="monthly">Monthly</button>
+  </div>
+
+  <section class="panel active" id="todayPanel">
+    <div class="date-section"><div><div class="section-label">Daily activity</div><div class="date-line"><span class="current-date" id="currentDate"></span><span class="badge" id="dataBadge"></span></div></div><div class="date-actions"><button class="icon-btn" id="previousButton" onclick="moveDay(-1)" aria-label="Previous day">‹</button><button class="light-btn" onclick="latestDay()">Latest</button><button class="icon-btn" id="nextButton" onclick="moveDay(1)" aria-label="Next day">›</button></div></div>
+
+    <section class="summary-grid">
+      <div class="summary-card"><div class="summary-title">Tracked time</div><div class="summary-value" id="totalTime">—</div><div class="summary-small delta" id="timeDelta">—</div></div>
+      <div class="summary-card"><div class="summary-title">App opens</div><div class="summary-value" id="totalOpens">—</div><div class="summary-small delta" id="openDelta">—</div></div>
+      <div class="summary-card"><div class="summary-title">Notifications</div><div class="summary-value" id="totalNotifications">—</div><div class="summary-small delta" id="notificationDelta">—</div></div>
+      <div class="summary-card"><div class="summary-title">Apps tracked</div><div class="summary-value" id="totalApps">—</div><div class="summary-small">Visible in this view</div></div>
+      <div class="summary-card"><div class="summary-title">Most used</div><div class="summary-value" id="mostUsed">—</div><div class="summary-small" id="mostUsedTime">—</div></div>
+    </section>
+
+    <section class="score-strip">
+      <div class="mini-card"><div class="mini-top"><span>Digital discipline</span><span id="scoreText">—</span></div><div class="mini-value" id="scoreLabel">Calculating</div><div class="progress"><span id="scoreBar"></span></div></div>
+      <div class="mini-card"><div class="mini-top"><span>Daily screen goal</span><span id="screenGoalText">—</span></div><div class="mini-value" id="screenGoalLabel">—</div><div class="progress"><span id="screenGoalBar"></span></div></div>
+      <div class="mini-card"><div class="mini-top"><span>One-year journey</span><span id="journeyPercent">—</span></div><div class="mini-value" id="journeyValue">—</div><div class="summary-small" id="journeyMeta">September 11, 2026 – September 10, 2027</div><div class="progress"><span id="journeyBar"></span></div></div>
+    </section>
+
+    <section class="controls"><div class="search-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="searchInput" class="control search" type="search" placeholder="Search apps..." autocomplete="off" /></div><select id="categorySelect" class="control select"><option value="all">All categories</option></select><select id="sortSelect" class="control select"><option value="time-desc">Most time</option><option value="time-asc">Least time</option><option value="opens-desc">Most opened</option><option value="notifications-desc">Most alerts</option><option value="name">App name</option></select></section>
+
+    <section class="content-card"><div class="card-head"><h2>App activity</h2><p id="resultCount"></p></div><div class="table-scroll" id="tableContainer"><table><thead><tr><th>App</th><th>Time used</th><th>Usage</th><th>Opened</th><th>Alerts</th><th>Goal</th></tr></thead><tbody id="appTable"></tbody></table></div><div class="empty" id="emptyState">No apps match these filters.</div></section>
+    
+  </section>
+
+  <section class="panel" id="weeklyPanel">
+    <div class="section-title"><div class="section-label">Last 7 days</div><h2>Weekly attention</h2><p>Trends use recorded data only unless you choose to include demo entries.</p></div>
+    <section class="content-card chart-card"><div class="chart-top"><h3>Tracked time trend</h3><label class="check"><input type="checkbox" id="includeDemo" checked /> Include demo data</label></div><div class="chart-wrap" id="weeklyChart"></div></section>
+    <section class="metric-grid"><div class="metric"><div class="metric-label">Daily average</div><div class="metric-value" id="weekAverage">—</div><div class="metric-help">Per included day</div></div><div class="metric"><div class="metric-label">Week total</div><div class="metric-value" id="weekTotal">—</div><div class="metric-help">Tracked app time</div></div><div class="metric"><div class="metric-label">Most used</div><div class="metric-value" id="weekTopApp">—</div><div class="metric-help" id="weekTopTime">—</div></div><div class="metric"><div class="metric-label">Change</div><div class="metric-value" id="weekChange">—</div><div class="metric-help">First to latest included day</div></div></section>
+    <div class="split"><section class="content-card"><div class="card-head"><div><h2>Where time went</h2><p>Usage grouped by purpose.</p></div></div><div class="category-list" id="weeklyCategories"></div></section><section class="content-card"><div class="card-head"><div><h2>Top apps</h2><p>Across included days.</p></div></div><div class="category-list" id="weeklyApps"></div></section></div>
+  </section>
+
+  <section class="panel" id="monthlyPanel">
+    <div class="section-title"><div class="section-label">Monthly view</div><h2 id="monthTitle">—</h2><p>Browse every month of your 365-day goal. Days without data stay empty.</p></div>
+    <section class="metric-grid"><div class="metric"><div class="metric-label">Days logged</div><div class="metric-value" id="monthRecorded">—</div><div class="metric-help">In this month</div></div><div class="metric"><div class="metric-label">Daily average</div><div class="metric-value" id="monthAverage">—</div><div class="metric-help">Across logged days</div></div><div class="metric"><div class="metric-label">Best day</div><div class="metric-value" id="monthBest">—</div><div class="metric-help">Lowest tracked time</div></div><div class="metric"><div class="metric-label">Top app</div><div class="metric-value" id="monthTop">—</div><div class="metric-help">In this month</div></div></section>
+    <section class="content-card"><div class="card-head"><div><h2>Activity calendar</h2><p>Demo records are faded. Empty dates have not been added yet.</p></div><div class="calendar-tools"><button class="icon-btn" id="previousMonth" onclick="moveMonth(-1)" aria-label="Previous month">‹</button><input class="control" id="datePicker" type="date" min="2026-09-11" max="2027-09-10" /><button class="icon-btn" id="nextMonth" onclick="moveMonth(1)" aria-label="Next month">›</button></div></div><div class="calendar" id="calendarGrid"></div></section>
+  </section>
+
+  
+
+  <aside class="data-note"><strong>About this data</strong><p>This tracker runs from September 11, 2026 through September 10, 2027. Recorded entries come from Android activity screenshots, demo entries are clearly marked, and a dash means the source did not provide that value.</p></aside>
+</main>
+<div id="footer-container"></div>
+<div class="toast" id="toast"></div>
+<script src="../components.js"></script>
+<script src="digital.js"></script>
+</body>
+</html>
