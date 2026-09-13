@@ -330,3 +330,93 @@ main { position:relative;z-index:1; }
 @media(prefers-reduced-motion:reduce) {
   .reveal { opacity:1;transform:none;transition:none; }
 }
+
+
+/* ===== Layout repair: shared footer, clipping, and contrast ===== */
+.site-footer {
+  display:block;
+  width:100%;
+  max-width:none;
+  margin-right:0;
+  margin-left:0;
+  box-sizing:border-box;
+}
+.site-footer *,
+.site-footer *::before,
+.site-footer *::after { box-sizing:border-box; }
+
+.primary-button,
+.primary-button:visited {
+  color:#fff;
+}
+.primary-button:hover,
+.primary-button:focus-visible {
+  color:#fff;
+}
+
+.hero,
+.hero-content,
+.hero-card,
+.story-section,
+.timeline,
+.timeline-entry,
+.story-card,
+.lessons-section,
+.lesson-grid,
+.lesson-card,
+.evidence-section,
+.promise-section,
+.promise-inner,
+.closing {
+  min-width:0;
+  box-sizing:border-box;
+}
+.hero { overflow:visible; }
+.hero h1,
+.section-heading h2,
+.story-card h3,
+.lesson-card h3,
+.evidence-copy h2,
+.promise-inner h2,
+.closing h2 {
+  max-width:100%;
+  overflow-wrap:break-word;
+}
+.story-card p,
+.promise-copy,
+.evidence-copy p { overflow-wrap:anywhere; }
+.promise-section {
+  min-height:auto;
+  padding:clamp(4.5rem,9vw,7.5rem) clamp(1.25rem,5vw,5rem);
+}
+.promise-inner { width:min(100%,850px); }
+.evidence-section { box-sizing:border-box; }
+
+@media(max-width:850px) {
+  .evidence-section { margin-right:auto;margin-left:auto; }
+  .hero-card { min-height:auto; }
+}
+@media(max-width:650px) {
+  .site-footer { width:100%;max-width:none;margin-right:0;margin-left:0; }
+  .hero { overflow:visible; }
+  .hero-content { width:100%; }
+  .hero h1 { line-height:.92;letter-spacing:-.045em; }
+  .hero-actions { align-items:stretch;flex-direction:column; }
+  .primary-button { width:100%;justify-content:center;gap:1rem;text-align:center; }
+  .read-time { text-align:center; }
+  .timeline-entry { width:100%; }
+  .time { min-width:0; }
+  .time strong { font-size:.7rem;overflow-wrap:anywhere; }
+  .story-card,.lesson-card { width:100%; }
+  .habit-row { align-items:flex-start; }
+  .habit-row span { white-space:normal; }
+  .promise-section { padding:4rem 1.2rem;border-radius:1.35rem; }
+  .promise-rule { align-items:flex-start;flex-direction:column;gap:.45rem; }
+  .twenty { right:-.08em;font-size:15rem; }
+}
+@media(max-width:380px) {
+  .hero h1 { font-size:3.2rem; }
+  .timeline-entry { grid-template-columns:45px 14px minmax(0,1fr);gap:.4rem; }
+  .story-card { padding:1rem; }
+  .mini-stats { grid-template-columns:1fr; }
+}
