@@ -3299,3 +3299,167 @@ nav::before {
   .footer-brand-block { grid-column:auto; }
   .footer-now { flex-wrap:wrap; border-radius:16px; }
 }
+
+
+/* ========================================================
+   AMBIENT ANIMATED BACKGROUND EFFECTS
+   ======================================================== */
+.blob-bg::before,
+.blob-bg::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.blob-bg::before {
+  inset: -18%;
+  background:
+    radial-gradient(circle at 18% 24%, rgba(201,126,90,.16), transparent 26%),
+    radial-gradient(circle at 80% 22%, rgba(96,165,250,.14), transparent 27%),
+    radial-gradient(circle at 68% 78%, rgba(79,139,140,.13), transparent 28%),
+    radial-gradient(circle at 28% 82%, rgba(216,162,92,.11), transparent 24%);
+  filter: blur(28px);
+  animation: ambientAurora 24s ease-in-out infinite alternate;
+}
+
+.blob-bg::after {
+  inset: 0;
+  opacity: .24;
+  background-image: radial-gradient(rgba(45,107,108,.18) .7px, transparent .7px);
+  background-size: 34px 34px;
+  mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 75%, transparent);
+  animation: ambientDots 38s linear infinite;
+}
+
+.blob1 { animation: ambientBlobOne 25s ease-in-out infinite alternate; }
+.blob2 { animation: ambientBlobTwo 30s ease-in-out infinite alternate; }
+.blob3 { animation: ambientBlobThree 34s ease-in-out infinite alternate; }
+
+.learning-dashboard-hero::before { animation: heroGridDrift 26s linear infinite; }
+.learning-dashboard-hero::after { animation: heroGlowFloat 12s ease-in-out infinite alternate; }
+
+.build-section,
+.notes-section,
+.books-ideas-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.build-section::before,
+.notes-section::before,
+.books-ideas-section::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.build-section::before {
+  right: -190px;
+  top: 12%;
+  background: radial-gradient(circle, rgba(96,165,250,.13), transparent 68%);
+  animation: sectionGlowRight 15s ease-in-out infinite alternate;
+}
+
+.notes-section::before {
+  left: -210px;
+  bottom: 5%;
+  background: radial-gradient(circle, rgba(201,126,90,.13), transparent 68%);
+  animation: sectionGlowLeft 18s ease-in-out infinite alternate;
+}
+
+.books-ideas-section::before {
+  right: -180px;
+  bottom: -100px;
+  background: radial-gradient(circle, rgba(79,139,140,.12), transparent 68%);
+  animation: sectionGlowRight 20s ease-in-out infinite alternate-reverse;
+}
+
+.conversation-section::before { animation: sectionGlowLeft 17s ease-in-out infinite alternate; }
+.conversation-section::after { animation: sectionGlowRight 19s ease-in-out infinite alternate; }
+.footer-orbit-one { animation: footerOrbitOne 22s ease-in-out infinite alternate; }
+.footer-orbit-two { animation: footerOrbitTwo 27s ease-in-out infinite alternate; }
+
+@keyframes ambientAurora {
+  0% { transform: translate3d(-2%,-1%,0) scale(1); }
+  50% { transform: translate3d(3%,2%,0) scale(1.05) rotate(2deg); }
+  100% { transform: translate3d(-1%,4%,0) scale(1.02) rotate(-2deg); }
+}
+
+@keyframes ambientDots {
+  from { background-position: 0 0; }
+  to { background-position: 68px 68px; }
+}
+
+@keyframes ambientBlobOne {
+  from { transform: translate3d(0,0,0) scale(1); }
+  to { transform: translate3d(8vw,6vh,0) scale(1.13); }
+}
+
+@keyframes ambientBlobTwo {
+  from { transform: translate3d(0,0,0) scale(1); }
+  to { transform: translate3d(-7vw,-8vh,0) scale(1.1); }
+}
+
+@keyframes ambientBlobThree {
+  from { transform: translate3d(0,0,0) scale(.96); }
+  to { transform: translate3d(-5vw,7vh,0) scale(1.14); }
+}
+
+@keyframes heroGridDrift {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 46px 46px, 46px 46px; }
+}
+
+@keyframes heroGlowFloat {
+  from { transform: translate3d(0,-50%,0) scale(1); opacity:.72; }
+  to { transform: translate3d(-38px,-54%,0) scale(1.08); opacity:1; }
+}
+
+@keyframes sectionGlowRight {
+  from { transform: translate3d(0,0,0) scale(1); }
+  to { transform: translate3d(-60px,45px,0) scale(1.15); }
+}
+
+@keyframes sectionGlowLeft {
+  from { transform: translate3d(0,0,0) scale(1); }
+  to { transform: translate3d(70px,-35px,0) scale(1.12); }
+}
+
+@keyframes footerOrbitOne {
+  from { transform: translate3d(0,0,0) rotate(0); }
+  to { transform: translate3d(55px,28px,0) rotate(10deg); }
+}
+
+@keyframes footerOrbitTwo {
+  from { transform: translate3d(0,0,0) scale(1); }
+  to { transform: translate3d(-65px,-24px,0) scale(1.1); }
+}
+
+@media (max-width: 700px) {
+  .blob-bg::after { opacity:.15; background-size:42px 42px; }
+  .build-section::before,
+  .notes-section::before,
+  .books-ideas-section::before { width:300px; height:300px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob-bg::before,
+  .blob-bg::after,
+  .blob1,
+  .blob2,
+  .blob3,
+  .learning-dashboard-hero::before,
+  .learning-dashboard-hero::after,
+  .build-section::before,
+  .notes-section::before,
+  .books-ideas-section::before,
+  .conversation-section::before,
+  .conversation-section::after,
+  .footer-orbit-one,
+  .footer-orbit-two { animation:none !important; }
+}
