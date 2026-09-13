@@ -238,66 +238,78 @@
   </div>
 </section>
 
-<!-- ============ CONTACT SECTION ============ -->
-<section class="section" id="contact">
-  <div class="container">
-    <div class="contact-form-card">
-      <span class="section-label">Get in Touch</span>
-      <h2>Let's Connect</h2>
-      <p class="contact-desc">
-        Have a question, idea, or just want to say hello? I'd love to hear from you.
-      </p>
-      
-      <form class="contact-form" action="https://formspree.io/f/xojoynqw" method="POST">
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="name">Your Name</label>
-            <input 
-              type="text" 
-              id="name" 
-              name="name" 
-              placeholder="John Doe" 
-              required
-            >
+<!-- ====== OPEN CONVERSATION ====== -->
+<section class="conversation-section" id="contact">
+  <div class="container conversation-container">
+    <div class="conversation-shell">
+      <div class="conversation-intro">
+        <p class="conversation-eyebrow">Open conversation</p>
+        <h2>Let’s exchange ideas.</h2>
+        <p class="conversation-copy">
+          I’m learning, building, and documenting the process in public. If you
+          have thoughtful feedback, a useful idea, or a project we could explore,
+          send me a short message.
+        </p>
+
+        <div class="conversation-topics" aria-label="Good reasons to get in touch">
+          <span>Collaboration</span>
+          <span>Project feedback</span>
+          <span>Honest conversation</span>
+        </div>
+
+        <div class="conversation-direct">
+          <a href="https://wa.me/9779806532844?text=Hi%20Basanta%2C%20I%20found%20your%20website." target="_blank" rel="noopener noreferrer" class="direct-link whatsapp-link">
+            <span class="direct-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.5L3.5 20.5l1.3-4.2a8.5 8.5 0 1 1 15.7-4.6Z"/><path d="M8.2 7.8c.8 3.5 3 5.7 6.5 6.6l1.3-1.5 2.1 1c-.2 1.8-1.4 3-3.2 3-4.5-.4-8.2-4-8.6-8.5 0-1.4.7-2.5 2.1-3l1.1 2.1Z"/></svg>
+            </span>
+            <span><small>Fastest response</small><strong>Message on WhatsApp</strong></span>
+            <b>→</b>
+          </a>
+
+          <a href="https://www.youtube.com/@basantasaru" target="_blank" rel="noopener noreferrer" class="direct-link email-link">
+            <span class="direct-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="m10 9 5 3-5 3z"/></svg>
+            </span>
+            <span><small>Follow the journey</small><strong>YouTube @basantasaru</strong></span>
+            <b>→</b>
+          </a>
+        </div>
+      </div>
+
+      <div class="conversation-form-panel">
+        <div class="conversation-form-heading">
+          <div>
+            <p>Send a note</p>
+            <h3>What’s on your mind?</h3>
           </div>
-          
-          <div class="form-group">
-            <label for="email">Your Email</label>
-            <input 
-              type="email" 
-              id="email" 
-              name="email" 
-              placeholder="john@example.com" 
-              required
-            >
+          <span class="form-status"><i></i> Open</span>
+        </div>
+
+        <form class="conversation-form" action="https://formspree.io/f/xojoynqw" method="POST">
+          <input type="hidden" name="_subject" value="New message from basantasaru.com">
+          <div class="conversation-form-row">
+            <label>
+              <span>Your name</span>
+              <input type="text" name="name" autocomplete="name" placeholder="Your name" required>
+            </label>
+            <label>
+              <span>Your email</span>
+              <input type="email" name="email" autocomplete="email" placeholder="you@example.com" required>
+            </label>
           </div>
-        </div>
-        
-        <div class="form-group">
-          <label for="subject">Subject</label>
-          <input 
-            type="text" 
-            id="subject" 
-            name="subject" 
-            placeholder="What's this about?" 
-            required
-          >
-        </div>
-        
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea 
-            id="message" 
-            name="message" 
-            placeholder="Tell me what's on your mind..." 
-            rows="6"
-            required
-          ></textarea>
-        </div>
-        
-        <button type="submit" class="btn btn-primary">Send Message →</button>
-      </form>
+          <label>
+            <span>Your message</span>
+            <textarea name="message" rows="5" placeholder="Share your idea, feedback, or question…" required></textarea>
+          </label>
+          <div class="conversation-submit-row">
+            <p>Your note goes directly to my inbox.</p>
+            <button type="submit">
+              Send message
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M14 7l5 5-5 5"/></svg>
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </section>
