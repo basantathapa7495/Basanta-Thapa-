@@ -40,3 +40,24 @@ body .footer-main{grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr) minmax(0,
 @media(max-width:1050px){:root{--ds-gutter:24px;--ds-section:80px}.ds-grid{grid-template-columns:repeat(2,minmax(0,1fr))}body .learning-hero-grid{grid-template-columns:minmax(0,1fr) minmax(260px,330px)}body .now-rail{grid-column:1/-1;min-height:0}body .footer-main{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){:root{--ds-gutter:16px;--ds-section:56px}.ds-grid,body .learning-hero-grid{grid-template-columns:minmax(0,1fr)}.ds-card{padding:20px}.ds-heading{margin-bottom:32px}.home-portrait img{height:360px}.journal-index{padding-block:100px 56px}.entry-navigation{flex-direction:column;align-items:flex-start;padding:20px}body .story-card,body .lesson-card{padding:20px}body .timeline-entry{display:block;padding-left:18px}body .hero h1{font-size:clamp(2.7rem,12vw,4rem)}body .section-heading h2{font-size:clamp(2rem,8vw,3rem)}.next-areas{margin-bottom:56px}body .site-footer{padding-top:48px}}
 @media(max-width:400px){body .footer-main{grid-template-columns:minmax(0,1fr)}}
+
+
+/* Homepage hero vertical alignment */
+body .learning-dashboard-hero {
+  min-height: calc(100svh - 72px);
+  padding-top: clamp(1.5rem, 3vw, 3rem);
+  padding-bottom: clamp(4rem, 7vw, 6rem);
+}
+
+@media (max-width: 1180px) {
+  body .learning-dashboard-hero {
+    min-height: auto;
+    padding-block: 3rem 4rem;
+  }
+}
+
+@media (max-width: 720px) {
+  body .learning-dashboard-hero {
+    padding-block: 1.75rem 3rem;
+  }
+}
