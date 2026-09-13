@@ -1,4 +1,5 @@
 const projects = [
+ {title:"SNAP",description:"A school management platform for Nepal. Follow the development of attendance, students, fees, and school administration.",image:null,link:"https://basantasaru.xyz",category:"web-app",categoryLabel:"School platform",status:"building",tags:["Next.js","Supabase","Nepal"]},
   {
     title: "Birthday Surprise Generator",
     description: "Create a playful birthday page with a personal message, confetti, music, and a shareable surprise.",
@@ -60,7 +61,7 @@ function renderProjects(items) {
     return `
       <article class="project-card">
         <div class="project-image-wrap">
-          <img class="project-image" src="${project.image}" alt="" loading="lazy">
+          ${project.image ? `<img class="project-image" src="${project.image}" alt="" loading="lazy">` : `<div class="entry-art" aria-label="SNAP school platform">SNAP</div>`}
           <span class="project-index">${String(index + 1).padStart(2, "0")}</span>
           <span class="project-status">${project.status === "live" ? "Live now" : "In progress"}</span>
         </div>

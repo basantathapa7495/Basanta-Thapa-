@@ -68,7 +68,7 @@ function renderBooks(items) {
         <p class="book-description">${escapeHtml(book.description)}</p>
         <div class="book-footer">
           <span class="book-price">${book.price}</span>
-          <a href="${book.link}" class="book-link">Explore <span aria-hidden="true">↗</span></a>
+          <a href="https://wa.me/9779806532844?text=${encodeURIComponent("Hi Basanta, I would like to buy "+book.title)}" class="book-link" target="_blank" rel="noopener noreferrer">Buy on WhatsApp ↗</a>
         </div>
       </div>
     </article>

@@ -25,27 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---------- Format Card Buy Buttons → Redirect to store ---------- */
-  document.querySelectorAll('.format-card').forEach(card => {
-    const btn = card.querySelector('.format-buy-btn');
-    if (!btn) return;
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const url = card.dataset.url;
-      const format = card.dataset.format;
-      const price = card.dataset.price;
-
-      // TODO: Replace with real analytics/tracking if desired
-      console.log(`Purchase initiated: ${format} — $${price}`);
-
-      // Redirect to store
-      if (url && !url.includes('YOUR_')) {
-        window.open(url, '_blank', 'noopener');
-      } else {
-        alert(`🛒 This will link to the ${format} store page.\n\nReplace the data-url in the HTML with your real Amazon/Gumroad/Audible link.`);
-      }
-    });
-  });
+  // Purchase links use native WhatsApp anchors in the HTML.
 
   /* ---------- Download Sample Button ---------- */
   const downloadBtn = document.getElementById('downloadSampleBtn');

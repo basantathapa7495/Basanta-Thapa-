@@ -1,0 +1,42 @@
+/* Shared brand foundation. Loaded after page styles. */
+:root{--ds-ink:#183234;--ds-muted:#526b6b;--ds-teal:#286e70;--ds-accent:#b95e42;--ds-paper:#f7f3ec;--ds-line:rgba(38,87,88,.18);--ds-radius:20px;--ds-shadow:0 12px 36px rgba(24,50,52,.07);--ds-gutter:32px;--ds-width:1280px;--ds-section:96px}
+body{font-family:"DM Sans",sans-serif;font-size:16px;line-height:1.7}
+body main h1,body main h2,body main h3{font-family:"Playfair Display",Georgia,serif;overflow-wrap:break-word}
+body main h1{line-height:1.08;letter-spacing:-.04em}
+*,*::before,*::after{box-sizing:border-box}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #b95e42;outline-offset:4px}
+.ds-shell,.journal-index,.container,.notes-page-container{width:100%;max-width:var(--ds-width);margin-inline:auto;padding-inline:var(--ds-gutter)}
+body .learning-dashboard-container,body .home-wide-container{max-width:var(--ds-width)}
+.ds-heading{max-width:850px;margin-bottom:48px}
+.ds-heading h1{font-size:clamp(2.8rem,6vw,5rem);margin:12px 0 20px}
+.ds-heading p{color:var(--ds-muted);max-width:680px}
+.ds-kicker{color:var(--ds-accent);font-size:.85rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.ds-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.ds-card{min-width:0;padding:28px;background:#fffdf8;border:1px solid var(--ds-line);border-radius:var(--ds-radius);box-shadow:var(--ds-shadow)}
+.ds-card h2{font-size:1.7rem;line-height:1.2;margin:12px 0}
+.ds-card p{margin:12px 0;color:var(--ds-muted)}
+.ds-card a{font-weight:700;color:var(--ds-teal)}.ds-card a.ds-button{color:#fff}
+.ds-button,body .primary-button,body .primary-action,body .primary-link,body .learning-btn-primary{display:inline-flex;justify-content:center;align-items:center;min-height:48px;padding:12px 20px;border:1px solid var(--ds-teal);border-radius:12px;background:var(--ds-teal);color:white;line-height:1.5;text-decoration:none;font-family:"DM Sans",sans-serif;font-weight:700}
+.ds-button:hover,body .primary-button:hover,body .primary-action:hover{background:#194c4e;color:#fff}
+body .learning-hero-grid{grid-template-columns:100px minmax(0,1fr) minmax(280px,340px);gap:32px}
+.home-portrait{margin:0 0 20px;position:relative;overflow:hidden;border-radius:16px;background:#e7edeb}
+.home-portrait img{display:block;width:100%;height:300px;object-fit:cover;object-position:center 25%}
+.home-portrait figcaption{padding:8px 12px;color:var(--ds-ink);font-size:.8rem}
+.entry-art{display:grid;place-items:center;min-height:170px;border-radius:14px;background:linear-gradient(135deg,#183234,#347b7c);color:#fff;font:700 3.5rem/1 "Playfair Display",serif;letter-spacing:-.03em;margin-bottom:20px}
+.journal-index{padding-block:128px 96px}
+.entry-navigation{position:static;inset:auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;width:calc(100% - 2 * var(--ds-gutter));max-width:1200px;margin:0 auto 64px;padding:24px;background:transparent;border:1px solid var(--ds-line);border-radius:16px;box-shadow:none;backdrop-filter:none;transform:none}
+.entry-navigation a{color:var(--ds-teal);font-weight:700}.entry-navigation span{color:var(--ds-muted)}
+.next-areas{margin-bottom:80px}#sleep-focus{scroll-margin-top:100px}
+body .hero,body .intro-strip,body .story-section,body .lessons-section,body .evidence-section,body .promise-section,body .closing{width:calc(100% - 2 * var(--ds-gutter));max-width:1200px;margin-inline:auto}
+body .story-section,body .lessons-section,body .closing{padding-inline:0;padding-block:var(--ds-section)}
+body .story-card,body .lesson-card{padding:28px;border-radius:var(--ds-radius);box-shadow:var(--ds-shadow)}
+body .story-card h3{line-height:1.25}
+body .timeline-entry{grid-template-columns:78px 22px minmax(0,1fr)}
+body .timeline-line{background:transparent}
+body .time strong{font-size:.85rem}
+body .site-footer{display:block;width:100%;max-width:none;margin:0;padding:64px var(--ds-gutter) 28px}
+body .footer-inner{max-width:var(--ds-width);width:100%;margin:auto}
+body .footer-main{grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr) minmax(0,.7fr) minmax(0,1fr);gap:28px}
+@media(max-width:1050px){:root{--ds-gutter:24px;--ds-section:80px}.ds-grid{grid-template-columns:repeat(2,minmax(0,1fr))}body .learning-hero-grid{grid-template-columns:minmax(0,1fr) minmax(260px,330px)}body .now-rail{grid-column:1/-1;min-height:0}body .footer-main{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){:root{--ds-gutter:16px;--ds-section:56px}.ds-grid,body .learning-hero-grid{grid-template-columns:minmax(0,1fr)}.ds-card{padding:20px}.ds-heading{margin-bottom:32px}.home-portrait img{height:360px}.journal-index{padding-block:100px 56px}.entry-navigation{flex-direction:column;align-items:flex-start;padding:20px}body .story-card,body .lesson-card{padding:20px}body .timeline-entry{display:block;padding-left:18px}body .hero h1{font-size:clamp(2.7rem,12vw,4rem)}body .section-heading h2{font-size:clamp(2rem,8vw,3rem)}.next-areas{margin-bottom:56px}body .site-footer{padding-top:48px}}
+@media(max-width:400px){body .footer-main{grid-template-columns:minmax(0,1fr)}}

@@ -73,7 +73,7 @@ function renderBlogPosts() {
         <div class="blog-meta"><span>${post.date}</span><span>${post.readTime}</span></div>
         <h2>${post.title}</h2>
         <p class="blog-excerpt">${post.excerpt}</p>
-        <span class="blog-read-link">Read note <span>→</span></span>
+        <span class="blog-read-link">Read article <span>→</span></span>
       </div>
     </a>
   `).join("");

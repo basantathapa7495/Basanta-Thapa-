@@ -14,6 +14,7 @@
   <link rel="shortcut icon" href="../favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
   <link rel="stylesheet" href="digital.css">
+<link rel="stylesheet" href="../design-system.css">
 </head>
 <body>
 <div class="blob-bg" aria-hidden="true"><div class="blob blob1"></div><div class="blob blob2"></div><div class="blob blob3"></div></div>
@@ -83,8 +84,8 @@
   </section>
 
   <section class="panel" id="weeklyPanel">
-    <div class="section-title"><div class="section-label">Last 7 days</div><h2>Weekly attention</h2><p>Trends use recorded data only unless you choose to include demo entries.</p></div>
-    <section class="content-card chart-card"><div class="chart-top"><h3>Tracked time trend</h3><label class="check"><input type="checkbox" id="includeDemo" checked /> Include demo data</label></div><div class="chart-wrap" id="weeklyChart"></div></section>
+    <div class="section-title"><div class="section-label">Last 7 days</div><h2>Weekly attention</h2><p>Trends use recorded screenshot data only.</p></div>
+    <section class="content-card chart-card"><div class="chart-top"><h3>Tracked time trend</h3></div><div class="chart-wrap" id="weeklyChart"></div></section>
     <section class="metric-grid"><div class="metric"><div class="metric-label">Daily average</div><div class="metric-value" id="weekAverage">—</div><div class="metric-help">Per included day</div></div><div class="metric"><div class="metric-label">Week total</div><div class="metric-value" id="weekTotal">—</div><div class="metric-help">Tracked app time</div></div><div class="metric"><div class="metric-label">Most used</div><div class="metric-value" id="weekTopApp">—</div><div class="metric-help" id="weekTopTime">—</div></div><div class="metric"><div class="metric-label">Change</div><div class="metric-value" id="weekChange">—</div><div class="metric-help">First to latest included day</div></div></section>
     <div class="split"><section class="content-card"><div class="card-head"><div><h2>Where time went</h2><p>Usage grouped by purpose.</p></div></div><div class="category-list" id="weeklyCategories"></div></section><section class="content-card"><div class="card-head"><div><h2>Top apps</h2><p>Across included days.</p></div></div><div class="category-list" id="weeklyApps"></div></section></div>
   </section>
@@ -92,12 +93,12 @@
   <section class="panel" id="monthlyPanel">
     <div class="section-title"><div class="section-label">Monthly view</div><h2 id="monthTitle">—</h2><p>Browse every month of your 365-day goal. Days without data stay empty.</p></div>
     <section class="metric-grid"><div class="metric"><div class="metric-label">Days logged</div><div class="metric-value" id="monthRecorded">—</div><div class="metric-help">In this month</div></div><div class="metric"><div class="metric-label">Daily average</div><div class="metric-value" id="monthAverage">—</div><div class="metric-help">Across logged days</div></div><div class="metric"><div class="metric-label">Best day</div><div class="metric-value" id="monthBest">—</div><div class="metric-help">Lowest tracked time</div></div><div class="metric"><div class="metric-label">Top app</div><div class="metric-value" id="monthTop">—</div><div class="metric-help">In this month</div></div></section>
-    <section class="content-card"><div class="card-head"><div><h2>Activity calendar</h2><p>Demo records are faded. Empty dates have not been added yet.</p></div><div class="calendar-tools"><button class="icon-btn" id="previousMonth" onclick="moveMonth(-1)" aria-label="Previous month">‹</button><input class="control" id="datePicker" type="date" min="2026-09-11" max="2027-09-10" /><button class="icon-btn" id="nextMonth" onclick="moveMonth(1)" aria-label="Next month">›</button></div></div><div class="calendar" id="calendarGrid"></div></section>
+    <section class="content-card"><div class="card-head"><div><h2>Activity calendar</h2><p>Empty dates have not been recorded yet.</p></div><div class="calendar-tools"><button class="icon-btn" id="previousMonth" onclick="moveMonth(-1)" aria-label="Previous month">‹</button><input class="control" id="datePicker" type="date" min="2026-09-11" max="2027-09-10" /><button class="icon-btn" id="nextMonth" onclick="moveMonth(1)" aria-label="Next month">›</button></div></div><div class="calendar" id="calendarGrid"></div></section>
   </section>
 
   
 
-  <aside class="data-note"><strong>About this data</strong><p>This tracker runs from September 11, 2026 through September 10, 2027. Recorded entries come from Android activity screenshots, demo entries are clearly marked, and a dash means the source did not provide that value.</p></aside>
+  <aside class="data-note"><strong>About this data</strong><p>This tracker runs from September 11, 2026 through September 10, 2027. Recorded entries come from Android activity screenshots, and a dash means the source did not provide that value.</p></aside>
 </main>
 <div id="footer-container"></div>
 <div class="toast" id="toast"></div>
