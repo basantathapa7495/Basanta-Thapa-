@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Books | Basanta Saru</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../style.css" />
-  <link rel="stylesheet" href="books.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Books and practical guides by Basanta Saru about skills, health, wisdom, work, and modern life.">
+  <title>Books & Guides | Basanta Saru</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="books.css">
 </head>
 <body>
-  <div class="blob-bg">
+  <div class="blob-bg" aria-hidden="true">
     <div class="blob blob1"></div>
     <div class="blob blob2"></div>
     <div class="blob blob3"></div>
@@ -19,212 +20,141 @@
 
   <div id="navbar-container"></div>
 
-  <!-- ============ HERO (stats removed) ============ -->
-  <section class="books-hero">
-    <div class="container">
-      <div class="hero-eyebrow">The Library · 2026</div>
-      <h1 class="hero-title">Books by Basanta Saru</h1>
-      <p class="hero-tagline">Read. Learn. Grow.</p>
-      <p class="hero-sub">
-        Helping people improve their skills, mindset, and financial future —
-        one page at a time.
-      </p>
-    </div>
-  </section>
+  <main class="books-page">
+    <section class="library-hero" aria-labelledby="booksTitle">
+      <aside class="shelf-rail" aria-label="Library summary">
+        <span class="rail-kicker">On the shelf</span>
+        <div><strong id="titleCount">04</strong><span>Titles</span></div>
+        <div><strong>04</strong><span>Themes</span></div>
+        <div><strong>02</strong><span>In progress</span></div>
+      </aside>
 
-  <!-- ============ FEATURED BOOK ============ -->
-  <section class="section featured-section">
-    <div class="container">
-      <div class="featured-label">
-        <span class="dot"></span> Featured This Month
+      <div class="hero-copy">
+        <p class="page-kicker">Books · Guides · Working ideas</p>
+        <h1 id="booksTitle">Ideas worth keeping, <em>made practical.</em></h1>
+        <p>My growing shelf of guides about earning skills, healthy living, timeless wisdom, and navigating modern life—with clear lessons you can actually use.</p>
+        <div class="hero-actions">
+          <a href="#collection" class="primary-link">Browse the collection</a>
+          <a href="../blogs/blog.html" class="quiet-link">Read learning notes <span>↗</span></a>
+        </div>
       </div>
-      <h2 class="section-heading">For Youth's</h2>
 
+      <aside class="reading-card" aria-label="Featured reading">
+        <div class="reading-card-head">
+          <span>Featured guide</span>
+          <i aria-hidden="true"></i>
+        </div>
+        <a href="ebg.html" class="mini-cover">
+          <img src="../assets/img/book1.jpg" alt="Earn Before You Graduate book cover">
+        </a>
+        <div class="reading-card-copy">
+          <small>Skills &amp; income</small>
+          <strong>Earn Before You Graduate</strong>
+          <a href="ebg.html">Explore the guide <span>→</span></a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="featured-section" aria-labelledby="featuredTitle">
       <div class="featured-book">
-        <div class="featured-visual">
-          <div class="featured-badge">🔥 New Release</div>
-          <a href="ebg.html" class="featured-cover-link">
-            <img src="../assets/img/book1.jpg" alt="Earn Before You Graduate cover" class="featured-cover" />
+        <div class="featured-art">
+          <span class="book-number">Book / 01</span>
+          <a href="ebg.html">
+            <img src="../assets/img/book1.jpg" alt="Earn Before You Graduate book cover">
           </a>
+          <span class="cover-shadow" aria-hidden="true"></span>
         </div>
-        <div class="featured-content">
-          <span class="featured-category">Finance</span>
-          <h3 class="featured-title">Earn Before You Graduate</h3>
-          <p class="featured-desc">
-            A practical blueprint for students to build real income before the
-            degree even arrives. Learn the mindset, skills, and small businesses
-            you can start today with zero capital.
-          </p>
-          <ul class="featured-points">
-            <li><span class="check">✓</span> 7 income models that work with a class schedule</li>
-            <li><span class="check">✓</span> Turn a skill into a paid offer in 14 days</li>
-            <li><span class="check">✓</span> The psychology of pricing your first service</li>
+
+        <div class="featured-copy">
+          <p class="page-kicker">Start before you feel ready</p>
+          <h2 id="featuredTitle">Earn Before You Graduate</h2>
+          <p class="featured-lead">A practical guide for students who want to develop useful skills, create their first offer, and begin earning while they are still learning.</p>
+          <ul class="lesson-list">
+            <li><span>01</span><p><strong>Find a useful skill</strong>Choose something people already need and improve it through real practice.</p></li>
+            <li><span>02</span><p><strong>Turn skill into service</strong>Package what you can do into a clear, simple offer.</p></li>
+            <li><span>03</span><p><strong>Start small and learn</strong>Use early work as feedback instead of waiting for perfection.</p></li>
           </ul>
-          <div class="featured-meta">
-            <span>📄 142 Pages</span>
-            <span>🌐 English</span>
-            <span>📕 PDF + Kindle</span>
-            <span>📅 Updated 2026</span>
-          </div>
-          <div class="featured-cta">
-            <div class="featured-price">
-              <span class="price-label">Price</span>
-              <span class="price-value">NPR 499</span>
-            </div>
-            <a href="ebg.html" class="btn btn-primary">Buy Now →</a>
+          <div class="featured-footer">
+            <div><small>Guide price</small><strong>NPR 499</strong></div>
+            <a href="ebg.html">View book details <span>↗</span></a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============ BOOK GRID (no filter, no stars) ============ -->
-  <section class="section grid-section">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-heading">The Complete Collection</h2>
-        <p class="section-sub">Every book, in the order it was written. Click any cover to explore.</p>
+    <section class="collection-section" id="collection" aria-labelledby="collectionTitle">
+      <div class="section-heading">
+        <div>
+          <p class="page-kicker">The complete shelf</p>
+          <h2 id="collectionTitle">Explore every title</h2>
+        </div>
+        <p><span id="resultCount">4</span> books found</p>
       </div>
-      <div class="book-grid" id="bookGrid">
-        <!-- Rendered by books.js -->
-      </div>
-    </div>
-  </section>
 
-  <!-- ============ COMING SOON ============ -->
-  <section class="section coming-soon-section">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-heading">Coming Soon</h2>
-        <p class="section-sub">Books in the making. Join the waitlist for early access.</p>
+      <div class="books-toolbar">
+        <label class="book-search" for="bookSearch">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
+          <span class="visually-hidden">Search books</span>
+          <input id="bookSearch" type="search" placeholder="Search a title or theme…" autocomplete="off">
+        </label>
+        <div class="book-filters" role="group" aria-label="Filter books">
+          <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter-btn" type="button" data-filter="skills" aria-pressed="false">Skills</button>
+          <button class="filter-btn" type="button" data-filter="health" aria-pressed="false">Health</button>
+          <button class="filter-btn" type="button" data-filter="wisdom" aria-pressed="false">Wisdom</button>
+          <button class="filter-btn" type="button" data-filter="life" aria-pressed="false">Modern life</button>
+        </div>
       </div>
-      <div class="coming-soon-grid" id="comingSoonGrid">
-        <!-- Rendered by books.js -->
-      </div>
-    </div>
-  </section>
 
-  <!-- ============ WHY READ MY BOOKS ============ -->
-  <section class="section why-section">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-heading">Why Read My Books?</h2>
-        <p class="section-sub">Written with one goal — to be genuinely useful.</p>
-      </div>
-      <div class="why-grid">
-        <div class="why-card">
-          <div class="why-icon">✓</div>
-          <h3>Practical</h3>
-          <p>No fluff. Every chapter gives you something you can apply today.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-icon">✓</div>
-          <h3>Beginner Friendly</h3>
-          <p>Written for someone starting from zero — no jargon, no assumptions.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-icon">✓</div>
-          <h3>Affordable</h3>
-          <p>Knowledge shouldn't be locked behind expensive courses. Priced fairly.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-icon">✓</div>
-          <h3>Actionable</h3>
-          <p>End each chapter with a clear next step — not just inspiration.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+      <div class="book-grid" id="bookGrid" aria-live="polite"></div>
+      <p class="empty-state" id="emptyState" hidden>No book matches that search. Try a different title or theme.</p>
+    </section>
 
-  <!-- ============ READER BENEFITS ============ -->
-  <section class="section benefits-section">
-    <div class="container">
-      <div class="benefits-card">
-        <div class="benefits-header">
-          <div class="section-label">The Outcome</div>
-          <h2 class="section-heading">After reading, you'll learn to</h2>
-        </div>
-        <div class="benefits-grid">
-          <div class="benefit-item">
-            <span class="benefit-check">✓</span>
-            <div>
-              <h4>Build useful skills</h4>
-              <p>Skills that compound — not just hobbies that pass time.</p>
-            </div>
-          </div>
-          <div class="benefit-item">
-            <span class="benefit-check">✓</span>
-            <div>
-              <h4>Earn online</h4>
-              <p>Real income models that work from anywhere in the world.</p>
-            </div>
-          </div>
-          <div class="benefit-item">
-            <span class="benefit-check">✓</span>
-            <div>
-              <h4>Improve productivity</h4>
-              <p>Systems that help you do more with less friction.</p>
-            </div>
-          </div>
-          <div class="benefit-item">
-            <span class="benefit-check">✓</span>
-            <div>
-              <h4>Think long term</h4>
-              <p>Escape the trap of quick wins. Build a life that compounds.</p>
-            </div>
-          </div>
-        </div>
+    <section class="writing-desk" aria-labelledby="writingTitle">
+      <div class="desk-heading">
+        <p class="page-kicker">On the writing desk</p>
+        <h2 id="writingTitle">Ideas taking shape</h2>
+        <p>These are developing concepts, not finished promises. They will join the shelf when the ideas and writing are ready.</p>
       </div>
-    </div>
-  </section>
+      <div class="coming-grid" id="comingSoonGrid"></div>
+    </section>
 
-  <!-- ============ FAQ ============ -->
-  <section class="section faq-section">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-heading">Frequently Asked</h2>
-        <p class="section-sub">Quick answers before you buy.</p>
-      </div>
-      <div class="faq-list" id="faqList">
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>How do I receive the book?</span>
-            <span class="faq-toggle">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Instantly. After purchase, you'll get a download link via email — plus access to your personal library on this site.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Can I read on mobile?</span>
-            <span class="faq-toggle">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Yes. Every book comes in PDF (works on any phone) and most are also available on Kindle.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Is it lifetime access?</span>
-            <span class="faq-toggle">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Yes — buy once, keep forever. No subscriptions, no recurring fees.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Do I get updates?</span>
-            <span class="faq-toggle">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Absolutely. When I update a book with new chapters or insights, you'll get the new version for free via email.</p>
-          </div>
+    <section class="book-principles" aria-labelledby="principlesTitle">
+      <div class="principle-intro">
+        <span>My approach /</span>
+        <div>
+          <p class="page-kicker">Why I write</p>
+          <h2 id="principlesTitle">Useful before impressive.</h2>
         </div>
       </div>
-    </div>
-  </section>
+      <div class="principle-grid">
+        <article><span>01</span><h3>Clear</h3><p>Simple language and structured ideas without unnecessary complexity.</p></article>
+        <article><span>02</span><h3>Practical</h3><p>Lessons connected to actions you can test in your own life.</p></article>
+        <article><span>03</span><h3>Honest</h3><p>Built from learning, observation, and real questions—not empty certainty.</p></article>
+      </div>
+    </section>
+
+    <section class="books-faq" aria-labelledby="faqTitle">
+      <div class="faq-heading">
+        <p class="page-kicker">A few answers</p>
+        <h2 id="faqTitle">About the shelf</h2>
+      </div>
+      <div class="faq-list">
+        <article class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false"><span>What kind of books are these?</span><b>+</b></button>
+          <div class="faq-answer"><p>Practical guides and idea-led books covering skills, earning, health, wisdom, and personal growth.</p></div>
+        </article>
+        <article class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false"><span>Where can I learn more about a title?</span><b>+</b></button>
+          <div class="faq-answer"><p>Open any book card to visit its dedicated page, where you can read the description and available details.</p></div>
+        </article>
+        <article class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false"><span>Will more titles be added?</span><b>+</b></button>
+          <div class="faq-answer"><p>Yes. The writing desk shows ideas currently being developed, and the collection will grow as each one becomes ready.</p></div>
+        </article>
+      </div>
+    </section>
+  </main>
 
   <div id="footer-container"></div>
 
