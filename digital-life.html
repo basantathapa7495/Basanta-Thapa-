@@ -4,7 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Basanta Saru's digital attention and screen-habit tracker." />
-  <title>Digital Life — Next Version</title>
+  <title>Digital Life Dashboard | Basanta Saru</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232563eb'/%3E%3Cpath d='M16 39l10-10 8 7 14-16' fill='none' stroke='white' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
   <style>
     :root {
@@ -49,18 +53,159 @@
     .toast{position:fixed;right:20px;bottom:20px;z-index:30;padding:11px 14px;border-radius:11px;background:#17191d;color:#fff;font-size:12px;box-shadow:0 12px 30px rgba(0,0,0,.2);opacity:0;transform:translateY(8px);pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:none}
     @media(max-width:900px){.summary-grid{grid-template-columns:repeat(2,1fr)}.summary-card+.summary-card{border-left:0}.summary-card:nth-child(even){border-left:1px solid var(--line)}.summary-card:nth-child(n+3){border-top:1px solid var(--line)}.summary-card:last-child{grid-column:1/-1}.score-strip,.split{grid-template-columns:1fr}.metric-grid{grid-template-columns:repeat(2,1fr)}.calendar{gap:4px}.cal-day{min-height:68px;padding:7px}.cal-time{margin-top:10px;font-size:11px}}
     @media(max-width:650px){.page{width:min(100% - 20px,1180px);padding-top:28px}.topbar{display:block}.privacy-btn{margin-top:18px}h1{font-size:42px;letter-spacing:-2px}.subtitle{font-size:14px}.tabs{width:100%}.tab{flex:1}.date-section{align-items:center}.current-date{font-size:17px}.light-btn{display:none}.summary-card{padding:16px}.summary-value{font-size:22px}.controls{align-items:stretch;flex-direction:column}.select{width:100%}.score-strip{gap:8px}.card-head{padding:16px}.note-area{grid-template-columns:1fr}.save-note{justify-self:start}.metric-grid{gap:8px}.metric{padding:14px}.calendar{padding:10px;gap:3px}.cal-label{font-size:8px}.cal-day{min-height:54px;padding:5px}.cal-time{font-size:9px}.cal-meta{display:none}.goal-edit-row{grid-template-columns:1fr 1fr}.goal-edit-row .field:first-child{grid-column:1/-1}.primary{width:100%}.category-row,.goal-row{grid-template-columns:105px 1fr auto;gap:8px}.chart-wrap{height:220px}}
+
+    /* ===== Learning-in-public visual refresh ===== */
+    :root {
+      --bg:#f7f3ec; --card:rgba(255,253,248,.82); --text:#183234; --muted:#667778;
+      --muted-2:#8a9898; --line:rgba(38,87,88,.15); --blue:#2a7778; --blue-soft:rgba(42,119,120,.09);
+      --green:#34865d; --green-soft:#edf8f1; --amber:#b86b32; --amber-soft:#fff4e8;
+      --red:#c5574b; --red-soft:#fff0ed; --purple:#7764a6; --radius:20px;
+      --shadow:0 20px 55px rgba(34,66,62,.075);
+    }
+    body {
+      background:radial-gradient(circle at 14% 12%,rgba(200,111,80,.1),transparent 30%),
+                 radial-gradient(circle at 87% 17%,rgba(42,119,120,.11),transparent 32%),var(--bg);
+      color:var(--text); font-family:"DM Sans",sans-serif;
+    }
+    .page { position:relative;z-index:1;width:min(calc(100% - 4rem),1500px);padding:0 0 clamp(5rem,8vw,8rem); }
+    .topbar {
+      min-height:680px;padding:clamp(5rem,8vw,8rem) 0 5rem;
+      display:grid;grid-template-columns:minmax(115px,.5fr) minmax(430px,1.5fr) minmax(300px,.8fr);
+      align-items:center;gap:clamp(2rem,4vw,5rem);position:relative;
+    }
+    .topbar::before {
+      content:"";position:absolute;inset:3rem -2rem;z-index:-1;border:1px solid rgba(42,119,120,.08);border-radius:2rem;
+      background:linear-gradient(rgba(42,119,120,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(42,119,120,.04) 1px,transparent 1px);
+      background-size:54px 54px;mask-image:linear-gradient(to right,transparent,#000 14%,#000 86%,transparent);
+    }
+    .digital-rail { border-block:1px solid var(--line); }
+    .rail-title { display:block;padding:.9rem 0;color:#c86f50;font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase; }
+    .digital-rail div { display:grid;gap:.12rem;padding:1.1rem 0;border-top:1px solid var(--line); }
+    .digital-rail strong { color:var(--blue);font:600 1.65rem "Playfair Display",serif; }
+    .digital-rail small { color:var(--muted);font-size:.69rem; }
+    .eyebrow { color:#c86f50;font-size:.7rem;letter-spacing:.14em; }
+    .eyebrow i { background:#c86f50;box-shadow:0 0 0 5px rgba(200,111,80,.1); }
+    h1 { max-width:820px;color:var(--text);font:600 clamp(4rem,7vw,7.5rem)/.86 "Playfair Display",serif;letter-spacing:-.055em; }
+    h1 em { display:block;color:var(--blue);font-weight:600; }
+    .subtitle { max-width:680px;margin-top:1.8rem;font-size:clamp(1rem,1.2vw,1.16rem);line-height:1.78; }
+    .hero-principles { display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.6rem; }
+    .hero-principles span { padding:.45rem .72rem;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.4);color:var(--muted);font-size:.68rem;font-weight:700; }
+    .attention-card { padding:1.35rem;border:1px solid var(--line);border-radius:1.5rem;background:rgba(255,253,248,.76);box-shadow:0 25px 65px rgba(34,66,62,.11);backdrop-filter:blur(18px);transform:rotate(1deg); }
+    .attention-head { display:flex;justify-content:space-between;align-items:center;padding-bottom:1rem;border-bottom:1px solid var(--line); }
+    .attention-head span { color:#c86f50;font-size:.65rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase; }
+    .attention-head i { width:.6rem;height:.6rem;border-radius:50%;background:#67b88c;box-shadow:0 0 0 7px rgba(103,184,140,.14);animation:attentionPulse 2.2s infinite; }
+    .attention-card>p { margin:1rem 0;color:var(--muted);font-size:.78rem;line-height:1.65; }
+    .privacy-btn { width:100%;justify-content:center;padding:.8rem;background:var(--text);border-color:var(--text);color:#fff;box-shadow:none; }
+    .privacy-btn.on { background:var(--green-soft);border-color:#ccebd6;color:var(--green); }
+    .attention-meta { margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:.7rem; }
+    .attention-meta span { display:grid;gap:.15rem; }
+    .attention-meta small { color:var(--muted-2);font-size:.62rem;text-transform:uppercase; }
+    .attention-meta strong { font-size:.72rem; }
+    .attention-meta b { padding:.3rem .55rem;border-radius:999px;background:var(--blue-soft);color:var(--blue);font-size:.62rem; }
+    .tabs { top:12px;margin:0 auto 2rem;padding:6px;border-color:var(--line);border-radius:999px;background:rgba(255,253,248,.88);box-shadow:0 12px 35px rgba(34,66,62,.08); }
+    .tab { min-width:105px;border-radius:999px;padding:10px 18px; }
+    .tab.active { background:var(--text); }
+    .panel { animation:panelIn .35s ease both; }
+    .date-section,.section-title { margin-top:3.5rem; }
+    .section-title h2,.current-date { font-family:"Playfair Display",serif;color:var(--text); }
+    .section-title h2 { font-size:clamp(2rem,3.5vw,3.2rem);letter-spacing:-.04em; }
+    .summary-grid { border-color:var(--line);background:var(--card);box-shadow:var(--shadow);backdrop-filter:blur(12px); }
+    .summary-card { padding:1.4rem; }
+    .summary-value { color:var(--text);font-family:"Playfair Display",serif;font-size:1.8rem; }
+    .mini-card,.content-card,.metric { border-color:var(--line);background:var(--card);box-shadow:0 10px 35px rgba(34,66,62,.045);backdrop-filter:blur(10px); }
+    .mini-card,.metric { transition:transform .25s,border-color .25s; }
+    .mini-card:hover,.metric:hover { transform:translateY(-4px);border-color:rgba(42,119,120,.3); }
+    .controls { border-color:var(--line);background:var(--card); }
+    .control { border-color:var(--line);background:rgba(255,255,255,.58); }
+    .control:focus { border-color:var(--blue);box-shadow:0 0 0 3px rgba(42,119,120,.1); }
+    .content-card { border-radius:1.25rem; }
+    .card-head { padding:1.2rem 1.4rem;border-color:var(--line); }
+    .card-head h2,.chart-top h3 { color:var(--text);font-family:"Playfair Display",serif;font-size:1.25rem; }
+    thead { background:rgba(42,119,120,.04); }
+    tbody tr:hover { background:rgba(42,119,120,.035); }
+    .logo { border-color:var(--line);background:#f3f6f3; }
+    .usage-bar span { background:var(--blue); }
+    .save-note,.primary { background:var(--text);transition:transform .2s,background .2s; }
+    .save-note:hover,.primary:hover { background:var(--blue);transform:translateY(-2px); }
+    .calendar { gap:.5rem; }
+    .cal-day { border-color:var(--line);background:rgba(255,255,255,.55);transition:transform .2s,border-color .2s; }
+    .cal-day:hover:not(:disabled) { transform:translateY(-2px);border-color:var(--blue); }
+    .cal-day.active { border-color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue); }
+    .public-note { border-color:rgba(42,119,120,.22);background:var(--blue-soft);color:#326566; }
+    .data-note { margin-top:2rem;padding:1.1rem 1.25rem;border-left:3px solid var(--blue);background:rgba(42,119,120,.06);color:var(--muted);font-size:.75rem;line-height:1.6; }
+    .data-note strong { color:var(--text); }
+    .data-note p { margin:.25rem 0 0; }
+    @keyframes attentionPulse { 50%{box-shadow:0 0 0 12px rgba(103,184,140,0)} }
+    @keyframes panelIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
+    @media(max-width:1100px) {
+      .topbar { grid-template-columns:110px minmax(0,1fr); }
+      .attention-card { grid-column:2;width:min(100%,500px);transform:none; }
+    }
+    @media(max-width:700px) {
+      .page { width:min(calc(100% - 1.25rem),1500px);padding-top:0; }
+      .topbar { min-height:auto;grid-template-columns:1fr;gap:1.6rem;padding:3.5rem 0 3rem; }
+      .topbar::before { inset:1rem -.25rem; }
+      .digital-hero-copy { order:1; }
+      h1 { font-size:clamp(3.4rem,15vw,5.5rem); }
+      .digital-rail { order:2;display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:1rem;overflow:hidden; }
+      .rail-title { display:none; }
+      .digital-rail div { padding:.75rem .4rem;border-top:0;border-left:1px solid var(--line);text-align:center; }
+      .digital-rail div:first-of-type { border-left:0; }
+      .attention-card { grid-column:auto;order:3;width:100%; }
+      .tabs { justify-content:flex-start;width:100%;border-radius:1rem; }
+      .tab { min-width:auto;flex:1;padding:9px 12px; }
+      .summary-grid { grid-template-columns:1fr 1fr; }
+      .summary-card:last-child { grid-column:1/-1; }
+      .metric-grid { grid-template-columns:1fr 1fr; }
+      .book-bg-placeholder { display:none; }
+    }
+    @media(max-width:430px) {
+      .hero-principles { display:grid;grid-template-columns:1fr; }
+      .summary-grid,.metric-grid { grid-template-columns:1fr; }
+      .summary-card,.summary-card:nth-child(even),.summary-card:nth-child(n+3) { border-left:0;border-top:1px solid var(--line); }
+      .summary-card:first-child { border-top:0; }
+      .summary-card:last-child { grid-column:auto; }
+      .tab { font-size:10px;padding:9px 10px; }
+      .current-date { font-size:1.05rem; }
+      .date-actions { margin-left:auto; }
+      .category-row,.goal-row { grid-template-columns:90px 1fr auto; }
+    }
+    @media(prefers-reduced-motion:reduce) {
+      .attention-head i { animation:none; }
+      .panel,.mini-card,.metric,.cal-day,.save-note,.primary { animation:none;transition:none; }
+    }
   </style>
 </head>
 <body>
+<div class="blob-bg" aria-hidden="true"><div class="blob blob1"></div><div class="blob blob2"></div><div class="blob blob3"></div></div>
+<div id="navbar-container"></div>
 <main class="page">
   <header class="topbar">
-    <div><div class="eyebrow"><i></i>Next Version / Digital Life</div><h1>Where is my attention going?</h1><p class="subtitle">A daily record of app usage, screen habits, app opens and notifications—built to reveal patterns and improve my digital discipline.</p></div>
-    <button class="privacy-btn on" id="privacyBtn" onclick="togglePrivacy()" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg><span>Privacy on</span></button>
+    <aside class="digital-rail" aria-label="Digital Life snapshot">
+      <span class="rail-title">Live experiment</span>
+      <div><strong>365</strong><small>Day journey</small></div>
+      <div><strong>04</strong><small>Dashboard views</small></div>
+      <div><strong>01</strong><small>Better choice daily</small></div>
+    </aside>
+
+    <div class="digital-hero-copy">
+      <div class="eyebrow"><i></i>Next Version / Digital Life</div>
+      <h1>Use technology with <em>more intention.</em></h1>
+      <p class="subtitle">A public experiment for understanding where my attention goes, building healthier screen habits, and making one better digital choice each day.</p>
+      <div class="hero-principles"><span>Measure honestly</span><span>Improve gradually</span><span>Protect attention</span></div>
+    </div>
+
+    <aside class="attention-card">
+      <div class="attention-head"><span>Attention control</span><i aria-hidden="true"></i></div>
+      <p>Private activity stays protected by default. Switch it off only when reviewing your own dashboard.</p>
+      <button class="privacy-btn on" id="privacyBtn" onclick="togglePrivacy()" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg><span>Privacy on</span></button>
+      <div class="attention-meta"><span><small>Journey</small><strong>Sep 2026 → Sep 2027</strong></span><b>Active</b></div>
+    </aside>
   </header>
 
-  <nav class="tabs" aria-label="Dashboard sections">
+  <div class="tabs" role="tablist" aria-label="Dashboard sections">
     <button class="tab active" data-panel="today">Today</button><button class="tab" data-panel="weekly">Weekly</button><button class="tab" data-panel="monthly">Monthly</button><button class="tab" data-panel="goals">Goals</button>
-  </nav>
+  </div>
 
   <section class="panel active" id="todayPanel">
     <div class="date-section"><div><div class="section-label">Daily activity</div><div class="date-line"><span class="current-date" id="currentDate"></span><span class="badge" id="dataBadge"></span></div></div><div class="date-actions"><button class="icon-btn" id="previousButton" onclick="moveDay(-1)" aria-label="Previous day">‹</button><button class="light-btn" onclick="latestDay()">Latest</button><button class="icon-btn" id="nextButton" onclick="moveDay(1)" aria-label="Next day">›</button></div></div>
@@ -105,10 +250,11 @@
     <div class="public-note"><strong>Public-page protection:</strong> privacy mode begins enabled. Sensitive apps are hidden, and exact open/notification totals are concealed. Turn it off only when reviewing the dashboard privately.</div>
   </section>
 
-  <footer>This 365-day tracker runs from September 11, 2026 through September 10, 2027. Recorded entries come from Android app-activity screenshots. Demo entries are clearly marked. A dash (—) means the original screenshots did not provide that value.</footer>
+  <aside class="data-note"><strong>About this data</strong><p>This tracker runs from September 11, 2026 through September 10, 2027. Recorded entries come from Android activity screenshots, demo entries are clearly marked, and a dash means the source did not provide that value.</p></aside>
 </main>
+<div id="footer-container"></div>
 <div class="toast" id="toast"></div>
-
+<script src="components.js"></script>
 <script>
 /* ==================================================================
    ONE-YEAR GOAL
