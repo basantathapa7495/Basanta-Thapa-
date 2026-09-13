@@ -1,60 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog | Basanta Saru</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;600;700&family=DM+Mono&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="blog.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Learning notes, project lessons, and honest reflections from Basanta Saru.">
+  <title>Learning Notes | Basanta Saru</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;600;700&family=DM+Mono&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="blog.css">
 </head>
 <body>
-    <div class="blob-bg">
-        <div class="blob blob1"></div>
-        <div class="blob blob2"></div>
-        <div class="blob blob3"></div>
-    </div>
-    
-    <div id="navbar-container"></div>
-    
-    <main>
-        <header class="blog-page-header fade-up">
-<h1 style="color: green;">The journal</h1>
-            <p>Thoughts, essays, & building in public. documenting the messy, beautiful art of becoming.</p>
-        </header>
-        
-        <!-- Search Section -->
-        <div class="blog-search-section fade-up">
-            <div class="search-wrapper">
-                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <path d="m21 21-4.35-4.35"></path>
-                </svg>
-                <input type="text" id="searchInput" placeholder="Search Articles..." class="search-input">
+  <div class="blob-bg" aria-hidden="true">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+  </div>
+
+  <div id="navbar-container"></div>
+
+  <main class="notes-page">
+    <section class="notes-hero" aria-labelledby="notesTitle">
+      <div class="notes-page-container">
+        <div class="notes-hero-grid">
+          <aside class="notes-now fade-up" aria-label="Journal information">
+            <span class="notes-live"><i></i> Live</span>
+            <div class="notes-now-line"></div>
+            <dl>
+              <div><dt>Age</dt><dd>20</dd></div>
+              <div><dt>From</dt><dd>Syangja</dd></div>
+              <div><dt>Theme</dt><dd>Growth</dd></div>
+            </dl>
+          </aside>
+
+          <div class="notes-hero-copy">
+            <p class="notes-kicker fade-up">Learning in public</p>
+            <h1 id="notesTitle" class="fade-up" style="animation-delay:.06s">
+              Notes from building
+              <span>a better life.</span>
+            </h1>
+            <p class="notes-intro fade-up" style="animation-delay:.12s">
+              Honest lessons from digital projects, books, daily experiments,
+              mistakes, and the slow work of becoming my next version.
+            </p>
+            <div class="notes-principles fade-up" style="animation-delay:.18s">
+              <span>Better, not perfect</span>
+              <span>Real stories, real growth</span>
             </div>
+          </div>
+
+          <aside class="notes-dashboard fade-up" style="animation-delay:.14s" aria-label="Notes dashboard">
+            <div class="notes-dashboard-head">
+              <div><small>Public notebook</small><h2>At a glance</h2></div>
+              <span>2026</span>
+            </div>
+            <div class="notes-dashboard-stats">
+              <div><strong id="publishedCount">3</strong><span>Published</span></div>
+              <div><strong>05</strong><span>Themes</span></div>
+            </div>
+            <a href="../turning-20/index.html" class="dashboard-feature">
+              <span class="dashboard-feature-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h13a2 2 0 0 1 2 2v16H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"/><path d="M7 3v18M10 8h7M10 12h7M10 16h4"/></svg>
+              </span>
+              <span><small>Featured journey</small><strong>Turning 20 · Day 01</strong></span>
+              <b>→</b>
+            </a>
+            <a href="../digital-life.html" class="dashboard-feature">
+              <span class="dashboard-feature-icon blue">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 12l3-3 3 2 4-5"/></svg>
+              </span>
+              <span><small>Current experiment</small><strong>Digital Life</strong></span>
+              <b>→</b>
+            </a>
+          </aside>
         </div>
-        
-        <!-- Filter Buttons -->
-        <div class="blog-filter-section fade-up">
-            <button class="filter-btn active" data-category="all">All</button>
-            <button class="filter-btn" data-category="programming">Programming</button>
-            <button class="filter-btn" data-category="books">Books</button>
-            <button class="filter-btn" data-category="business">Business</button>
-            <button class="filter-btn" data-category="life">Life</button>
-            <button class="filter-btn" data-category="updates">Updates</button>
+      </div>
+    </section>
+
+    <section class="notes-library" aria-labelledby="libraryTitle">
+      <div class="notes-page-container">
+        <div class="library-heading">
+          <div>
+            <p class="notes-kicker">The public notebook</p>
+            <h2 id="libraryTitle">Explore all notes</h2>
+          </div>
+          <p><span id="resultCount">3</span> notes found</p>
         </div>
-        
-        <!-- Blog Grid -->
-        <div class="blog-grid" id="blogGrid">
-            <!-- Blog posts will be loaded here by blog.js -->
+
+        <div class="notes-toolbar">
+          <label class="notes-search" for="searchInput">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+            <input type="search" id="searchInput" placeholder="Search notes, lessons, or topics…" autocomplete="off">
+          </label>
+
+          <div class="notes-filters" aria-label="Filter notes by category">
+            <button class="filter-btn active" data-category="all" aria-pressed="true">All</button>
+            <button class="filter-btn" data-category="build" aria-pressed="false">Build</button>
+            <button class="filter-btn" data-category="learning" aria-pressed="false">Learning</button>
+            <button class="filter-btn" data-category="long-form" aria-pressed="false">Long-form</button>
+          </div>
         </div>
-    </main>
-    
-    <div id="footer-container"></div>
-    
-    <script src="../components.js"></script>
-    <script src="blog.js"></script>
+
+        <div class="blog-grid" id="blogGrid" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="../components.js"></script>
+  <script src="blog.js"></script>
 </body>
 </html>
