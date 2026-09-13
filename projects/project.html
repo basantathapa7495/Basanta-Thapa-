@@ -1,58 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | Basanta Saru</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;600;700&family=DM+Mono&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="project.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore the digital projects and small experiments Basanta Saru is building in public.">
+  <title>Projects & Build Log | Basanta Saru</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="project.css">
 </head>
 <body>
-    <div class="blob-bg">
-        <div class="blob blob1"></div>
-        <div class="blob blob2"></div>
-        <div class="blob blob3"></div>
-    </div>
-    
-    <div id="navbar-container"></div>
-    
-    <main>
-        <header class="project-page-header fade-up">
-            <h1>My Projects</h1>
-            <p>Things I've built & experiments in progress. a collection of web apps, tools, and creative projects built with curiosity and care.</p>
-        </header>
-        
-        <!-- Search Section -->
-        <div class="project-search-section fade-up">
-            <div class="search-wrapper">
-                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <path d="m21 21-4.35-4.35"></path>
-                </svg>
-                <input type="text" id="searchInput" placeholder="Search Projects..." class="search-input">
-            </div>
+  <div class="blob-bg" aria-hidden="true">
+    <span class="blob blob-one"></span>
+    <span class="blob blob-two"></span>
+    <span class="blob blob-three"></span>
+  </div>
+
+  <div id="navbar-placeholder"></div>
+
+  <main>
+    <section class="projects-hero" aria-labelledby="projects-title">
+      <aside class="build-now-rail" aria-label="Build snapshot">
+        <span class="rail-label">Build snapshot</span>
+        <div class="rail-item"><strong>03</strong><span>Live tools</span></div>
+        <div class="rail-item"><strong>20</strong><span>Age</span></div>
+        <div class="rail-item"><strong>NP</strong><span>Syangja</span></div>
+        <div class="rail-item"><strong>Now</strong><span>Learning</span></div>
+      </aside>
+
+      <div class="projects-intro">
+        <p class="eyebrow"><span></span> Building in public</p>
+        <h1 id="projects-title">Turning small ideas into <em>useful digital tools.</em></h1>
+        <p class="hero-copy">This is my build log: finished experiments, lessons from imperfect versions, and the bigger systems I am growing one step at a time.</p>
+        <div class="hero-actions">
+          <a class="primary-action" href="#project-library">Explore live projects</a>
+          <a class="text-action" href="../digital-life.html">Open Digital Life <span aria-hidden="true">↗</span></a>
         </div>
-        
-        <!-- Filter Buttons -->
-        <div class="project-filter-section fade-up">
-            <button class="filter-btn active" data-category="all">All</button>
-            <button class="filter-btn" data-category="web-app">Web App</button>
-            <button class="filter-btn" data-category="utility">Utility</button>
-            <button class="filter-btn" data-category="fun-tool">Fun Tool</button>
+      </div>
+
+      <aside class="build-dashboard" aria-label="Current build dashboard">
+        <div class="dashboard-heading">
+          <div>
+            <span class="dashboard-kicker">Workbench</span>
+            <h2>Currently building</h2>
+          </div>
+          <span class="pulse-dot" aria-label="Active"></span>
         </div>
-        
-        <!-- Project Grid -->
-        <div class="project-grid" id="projectGrid">
-            <!-- Projects will be loaded here by project.js -->
+
+        <a class="current-build" href="../digital-life.html">
+          <span class="build-number">01</span>
+          <span><strong>Digital Life</strong><small>Designing the next version</small></span>
+          <span class="build-arrow" aria-hidden="true">↗</span>
+        </a>
+        <div class="current-build">
+          <span class="build-number">02</span>
+          <span><strong>SNAP</strong><small>School system in progress</small></span>
+          <span class="status-chip">Building</span>
         </div>
-    </main>
-    
-    <div id="footer-container"></div>
-    
-    <script src="../components.js"></script>
-    <script src="project.js"></script>
+
+        <div class="build-stats">
+          <div><strong id="projectCount">3</strong><span>Published</span></div>
+          <div><strong id="liveCount">3</strong><span>Working live</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="project-library" id="project-library" aria-labelledby="library-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow"><span></span> The project shelf</p>
+          <h2 id="library-title">Live experiments</h2>
+        </div>
+        <p><span id="resultCount">3</span> projects available to explore</p>
+      </div>
+
+      <div class="project-toolbar">
+        <label class="search-field" for="projectSearch">
+          <span class="visually-hidden">Search projects</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/></svg>
+          <input id="projectSearch" type="search" placeholder="Search by project or skill...">
+        </label>
+
+        <div class="project-filters" role="group" aria-label="Filter projects">
+          <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter-btn" type="button" data-filter="web-app" aria-pressed="false">Web apps</button>
+          <button class="filter-btn" type="button" data-filter="utility" aria-pressed="false">Utilities</button>
+          <button class="filter-btn" type="button" data-filter="fun-tool" aria-pressed="false">Fun tools</button>
+        </div>
+      </div>
+
+      <div class="project-grid" id="projectGrid" aria-live="polite"></div>
+      <p class="empty-state" id="emptyState" hidden>No project matches that search yet. Try another word or category.</p>
+    </section>
+
+    <section class="project-note" aria-labelledby="next-title">
+      <span class="note-index">Next /</span>
+      <div>
+        <p class="eyebrow"><span></span> Always in progress</p>
+        <h2 id="next-title">The shelf will keep growing.</h2>
+        <p>I am documenting real work, not waiting for everything to be perfect. New versions of Digital Life, SNAP, and future experiments will appear here as they become ready.</p>
+      </div>
+      <a href="../blogs/blog.html">Read the learning notes <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../components.js"></script>
+  <script src="project.js"></script>
 </body>
 </html>
