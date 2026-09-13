@@ -132,3 +132,7 @@ document.querySelectorAll(".faq-question").forEach(button => {
 
 titleCount.textContent = String(books.length).padStart(2, "0");
 renderBooks(books);
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector(".footer-now b")?.remove();
+});
