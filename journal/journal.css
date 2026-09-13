@@ -420,3 +420,282 @@ main { position:relative;z-index:1; }
   .story-card { padding:1rem; }
   .mini-stats { grid-template-columns:1fr; }
 }
+
+
+/* ===== Final responsive spacing system ===== */
+.hero,
+.intro-strip,
+.story-section,
+.lessons-section,
+.evidence-section,
+.promise-section,
+.closing {
+  box-sizing: border-box;
+}
+
+.story-section,
+.lessons-section {
+  padding-block: clamp(5.5rem, 9vw, 8rem);
+}
+
+.closing {
+  padding-block: clamp(5.5rem, 10vw, 8rem);
+}
+
+@media (max-width: 1100px) {
+  .hero,
+  .intro-strip {
+    width: min(calc(100% - 3rem), 1500px);
+  }
+
+  .story-section,
+  .lessons-section,
+  .evidence-section,
+  .promise-section,
+  .closing {
+    width: min(calc(100% - 3rem), 1300px);
+  }
+
+  .hero {
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  .evidence-section {
+    padding: clamp(2.75rem, 6vw, 4.5rem);
+    gap: clamp(2.5rem, 5vw, 5rem);
+  }
+}
+
+@media (max-width: 850px) {
+  .hero,
+  .intro-strip,
+  .story-section,
+  .lessons-section,
+  .evidence-section,
+  .promise-section,
+  .closing {
+    width: calc(100% - 2.5rem);
+  }
+
+  .hero {
+    padding-block: 4.5rem 5rem;
+    gap: 3rem;
+  }
+
+  .hero-card {
+    width: 100%;
+    max-width: 36rem;
+    padding: 2rem;
+  }
+
+  .story-section,
+  .lessons-section {
+    padding-block: 5.5rem;
+  }
+
+  .section-heading {
+    margin-bottom: 3.5rem;
+  }
+
+  .evidence-section {
+    margin-block: 0 5.5rem;
+    padding: 2.75rem;
+    gap: 2.5rem;
+  }
+
+  .promise-section {
+    padding: 5rem 2.75rem;
+  }
+
+  .closing {
+    padding-block: 5.5rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .hero,
+  .intro-strip,
+  .story-section,
+  .lessons-section,
+  .evidence-section,
+  .promise-section,
+  .closing {
+    width: calc(100% - 2rem);
+  }
+
+  .hero {
+    padding-block: 3.25rem 4rem;
+    gap: 2.5rem;
+  }
+
+  .hero::before {
+    inset: .5rem -.35rem;
+    border-radius: 1.35rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.15rem, 16vw, 4.75rem);
+    line-height: .94;
+  }
+
+  .hero-copy {
+    margin-bottom: 0;
+  }
+
+  .hero-actions {
+    margin-top: 1.75rem;
+    gap: .75rem;
+  }
+
+  .primary-button {
+    min-height: 3.25rem;
+    padding: .85rem 1.1rem;
+  }
+
+  .hero-card {
+    min-height: 0;
+    padding: 1.4rem;
+    border-radius: 1.35rem;
+  }
+
+  .hero-card blockquote {
+    margin: 3.75rem 0 3rem;
+  }
+
+  .intro-strip {
+    padding: 1rem .25rem;
+    gap: .75rem;
+    scrollbar-width: none;
+  }
+
+  .intro-strip::-webkit-scrollbar {
+    display: none;
+  }
+
+  .story-section,
+  .lessons-section {
+    padding-block: 4.25rem;
+  }
+
+  .section-heading {
+    grid-template-columns: 2.75rem minmax(0, 1fr);
+    gap: .85rem;
+    margin-bottom: 2.75rem;
+  }
+
+  .section-number {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .timeline-entry,
+  .timeline-entry:last-child {
+    display: block;
+    width: 100%;
+    padding-left: 1.25rem;
+    border-left: 1px solid var(--line);
+    position: relative;
+  }
+
+  .time {
+    padding: 0 0 .65rem;
+  }
+
+  .timeline-line {
+    position: absolute;
+    left: -6px;
+    top: -27px;
+  }
+
+  .timeline-line::after {
+    display: none;
+  }
+
+  .story-card {
+    width: 100%;
+    margin-bottom: 1.75rem;
+    padding: 1.25rem;
+    border-radius: 1.15rem;
+  }
+
+  .lesson-grid {
+    gap: .9rem;
+  }
+
+  .lesson-card {
+    min-height: 0;
+    padding: 1.35rem;
+  }
+
+  .lesson-card h3 {
+    margin-top: 2.75rem;
+  }
+
+  .evidence-section {
+    margin-block: 0 4.5rem;
+    padding: 2rem 1.25rem;
+    gap: 1.75rem;
+    border-radius: 1.35rem;
+  }
+
+  .check-list li {
+    padding-block: .75rem;
+  }
+
+  .promise-section {
+    padding: 4rem 1.25rem;
+    border-radius: 1.35rem;
+  }
+
+  .promise-copy {
+    margin-block: 1.25rem 1.75rem;
+  }
+
+  .closing {
+    padding-block: 4.5rem;
+  }
+
+  .closing h2 {
+    margin-block: 1rem 1.75rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero,
+  .intro-strip,
+  .story-section,
+  .lessons-section,
+  .evidence-section,
+  .promise-section,
+  .closing {
+    width: calc(100% - 1.5rem);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.85rem, 15.5vw, 3.35rem);
+  }
+
+  .hero-card,
+  .story-card,
+  .lesson-card {
+    padding: 1rem;
+  }
+
+  .timeline-entry {
+    display: block;
+    padding-left: 1rem;
+  }
+
+  .mini-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .5rem;
+  }
+
+  .mini-stats strong {
+    font-size: 1rem;
+  }
+
+  .mini-stats span {
+    font-size: .65rem;
+  }
+}
