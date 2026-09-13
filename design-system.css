@@ -61,3 +61,36 @@ body .learning-dashboard-hero {
     padding-block: 1.75rem 3rem;
   }
 }
+
+
+/* Homepage hero column alignment */
+body .learning-dashboard-hero {
+  min-height: auto;
+  align-items: flex-start;
+  padding-top: clamp(3rem, 4vw, 4.5rem);
+  padding-bottom: clamp(4.5rem, 7vw, 6rem);
+}
+
+body .learning-hero-grid {
+  align-items: start;
+}
+
+body .now-rail,
+body .learning-hero-copy,
+body .currently-panel {
+  align-self: start;
+}
+
+@media (max-width: 1180px) {
+  body .learning-dashboard-hero {
+    padding-top: 2.75rem;
+    padding-bottom: 4rem;
+  }
+}
+
+@media (max-width: 720px) {
+  body .learning-dashboard-hero {
+    padding-top: 1.5rem;
+    padding-bottom: 3rem;
+  }
+}
