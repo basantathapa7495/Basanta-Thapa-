@@ -1,7 +1,7 @@
 // Add each published daily file here, in date order. Never add unpublished entries.
 const journalEntries = [
- {day:1,date:"2026-09-11",title:"Turning 20 — Today, I begin.",description:"A birthday, changed plans, time with family, and a first step toward a better life.",file:"day-1.html",image:"../assets/journal/day-1.png",minutes:7},
- {day:2,date:"2026-09-12",title:"I woke up late — but I kept going.",description:"A messy day with low energy, a new YouTube upload, website fixes, reading, and small progress that still counted.",file:"day-2.html",image:"../assets/journal/day-2.png",minutes:6}
+ {day:1,date:"2026-09-11",title:"Turning 20 — Today, I begin.",description:"A birthday, changed plans, time with family, and a first step toward a better life.",file:"day-1.html",image:"../assets/journal/day-1.jpg",minutes:7},
+ {day:2,date:"2026-09-12",title:"I woke up late — but I kept going.",description:"A messy day with low energy, a new YouTube upload, website fixes, reading, and small progress that still counted.",file:"day-2.html",image:"../assets/journal/day-2.jpg",minutes:6}
 ];
 const archive = document.getElementById("journalEntries");
 if (archive) {
