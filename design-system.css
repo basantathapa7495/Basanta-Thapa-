@@ -22,7 +22,9 @@ body .learning-hero-grid{grid-template-columns:100px minmax(0,1fr) minmax(280px,
 .home-portrait{margin:0 0 20px;position:relative;overflow:hidden;border-radius:16px;background:#e7edeb}
 .home-portrait img{display:block;width:100%;height:300px;object-fit:cover;object-position:center 25%}
 .home-portrait figcaption{padding:8px 12px;color:var(--ds-ink);font-size:.8rem}
-.entry-art{display:grid;place-items:center;min-height:170px;border-radius:14px;background:linear-gradient(135deg,#183234,#347b7c);color:#fff;font:700 3.5rem/1 "Playfair Display",serif;letter-spacing:-.03em;margin-bottom:20px}
+.entry-art{display:block;width:100%;aspect-ratio:16/9;min-height:0;overflow:hidden;border-radius:14px;background:#e7edeb;margin-bottom:20px}
+.entry-art img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .25s ease}
+.journal-card:hover .entry-art img{transform:scale(1.025)}
 .journal-index{padding-block:128px 96px}
 .entry-navigation{position:static;inset:auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;width:calc(100% - 2 * var(--ds-gutter));max-width:1200px;margin:0 auto 64px;padding:24px;background:transparent;border:1px solid var(--ds-line);border-radius:16px;box-shadow:none;backdrop-filter:none;transform:none}
 .entry-navigation a{color:var(--ds-teal);font-weight:700}.entry-navigation span{color:var(--ds-muted)}
@@ -40,7 +42,6 @@ body .footer-main{grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr) minmax(0,
 @media(max-width:1050px){:root{--ds-gutter:24px;--ds-section:80px}.ds-grid{grid-template-columns:repeat(2,minmax(0,1fr))}body .learning-hero-grid{grid-template-columns:minmax(0,1fr) minmax(260px,330px)}body .now-rail{grid-column:1/-1;min-height:0}body .footer-main{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){:root{--ds-gutter:16px;--ds-section:56px}.ds-grid,body .learning-hero-grid{grid-template-columns:minmax(0,1fr)}.ds-card{padding:20px}.ds-heading{margin-bottom:32px}.home-portrait img{height:360px}.journal-index{padding-block:100px 56px}.entry-navigation{flex-direction:column;align-items:flex-start;padding:20px}body .story-card,body .lesson-card{padding:20px}body .timeline-entry{display:block;padding-left:18px}body .hero h1{font-size:clamp(2.7rem,12vw,4rem)}body .section-heading h2{font-size:clamp(2rem,8vw,3rem)}.next-areas{margin-bottom:56px}body .site-footer{padding-top:48px}}
 @media(max-width:400px){body .footer-main{grid-template-columns:minmax(0,1fr)}}
-
 
 /* Homepage hero vertical alignment */
 body .learning-dashboard-hero {
@@ -61,7 +62,6 @@ body .learning-dashboard-hero {
     padding-block: 1.75rem 3rem;
   }
 }
-
 
 /* Homepage hero column alignment */
 body .learning-dashboard-hero {
