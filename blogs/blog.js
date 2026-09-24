@@ -1,5 +1,16 @@
 const blogPosts = [
   {
+    id: 5,
+    title: "Know Before You Marry: 24 Things Worth Talking About",
+    excerpt: "Love matters, but so do respect, character, money, boundaries, and the daily choices that make a marriage work.",
+    date: "September 24, 2026",
+    readTime: "8 min read",
+    category: "long-form",
+    categoryLabel: "Long-form",
+    image: "../assets/img/blog2.jpg",
+    link: "know-before-you-marry.html"
+  },
+  {
     id: 4,
     title: "The Quiet Ways We Feel Close",
     excerpt: "A reflection on non-sexual intimacy: the small, ordinary moments that make someone feel safe, seen, and loved.",
