@@ -1,5 +1,16 @@
 const blogPosts = [
   {
+    id: 4,
+    title: "The Quiet Ways We Feel Close",
+    excerpt: "A reflection on non-sexual intimacy: the small, ordinary moments that make someone feel safe, seen, and loved.",
+    date: "September 24, 2026",
+    readTime: "4 min read",
+    category: "long-form",
+    categoryLabel: "Long-form",
+    image: "../assets/img/blog2.jpg",
+    link: "non-sexual-intimacy.html"
+  },
+  {
     id: 1,
     title: "How I Built This Website",
     excerpt: "The story behind this site—the design choices, the tools I used, and what building it taught me about learning through action.",
